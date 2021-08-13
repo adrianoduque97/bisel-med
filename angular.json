@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "bisel-med"
+    }
+  },
+  "defaultProject": "bisel-med",
+  "cli": {
+    "analytics": "c2572be0-94bd-4097-9b3a-3a9a9514c40b"
+  }
 }

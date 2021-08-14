@@ -1,0 +1,62 @@
+<div>
+
+    <div class="centered main-card">
+        <div style="display:flex; position:absolute;">
+            <div style="width: 30%;">
+                <img style="width:100%;" src="../../assets/Logo y coloresBisel.png">
+            </div>
+        </div>
+        <div class="normal-side center-flex" style="flex-direction:column;">
+            <div class="title">
+                Registro
+            </div>
+            <div>
+                <form class="example-form" [formGroup]="registerForm">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombre y Apellido</mat-label>
+                        <input formControlName="name" matInput placeholder="Adrián Duque">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Número de Registro</mat-label>
+                        <input formControlName="register" matInput placeholder="1725863509">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Teléfono</mat-label>
+                        <input formControlName="phone" matInput placeholder="0983078776">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Correo Electrónico</mat-label>
+                        <input formControlName="mail" matInput placeholder="doctor@test.com">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Contraseña</mat-label>
+                        <input formControlName="password" matInput placeholder="*******">
+                    </mat-form-field>
+
+                    
+                    
+                </form>
+                <div>
+                    <button style="margin-bottom: 10px; cursor: default;"  mat-raised-button color="primary">
+                    <label style="cursor: pointer;">
+                        <small>Examinar...</small>
+                        <input  #i hidden type="file" accept=".pdf" (change)="onFileChange($event, i.files)" multiple="false">
+                    </label>
+                </button>
+                    <span>{{nameFile? nameFile: 'Adjuntar documento medico Access'}}</span> 
+                </div>
+                <button class="example-full-width " mat-raised-button color="primary"
+                    (click)="onClick()">Registrarse</button>
+
+            </div>
+
+        </div>
+        <div class="blue-side center-flex">
+            <img style="width: 70%;" src="../../assets/DoctorIcon.png">
+        </div>
+    </div>
+</div>

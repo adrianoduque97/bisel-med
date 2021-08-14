@@ -1,1 +1,38 @@
-<p>login-page works!</p>
+<div>
+
+    <div class="centered main-card">
+        <div style="display:flex; position:absolute;">
+            <div style="width: 30%;">
+                <img style="width:100%;" src="../../assets/Logo y coloresBisel.png">
+            </div>
+        </div>
+        <div class="normal-side center-flex" style="flex-direction:column;">
+            <div class="title">
+                Recetas medicas
+            </div>
+            <div>
+                <form class="example-form"  [formGroup]="signupForm">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Usuario</mat-label>
+                      <input formControlName="user" matInput placeholder="doctor@test.com" >
+                    </mat-form-field>
+                  
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Contraseña</mat-label>
+                      <input formControlName= "password" matInput placeholder="********">
+                    </mat-form-field>
+                </form>
+                <button class="example-full-width " mat-raised-button color="primary" (click)="onClick()">Ingresar</button>
+                
+                <div style="display:flex; flex-direction: column; align-items:flex-start;">
+                    <a class="registrarse" routerLink="/Register">Registrarse</a>
+                    <a class="registrarse" routerLink="/Register">Olvidé mi contraseña</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="blue-side center-flex">
+            <img style="width: 70%;"  src="../../assets/DoctorIcon.png">
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  signupForm: FormGroup;
+  data:any;
+
+  constructor() {
+    this.signupForm = new FormGroup({
+      user: new FormControl('', Validators.required),
+      password:new FormControl('', Validators.required)
+    });
+   }
 
   ngOnInit(): void {
+    this.data={}
+  }
+
+  onClick(){
+    this.data.user= this.signupForm.value.user;
+    this.data.password= this.signupForm.value.password;
+    console.log(this.data, 'AQUI');
   }
 
 }

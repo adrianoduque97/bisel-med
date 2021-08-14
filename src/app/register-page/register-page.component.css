@@ -1,5 +1,4 @@
-
-  .example-form {
+.example-form {
     min-width: 250px;
     max-width: 420px;
     width: 100%;
@@ -16,7 +15,6 @@
     line-height: 1.1;
     padding-bottom: 40px;
   }
-  
   .registrarse {
     font-family: "Inter", sans-serif;
     color: rgba(0, 127, 255, 0.54);
@@ -27,9 +25,6 @@
     text-align: center;
   }
 
-
-
-  /* MEDIA QUERIES */
 
   @media all and (max-width: 700px) {
     .main-card {

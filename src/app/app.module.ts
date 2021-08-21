@@ -12,6 +12,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule,ReactiveFormsModule  }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { AuthService } from "./shared/services/auth-service.service";
 
 @NgModule({
   declarations: [
@@ -27,6 +32,9 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent, pathMatch: 'full'},
@@ -35,7 +43,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

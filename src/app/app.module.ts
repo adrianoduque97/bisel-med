@@ -17,12 +17,14 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AuthService } from "./shared/services/auth-service.service";
+import { RestorePasswordComponent } from './restore-password/restore-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    RestorePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { AuthService } from "./shared/services/auth-service.service";
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent, pathMatch: 'full'},
       { path: 'Login', component: LoginPageComponent},
-      {path: 'Register', component: RegisterPageComponent}
+      {path: 'Register', component: RegisterPageComponent},
+      {path: 'Restore', component: RestorePasswordComponent}
     ]),
     BrowserAnimationsModule
   ],

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../shared/services/auth-service.service';
+import { FireStoreServiceService } from '../shared/services/fire-store-service.service';
 
 @Component({
   selector: 'app-register-page',
@@ -13,7 +15,8 @@ export class RegisterPageComponent implements OnInit {
   nameFile: string;
   docFile: FormData;
 
-  constructor() {
+  constructor(public authService: AuthService,
+              public firestoreService: FireStoreServiceService) {
     this.registerForm = new FormGroup({
       name: new FormControl('', Validators.required),
       register:new FormControl('', Validators.required),
@@ -34,8 +37,11 @@ export class RegisterPageComponent implements OnInit {
     this.data.phone= this.registerForm.value.phone;
     this.data.mail= this.registerForm.value.mail;
     this.data.password= this.registerForm.value.password;
-    this.data.document= this.registerForm.value.document;
+    //this.data.document= this.registerForm.value.document;
     console.log(this.data, 'AQUI');
+    this.authService.SignUp(this.data.mail, this.data.password ).then(result  => {
+      this.firestoreService.createUser(this.data);
+    });
   }
 
   onFileChange(evt: any, files: File[]) {

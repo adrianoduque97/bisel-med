@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/services/auth-service.service';
 import { FireStoreServiceService } from '../shared/services/fire-store-service.service';
+import { NavbarService } from '../shared/services/navbar.service';
 
 @Component({
   selector: 'app-register-page',
@@ -16,7 +17,8 @@ export class RegisterPageComponent implements OnInit {
   docFile: FormData;
 
   constructor(public authService: AuthService,
-              public firestoreService: FireStoreServiceService) {
+              public firestoreService: FireStoreServiceService,
+              public navService: NavbarService) {
     this.registerForm = new FormGroup({
       name: new FormControl('', Validators.required),
       register:new FormControl('', Validators.required),
@@ -29,6 +31,7 @@ export class RegisterPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.navService.hide();
     this.data={};
   }
   onClick(){
@@ -37,8 +40,6 @@ export class RegisterPageComponent implements OnInit {
     this.data.phone= this.registerForm.value.phone;
     this.data.mail= this.registerForm.value.mail;
     this.data.password= this.registerForm.value.password;
-    //this.data.document= this.registerForm.value.document;
-    console.log(this.data, 'AQUI');
     this.authService.SignUp(this.data.mail, this.data.password ).then(result  => {
       this.firestoreService.createUser(this.data);
     });

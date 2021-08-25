@@ -36,10 +36,11 @@ export class AuthService {
         // ngZone.run(() => {
         //   router.navigate(['/Register']);
         // });
+        this.router.navigate(['/Receta']);
         console.log('Loged')
         
       } else {
-        console.log('NO')
+        this.router.navigate(['/Login']);
       }
     });
   }
@@ -50,7 +51,7 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['/Register']);
+          this.router.navigate(['/Receta']);
         });
         console.log(result)
         this.SetUserData(result.user);
@@ -106,7 +107,7 @@ export class AuthService {
     return this.afAuth.signInWithPopup(provider)
     .then((result) => {
        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['Receta']);
         })
       this.SetUserData(result.user);
     }).catch((error) => {
@@ -135,7 +136,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['Login']);
     })
   }
 

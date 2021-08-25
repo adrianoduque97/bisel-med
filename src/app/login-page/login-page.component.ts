@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from "../shared/services/auth-service.service";
+import { NavbarService } from '../shared/services/navbar.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,8 @@ export class LoginPageComponent implements OnInit {
   signupForm: FormGroup;
   data:any;
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService,
+              public navService: NavbarService) {
     this.signupForm = new FormGroup({
       user: new FormControl('', Validators.required),
       password:new FormControl('', Validators.required)
@@ -20,6 +22,7 @@ export class LoginPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.navService.hide();
     this.data={}
   }
 

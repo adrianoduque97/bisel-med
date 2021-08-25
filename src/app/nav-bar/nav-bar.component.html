@@ -1,0 +1,13 @@
+<div *ngIf="navService.visible">
+    <mat-toolbar color="primary" class="navbar">
+        <div style="width: 15%;">
+            <img style="width:60%;" src="../../assets/Logo y coloresBisel.png">
+        </div>
+        <div>
+            <span>Recetas</span>
+            <span>Orden</span>
+            <span>Certificados</span>
+        </div>
+        <div (click)="logOut()">Log Out</div>
+    </mat-toolbar>
+</div>

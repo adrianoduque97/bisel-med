@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from '@angular/router';
-import {MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatInputModule} from '@angular/material/input'; 
-import {MatButtonModule} from '@angular/material/button';
-import { FormsModule,ReactiveFormsModule  }   from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { AngularFireModule } from '@angular/fire';
@@ -18,13 +19,17 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AuthService } from "./shared/services/auth-service.service";
 import { RestorePasswordComponent } from './restore-password/restore-password.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RecetasComponent } from './generators/recetas/recetas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    RestorePasswordComponent
+    RestorePasswordComponent,
+    NavBarComponent,
+    RecetasComponent
   ],
   imports: [
     BrowserModule,
@@ -33,16 +38,18 @@ import { RestorePasswordComponent } from './restore-password/restore-password.co
     MatDividerModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: LoginPageComponent, pathMatch: 'full'},
-      { path: 'Login', component: LoginPageComponent},
-      {path: 'Register', component: RegisterPageComponent},
-      {path: 'Restore', component: RestorePasswordComponent}
+      { path: '', component: LoginPageComponent, pathMatch: 'full' },
+      { path: 'Login', component: LoginPageComponent },
+      { path: 'Register', component: RegisterPageComponent },
+      { path: 'Restore', component: RestorePasswordComponent },
+      { path: 'Receta', component: RecetasComponent }
     ]),
     BrowserAnimationsModule
   ],

@@ -11,12 +11,41 @@
                 Receta Médica
             </div>
             <div>
-                <!-- <button class="example-full-width " mat-raised-button color="primary" (click)="onClick()">Recuperar</button> -->
+                <form class="example-form" [formGroup]="registerForm">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombre y Apellido</mat-label>
+                        <input formControlName="name" matInput placeholder="Adrián Duque">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Número de Registro</mat-label>
+                        <input formControlName="register" matInput placeholder="1725863509">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Teléfono</mat-label>
+                        <input formControlName="phone" matInput placeholder="0983078776">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Correo Electrónico</mat-label>
+                        <input formControlName="mail" matInput placeholder="doctor@test.com">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Contraseña</mat-label>
+                        <input formControlName="password" matInput placeholder="*******">
+                    </mat-form-field>
+                    
+                </form>
+                <button class="example-full-width " mat-raised-button color="primary"
+                    (click)="onClick()">Registrarse</button>
+
             </div>
             
         </div>
         <div class="blue-side center-flex">
-            <app-recetas-pdf-gen></app-recetas-pdf-gen>
+            <app-recetas-pdf-gen [htmlData]="htmlData"></app-recetas-pdf-gen>
         </div>
     </div>
 </div>

@@ -1,9 +1,7 @@
-<div class="container">
-    <!-- <img id="imgTest" #imgTest  src="http://localhost:4200/assets/DoctorIcon.png"style="width: 20%;">  -->
-    <div id="pdfTable" #pdfTable>
-        <h2>Angular HTML To PDF Generator Example</h2>
-        <div style="margin-top:20px">
-        </div>
+<div class="container" >
+    <div id="pdfTable" #pdfTable  *ngIf="htmlData"> <!-- style="display: none;" -->
+        <img  src="http://localhost:4200/assets/Logo y coloresBisel.png" style="width: 40px">
+        <h2 style="color:brown;">Angular HTML To PDF Generator Example hhhhhhhhhhh</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -14,12 +12,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Sam</td>
+                    <td>{{htmlData.mail}}</td>
                     <td>Sam</td>
                     <td>tutsmake.com</td>
                 </tr>
                 <tr>
-                    <td>john</td>
+                    <td>{{htmlData.name}}</td>
                     <td>dam</td>
                     <td>w3school.com</td>
                 </tr>
@@ -31,7 +29,10 @@
             </tbody>
         </table>
 
-        <img id="imgTest" #imgTest src="http://localhost:4200/assets/DoctorIcon.png" style="width: 40px">
+        <img src="http://localhost:4200/assets/DoctorIcon.png" style="width: 40px">
     </div>
-    <button class="btn btn-primary" (click)="downloadAsPDF()">Export To PDF</button>
+    <button class="btn btn-primary" (click)="exportPDF('open')">Export To PDF</button>
 </div>
+
+<div id="iframeContainer" #iframeContainer ></div>
+<button class="example-full-width " mat-raised-button color="primary" (click)="getSharePDF('share')">Compartir link</button>

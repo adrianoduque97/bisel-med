@@ -1,9 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import jsPDF from 'jspdf';
-import htmlToPdfmake from 'html-to-pdfmake';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { FireStoreServiceService } from '../../../shared/services/fire-store-service.service';
+import { AuthService } from 'src/app/shared/services/auth-service.service';
+import { PdfGeneratorService } from 'src/app/shared/services/pdf-generator.service';
 
 @Component({
   selector: 'app-recetas-pdf-gen',
@@ -12,50 +10,35 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class RecetasPdfGenComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('pdfTable') pdfTable: ElementRef;
+  @Input() htmlData;
+
+  set:any;
+
+  constructor(public fire: FireStoreServiceService,
+    public auth: AuthService,
+    public pdfGen: PdfGeneratorService) { }
 
   ngOnInit(): void {
   }
-  @ViewChild('pdfTable') pdfTable: ElementRef;
-  @ViewChild('imgTest') imgTest: ElementRef;
 
-  public downloadAsPDF() {
-    const doc = new jsPDF();
+  async exportPDF(type: string){
+    // let se = await this.pdfGen.exportPDF(type, this.pdfTable);
+
+    let set = await this.pdfGen.exportPDF(type, this.pdfTable);
     
-    const pdfTable = this.pdfTable.nativeElement;
-    const imageLink = this.imgTest;
-
-    this.getBase64ImageFromUrl(imageLink.nativeElement.currentSrc)
-    .then(result => {
-      let s = pdfTable.innerHTML;
-      let htmlWithImage = this.replaceRange(s,s.search('src="')+5,s.search('style="width:'), `${result}"`);
-
-      var htmlContent = htmlToPdfmake(htmlWithImage);
-      const documentDefinition = { content: htmlContent };
-      pdfMake.createPdf(documentDefinition).open(); 
-    })
-    .catch(err => console.error(err));
+    // const targetElement = document.querySelector('#iframeContainer');
+    // const iframe = document.createElement('iframe');
+    // iframe.src = set;
+    // iframe.width = '650px';
+    // iframe.height = '300px'
+    // this.set = set;
+    // targetElement.appendChild(iframe);
   }
 
-  replaceRange(s: string, start :number, end:number, substitute:string): string {
-    return s.substring(0, start) + substitute + s.substring(end);
-  }
-
-  async  getBase64ImageFromUrl(imageUrl: string): Promise<any> {
-    var res = await fetch(imageUrl);
-    var blob = await res.blob();
-  
-    return new Promise((resolve, reject) => {
-      var reader  = new FileReader();
-      reader.addEventListener("load", function () {
-          resolve(reader.result);
-      }, false);
-  
-      reader.onerror = () => {
-        return reject(this);
-      };
-      reader.readAsDataURL(blob);
-    })
+  async getSharePDF (type){
+    let link = await this.pdfGen.exportPDF(type, this.pdfTable);
+    console.log(link, 'link')
   }
 
 }

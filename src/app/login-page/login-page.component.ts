@@ -29,7 +29,6 @@ export class LoginPageComponent implements OnInit {
   onClick(){
     this.data.user= this.signupForm.value.user;
     this.data.password= this.signupForm.value.password;
-    console.log(this.data, 'AQUI');
     this.authService.SignIn(this.data.user, this.data.password);
   }
 

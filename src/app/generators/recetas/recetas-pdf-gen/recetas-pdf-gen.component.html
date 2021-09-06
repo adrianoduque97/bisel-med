@@ -1,6 +1,6 @@
 <div class="container" >
     <div id="pdfTable" #pdfTable  *ngIf="htmlData"> <!-- style="display: none;" -->
-        <img  src="http://localhost:4200/assets/Logo y coloresBisel.png" style="width: 80px">
+        <img  src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
         <h2 style="color:brown;">Angular HTML To PDF Generator Example hhhhhhhhhhh</h2>
         <table class="table table-bordered">
             <thead>
@@ -29,7 +29,7 @@
             </tbody>
         </table>
 
-        <img src="http://localhost:4200/assets/DoctorIcon.png" style="width: 40px">
+        <img src="{{baseUrl}}/assets/DoctorIcon.png" style="width: 40px">
     </div>
     <button class="btn btn-primary" (click)="exportPDF('open')">Export To PDF</button>
 </div>

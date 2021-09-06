@@ -1,0 +1,38 @@
+<div class="container" >
+    <div id="pdfTable" #pdfTable  *ngIf="htmlData"> <!-- style="display: none;" -->
+        <img  src="http://localhost:4200/assets/Logo y coloresBisel.png" style="width: 40px">
+        <h2 style="color:brown;">Angular HTML To PDF Generator Example hhhhhhhhhhh</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{htmlData.mail}}</td>
+                    <td>Sam</td>
+                    <td>tutsmake.com</td>
+                </tr>
+                <tr>
+                    <td>{{htmlData.name}}</td>
+                    <td>dam</td>
+                    <td>w3school.com</td>
+                </tr>
+                <tr>
+                    <td>jonhy</td>
+                    <td>hid</td>
+                    <td>geeks.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <img src="http://localhost:4200/assets/DoctorIcon.png" style="width: 40px">
+    </div>
+    <button class="btn btn-primary" (click)="exportPDF('open')">Export To PDF</button>
+</div>
+
+<div id="iframeContainer" #iframeContainer ></div>
+<button class="example-full-width " mat-raised-button color="primary" (click)="getSharePDF('share')">Compartir link</button>

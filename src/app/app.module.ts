@@ -21,6 +21,7 @@ import { AuthService } from "./shared/services/auth-service.service";
 import { RestorePasswordComponent } from './restore-password/restore-password.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RecetasComponent } from './generators/recetas/recetas.component';
+import { RecetasPdfGenComponent } from './generators/recetas/recetas-pdf-gen/recetas-pdf-gen.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RecetasComponent } from './generators/recetas/recetas.component';
     RegisterPageComponent,
     RestorePasswordComponent,
     NavBarComponent,
-    RecetasComponent
+    RecetasComponent,
+    RecetasPdfGenComponent
   ],
   imports: [
     BrowserModule,

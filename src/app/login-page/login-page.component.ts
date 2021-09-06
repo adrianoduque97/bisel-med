@@ -16,7 +16,7 @@ export class LoginPageComponent implements OnInit {
   constructor(public authService: AuthService,
               public navService: NavbarService) {
     this.signupForm = new FormGroup({
-      user: new FormControl('', Validators.required),
+      user: new FormControl('', [Validators.required,Validators.email]),
       password:new FormControl('', Validators.required)
     });
    }

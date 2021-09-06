@@ -19,10 +19,11 @@
                   
                     <mat-form-field class="example-full-width" appearance="fill">
                       <mat-label>Contraseña</mat-label>
-                      <input formControlName= "password" matInput placeholder="********">
+                      <input formControlName="password" type="password" matInput placeholder="********">
                     </mat-form-field>
+                    <button class="example-full-width " mat-raised-button color="primary" [disabled]="!signupForm.valid" (click)="onClick()">Ingresar</button>
                 </form>
-                <button class="example-full-width " mat-raised-button color="primary" (click)="onClick()">Ingresar</button>
+                
                 
                 <div style="display:flex; flex-direction: column; align-items:flex-start;">
                     <a class="registrarse" routerLink="/Register">Registrarse</a>

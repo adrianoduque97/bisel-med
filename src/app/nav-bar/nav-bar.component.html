@@ -1,13 +1,29 @@
 <div *ngIf="navService.visible">
     <mat-toolbar color="primary" class="navbar">
+        <button mat-icon-button (click)="sidenav.toggle()" class="example-container">
+            <mat-icon>menu</mat-icon>
+          </button>
         <div style="width: 15%;">
-            <img style="width:60%;" src="../../assets/Logo y coloresBisel.png">
+            <img class="nav-width" src="../../assets/Logo y coloresBisel.png">
         </div>
         <div>
-            <span>Recetas</span>
-            <span>Orden</span>
-            <span>Certificados</span>
+            <span class="span-style">Recetas</span>
+            <span class="span-style">Orden</span>
+            <span class="span-style">Certificados</span>
         </div>
         <div style="cursor: pointer;" (click)="logOut()">Log Out</div>
     </mat-toolbar>
+
+    <mat-sidenav-container  class="example-container">
+        <mat-sidenav #sidenav >
+            <div class="flex-col">
+                <a href="#" mat-button>Recetas</a>
+                <a href="#" mat-button>Orden</a>
+                <a href="#" mat-button>Certificados</a>
+                <a (click)="sidenav.toggle()"  style="color:brown" mat-button>Cerrar</a>
+              </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
 </div>

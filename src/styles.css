@@ -20,7 +20,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex-direction: row;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
-
+  
   .centered {
     position: fixed;
     top: 50%;
@@ -30,7 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .blue-side{
     width: 50%;
     height: 100%;
-    background-color: rgba(0, 127, 255, 0.20);
+    background-color: rgba(63, 81, 181, 0.5);
     overflow: visible;
   }
   .normal-side{

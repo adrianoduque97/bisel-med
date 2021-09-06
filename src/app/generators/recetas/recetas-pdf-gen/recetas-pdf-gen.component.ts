@@ -2,6 +2,8 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FireStoreServiceService } from '../../../shared/services/fire-store-service.service';
 import { AuthService } from 'src/app/shared/services/auth-service.service';
 import { PdfGeneratorService } from 'src/app/shared/services/pdf-generator.service';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
   selector: 'app-recetas-pdf-gen',
@@ -12,6 +14,7 @@ export class RecetasPdfGenComponent implements OnInit {
 
   @ViewChild('pdfTable') pdfTable: ElementRef;
   @Input() htmlData;
+  baseUrl = environment.baseUrl;
 
   set:any;
 

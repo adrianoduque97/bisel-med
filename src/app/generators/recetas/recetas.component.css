@@ -1,6 +1,5 @@
   .example-full-width {
     width: 100%;
-    margin-left: 10px
   }
   .title {
     font-weight: 700;
@@ -30,6 +29,10 @@
     min-width: 250px;
     max-width: 420px;
     width: 100%;
+    }
+  
+    textarea{
+      height: 50px;
     }
 
 

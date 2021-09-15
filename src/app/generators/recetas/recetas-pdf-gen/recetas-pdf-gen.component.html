@@ -1,38 +1,60 @@
 <div class="container" >
     <div id="pdfTable" #pdfTable  *ngIf="htmlData"> <!-- style="display: none;" -->
         <img  src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
-        <h2 style="color:brown;">Angular HTML To PDF Generator Example hhhhhhhhhhh</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Website</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{htmlData.mail}}</td>
-                    <td>Sam</td>
-                    <td>tutsmake.com</td>
-                </tr>
-                <tr>
-                    <td>{{htmlData.name}}</td>
-                    <td>dam</td>
-                    <td>w3school.com</td>
-                </tr>
-                <tr>
-                    <td>jonhy</td>
-                    <td>hid</td>
-                    <td>geeks.com</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 style="color:brown;">Receta Médica Bisel</h2>
+        <div>
+            Fecha: {{getDate()}}
+        </div>
+        <div>
+            <h2>Datos Paciente</h2>
+            <div>{{htmlData.name}}</div>
+            <div>{{htmlData.mail}}</div>
+            <div>{{htmlData.docId}}</div>
+        </div>
+        <div>
+            <h2>Receta Médica</h2>
+            <div class="row-dir">
+                <div>
+                    <div class="text-format">Diagnóstico: </div>
+                </div>
+                <div>
+                    {{htmlData.diagnostic}}
+                </div>
+            </div>
+            <div class="row-dir">
+                <div>
+                    <div class="text-format">Medicinas: </div>
+                </div>
+                <div>
+                    {{htmlData.medicine}}
+                </div>
+            </div>
+            <div class="row-dir">
+                <div>
+                    <div class="text-format">Indicaciones: </div>
+                </div>
+                <div>
+                    {{htmlData.indication}}
+                </div>
+            </div>
+            <div class="row-dir">
+                <div>
+                    <div class="text-format">Recomendation: </div>
+                </div>
+                <div>
+                    {{htmlData.recomendation}}
+                </div>
+            </div>
 
-        <img src="{{baseUrl}}/assets/DoctorIcon.png" style="width: 40px">
+        </div>
+        
     </div>
-    <button class="btn btn-primary" (click)="exportPDF('open')">Export To PDF</button>
+    <div style="display: flex; flex-direction: row; margin-top: 50px;" *ngIf="htmlData">
+        <button class="btn btn-primary"  mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
+        <button class="btn-up" mat-raised-button color="primary" (click)="getSharePDF('share')">Compartir PDF</button>
+        <button class="btn-up" mat-raised-button color="primary" (click)="getSharePDF('save')">Guardar PDF</button>
+    </div>
+    
 </div>
 
 <div id="iframeContainer" #iframeContainer ></div>
-<button class="example-full-width " mat-raised-button color="primary" (click)="getSharePDF('share')">Compartir link</button>

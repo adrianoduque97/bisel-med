@@ -10,7 +10,7 @@ import { NavbarService } from 'src/app/shared/services/navbar.service';
   styleUrls: ['./recetas.component.css']
 })
 export class RecetasComponent implements OnInit {
-  registerForm: FormGroup;
+  medicineForm: FormGroup;
   data:any;
   nameFile: string;
   docFile: FormData;
@@ -18,12 +18,14 @@ export class RecetasComponent implements OnInit {
   constructor(public nav: NavbarService,
               public authService: AuthService,
               public firestoreService: FireStoreServiceService) { 
-                this.registerForm = new FormGroup({
+                this.medicineForm = new FormGroup({
                   name: new FormControl('', Validators.required),
-                  register:new FormControl('', Validators.required),
-                  phone:new FormControl('', Validators.required),
-                  mail:new FormControl('', Validators.required),
-                  password:new FormControl('', Validators.required),
+                  mail:new FormControl('', [Validators.required, Validators.email]),
+                  docId:new FormControl('', Validators.required),
+                  diagnostic: new FormControl('', Validators.required),
+                  medicine:new FormControl('', Validators.required),
+                  indication:new FormControl('', Validators.required),
+                  recomendation: new FormControl('', Validators.required)
                 });
               }
 
@@ -33,12 +35,51 @@ export class RecetasComponent implements OnInit {
   }
 
   onClick(){
-    this.data.name= this.registerForm.value.name;
-    this.data.register= this.registerForm.value.register;
-    this.data.phone= this.registerForm.value.phone;
-    this.data.mail= this.registerForm.value.mail;
-    this.data.password= this.registerForm.value.password;
+    this.data.name= this.medicineForm.value.name;
+    this.data.mail= this.medicineForm.value.mail;
+    this.data.docId= this.medicineForm.value.docId;
+    this.data.diagnostic= this.medicineForm.value.diagnostic;
+    this.data.medicine= this.medicineForm.value.medicine;
+    this.data.indication= this.medicineForm.value.indication;
+    this.data.recomendation= this.medicineForm.value.recomendation;
 
     this.htmlData = this.data;
+  }
+
+  onFileChange(evt: any, files: File[]) {
+    try {
+      const target: DataTransfer = <DataTransfer>(evt.target);
+      if (target.files.length !== 1){
+        throw new Error('Cannot use multiple files.');
+      }
+      
+      if (!target.files.item(0).type.includes('pdf')){
+        throw new Error('Invalid file type, just \'pdf\' files are supported.');
+      }
+      if (target.files.item(0).name.includes(' ')){
+        throw new Error('Invalid file name, no empty spaces are supported, use _ instead.');
+      }
+
+      const reader: FileReader = new FileReader();
+      reader.onload = (e: any) => {
+        const formData = new FormData();
+        formData.append('file', <File>files[0]);
+        this.docFile = formData;
+        this.nameFile=target.files.item(0).name;;
+
+        console.log(this.nameFile, 'file')
+        console.log(target.files.item(0), 'filet')
+      };
+      reader.onerror = (e: any) => {
+      };
+      reader.onloadstart = (e: any) => {
+      };
+      reader.onloadend = (e: any) => {
+      };
+      reader.readAsBinaryString(target.files[0]);
+    } catch(error){
+      console.log(error)
+    }
+    
   }
 }

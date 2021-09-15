@@ -42,6 +42,15 @@ export class RecetasPdfGenComponent implements OnInit {
   async getSharePDF (type){
     let link = await this.pdfGen.exportPDF(type, this.pdfTable);
     console.log(link, 'link')
+    if(type === 'share'){
+      window.open(link, "_blank");
+    }
+    
+  }
+
+  getDate(){
+    let date = new Date();
+    return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
   }
 
 }

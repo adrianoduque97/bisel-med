@@ -38,13 +38,14 @@
                     </mat-form-field>
                 </form>
                 <div>
-                    <button style="margin-bottom: 10px; cursor: default;"  mat-raised-button color="primary">
-                    <label style="cursor: pointer;">
-                        <small>Examinar...</small>
-                        <input  #i hidden type="file" accept=".pdf" (change)="onFileChange($event, i.files)" multiple="false">
-                    </label>
-                </button>
-                    <span>{{nameFile? nameFile: 'Adjuntar documento medico Access'}}</span> 
+                    <button style="margin-bottom: 10px; cursor: default;" mat-raised-button color="primary">
+                        <label style="cursor: pointer;">
+                            <small>Examinar...</small>
+                            <input #i hidden type="file" accept=".pdf" (change)="onFileChange($event, i.files)"
+                                multiple="false">
+                        </label>
+                    </button>
+                    <span>{{nameFile? nameFile: 'Adjuntar documento medico Access'}}</span>
                 </div>
                 <button class="example-full-width " mat-raised-button color="primary"
                     (click)="onClick()">Registrarse</button>

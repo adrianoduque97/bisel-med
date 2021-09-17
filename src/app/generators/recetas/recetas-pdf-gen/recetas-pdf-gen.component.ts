@@ -3,6 +3,8 @@ import { FireStoreServiceService } from '../../../shared/services/fire-store-ser
 import { AuthService } from 'src/app/shared/services/auth-service.service';
 import { PdfGeneratorService } from 'src/app/shared/services/pdf-generator.service';
 import { environment } from '../../../../environments/environment';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 
 @Component({
@@ -15,8 +17,14 @@ export class RecetasPdfGenComponent implements OnInit {
   @ViewChild('pdfTable') pdfTable: ElementRef;
   @Input() htmlData;
   baseUrl = environment.baseUrl;
-
+  pdfLiknk: string;
   set:any;
+
+  loading = false;
+
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 
   constructor(public fire: FireStoreServiceService,
     public auth: AuthService,
@@ -40,10 +48,12 @@ export class RecetasPdfGenComponent implements OnInit {
   }
 
   async getSharePDF (type){
+    this.loading = true;
+    setTimeout(() => this.loading = false, 2000);
     let link = await this.pdfGen.exportPDF(type, this.pdfTable);
     console.log(link, 'link')
     if(type === 'share'){
-      window.open(link, "_blank");
+      this.pdfLiknk =  link;
     }
     
   }
@@ -51,6 +61,10 @@ export class RecetasPdfGenComponent implements OnInit {
   getDate(){
     let date = new Date();
     return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
+  }
+  load() {
+    this.loading = true;
+    setTimeout(() => this.loading = false, 2000);
   }
 
 }

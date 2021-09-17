@@ -24,6 +24,11 @@ import { RestorePasswordComponent } from './restore-password/restore-password.co
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RecetasComponent } from './generators/recetas/recetas.component';
 import { RecetasPdfGenComponent } from './generators/recetas/recetas-pdf-gen/recetas-pdf-gen.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
+import { OverlayModule } from '@angular/cdk/overlay';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,7 @@ import { RecetasPdfGenComponent } from './generators/recetas/recetas-pdf-gen/rec
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -57,8 +63,12 @@ import { RecetasPdfGenComponent } from './generators/recetas/recetas-pdf-gen/rec
       { path: 'Restore', component: RestorePasswordComponent },
       { path: 'Receta', component: RecetasComponent }
     ]),
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    OverlayModule,
+    ShareButtonsModule,
+    ShareButtonsPopupModule,
+    ShareIconsModule
+  ], 
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

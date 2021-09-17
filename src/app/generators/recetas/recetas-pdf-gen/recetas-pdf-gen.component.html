@@ -1,6 +1,7 @@
-<div class="container" >
-    <div id="pdfTable" #pdfTable  *ngIf="htmlData"> <!-- style="display: none;" -->
-        <img  src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
+<div class="container">
+    <div id="pdfTable" #pdfTable *ngIf="htmlData">
+        <!-- style="display: none;" -->
+        <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
         <h2 style="color:brown;">Receta Médica Bisel</h2>
         <div>
             Fecha: {{getDate()}}
@@ -47,14 +48,25 @@
             </div>
 
         </div>
-        
+
     </div>
     <div style="display: flex; flex-direction: row; margin-top: 50px;" *ngIf="htmlData">
-        <button class="btn btn-primary"  mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
-        <button class="btn-up" mat-raised-button color="primary" (click)="getSharePDF('share')">Compartir PDF</button>
+        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
+        <span>
+
+            <button class="btn-up" mat-raised-button color="primary" [disabled]="loading"(click)="getSharePDF('share')">
+                <mat-progress-spinner *ngIf="loading" diameter="24" class="spinner-container" [color]="color" [mode]="mode"> </mat-progress-spinner>
+                Compartir PDF
+            </button>
+        </span>
+
         <button class="btn-up" mat-raised-button color="primary" (click)="getSharePDF('save')">Guardar PDF</button>
     </div>
-    
+    <div *ngIf="htmlData && pdfLiknk">
+        <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"
+            [include]="['facebook','twitter','telegram','messenger','whatsapp','email','copy']" [show]="8"
+            [showText]="false" [url]="pdfLiknk" [autoSetMeta]="false"></share-buttons>
+    </div>
 </div>
 
-<div id="iframeContainer" #iframeContainer ></div>
+<div id="iframeContainer" #iframeContainer></div>

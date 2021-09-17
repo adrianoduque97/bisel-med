@@ -12,3 +12,17 @@ h2{
 	font-weight: bold;
     margin-right: 4px;
 }
+.sb-button{
+    margin: 2px;
+}
+.spinner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

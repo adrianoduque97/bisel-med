@@ -7,7 +7,7 @@
             <img class="nav-width" src="../../assets/Logo y coloresBisel.png">
         </div>
         <div>
-            <span class="span-style">Recetas</span>
+            <span routerLink="/Receta" class="span-style">Recetas</span>
             <span class="span-style">Orden</span>
             <span class="span-style">Certificados</span>
         </div>
@@ -17,7 +17,7 @@
     <mat-sidenav-container  class="example-container">
         <mat-sidenav #sidenav >
             <div class="flex-col">
-                <a href="#" mat-button>Recetas</a>
+                <a routerLink="/Receta" mat-button>Recetas</a>
                 <a href="#" mat-button>Orden</a>
                 <a href="#" mat-button>Certificados</a>
                 <a (click)="sidenav.toggle()"  style="color:brown" mat-button>Cerrar</a>

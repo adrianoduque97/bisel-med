@@ -39,10 +39,7 @@ export class RegisterPageComponent implements OnInit {
     this.data.register= this.registerForm.value.register;
     this.data.phone= this.registerForm.value.phone;
     this.data.mail= this.registerForm.value.mail;
-    this.data.password= this.registerForm.value.password;
-    this.authService.SignUp(this.data.mail, this.data.password ).then(result  => {
-      this.firestoreService.createUser(this.data);
-    });
+    this.authService.SignUp(this.data.mail, this.registerForm.value.password, this.data );
   }
 
   onFileChange(evt: any, files: File[]) {

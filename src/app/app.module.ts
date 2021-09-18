@@ -29,6 +29,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RestorePasswordComponent,
     NavBarComponent,
     RecetasComponent,
-    RecetasPdfGenComponent
+    RecetasPdfGenComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginPageComponent, pathMatch: 'full' },
+      {path: 'User', component: UserPageComponent},
       { path: 'Login', component: LoginPageComponent },
       { path: 'Register', component: RegisterPageComponent },
       { path: 'Restore', component: RestorePasswordComponent },

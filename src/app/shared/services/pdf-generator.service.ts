@@ -35,6 +35,9 @@ export class PdfGeneratorService {
       } else if (type === 'open') {
         pdfMake.createPdf(documentDefinition).open();
         resolve('open');
+      } else if(type === 'print'){
+        pdfMake.createPdf(documentDefinition).print();
+        resolve('print');
       } else if (type === 'share') {
         let doc = pdfMake.createPdf(documentDefinition);
   

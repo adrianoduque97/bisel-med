@@ -48,14 +48,11 @@ export class RecetasPdfGenComponent implements OnInit {
   }
 
   async getSharePDF (type){
-    this.loading = true;
-    setTimeout(() => this.loading = false, 2000);
-    let link = await this.pdfGen.exportPDF(type, this.pdfTable);
-    console.log(link, 'link')
-    if(type === 'share'){
-      this.pdfLiknk =  link;
-    }
+      this.loading = true;
+      setTimeout(() => this.loading = false, 2000);
     
+    let link = await this.pdfGen.exportPDF(type, this.pdfTable);
+      this.pdfLiknk =  link;
   }
 
   getDate(){

@@ -60,7 +60,8 @@
             </button>
         </span>
 
-        <button class="btn-up" mat-raised-button color="primary" (click)="getSharePDF('save')">Guardar PDF</button>
+        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
+        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
     </div>
     <div *ngIf="htmlData && pdfLiknk">
         <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"

@@ -12,7 +12,10 @@ export class FireStoreServiceService {
 
 
   public createUser(data:any) {
-    return this.firestore.collection('users').add(data);
+    return this.firestore.collection('Usuarios').add(data);
+  }
+  public getUser(uid: string) {
+    return this.firestore.collection('users').doc(uid);
   }
 
   public async updloadFile(file: Blob, fileName: string, type: string): Promise<string>{

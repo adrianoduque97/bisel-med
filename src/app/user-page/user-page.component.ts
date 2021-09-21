@@ -16,6 +16,7 @@ export class UserPageComponent implements OnInit {
   userInfo: any;
   signFile: any;
   selloFile: any;
+  localUser: any;
 
   nameSign: any;
   nameSello: any;
@@ -23,8 +24,8 @@ export class UserPageComponent implements OnInit {
   constructor(public authService: AuthService,
               public firestoreService: FireStoreServiceService,
               public navService: NavbarService) { 
-                let userLocalStorage = JSON.parse(localStorage.getItem('user'));
-    this.firestoreService.getUser(userLocalStorage.uid).get().subscribe(user =>{
+              this.localUser = JSON.parse(localStorage.getItem('user'));
+    this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
       this.userInfo = user.data();
     });
     
@@ -76,12 +77,21 @@ export class UserPageComponent implements OnInit {
           if(type ==='sello'){
             this.firestoreService.getUser(this.userInfo.uid).update({
               sello: link
+            }).then(()=>{
+              this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+                this.userInfo = user.data();
+              });
             });
           }else{
             this.firestoreService.getUser(this.userInfo.uid).update({
               firma: link
+            }).then(()=>{
+              this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+                this.userInfo = user.data();
+              });
             });
           }
+          
         });
       };
       reader.onerror = (e: any) => {

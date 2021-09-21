@@ -5,6 +5,7 @@ import { PdfGeneratorService } from 'src/app/shared/services/pdf-generator.servi
 import { environment } from '../../../../environments/environment';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import Utils from '../../../shared/Utils/recetas.utils';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class RecetasPdfGenComponent implements OnInit {
   baseUrl = environment.baseUrl;
   pdfLiknk: string;
   set:any;
+  user: any;
 
   loading = false;
 
@@ -28,9 +30,14 @@ export class RecetasPdfGenComponent implements OnInit {
 
   constructor(public fire: FireStoreServiceService,
     public auth: AuthService,
-    public pdfGen: PdfGeneratorService) { }
+    public pdfGen: PdfGeneratorService,
+    ) { }
 
   ngOnInit(): void {
+    let userLocal = JSON.parse(localStorage.getItem('user'));
+    this.fire.getUser(userLocal.uid).get().subscribe(async user =>{
+      this.user = user.data();
+    });
   }
 
   async exportPDF(type: string){

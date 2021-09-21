@@ -5,6 +5,7 @@
         <h2 style="color:brown;">Receta Médica Bisel</h2>
         <div>
             Fecha: {{getDate()}}
+            Doctor: {{user.displayName}}
         </div>
         <div>
             <h2>Datos Paciente</h2>
@@ -46,6 +47,23 @@
                     {{htmlData.recomendation}}
                 </div>
             </div>
+            <div class="row-dir">
+                <div>
+                    <div class="text-format">firma: </div>
+                </div>
+                <div>
+                    <img [src]="user.firma" style="width: 20px">
+                </div>
+            </div>
+            <div class="row-dir">
+                <div>
+                    <div class="text-format">Sello: </div>
+                </div>
+                <div>
+                    <img [src]=" user.sello" style="width: 20px">
+                </div>
+            </div>
+
 
         </div>
 

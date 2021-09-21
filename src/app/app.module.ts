@@ -30,6 +30,7 @@ import { ShareButtonsPopupModule } from 'ngx-sharebuttons/popup';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { UserPageComponent } from './user-page/user-page.component';
+import {MatMenuModule} from '@angular/material/menu'; 
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { UserPageComponent } from './user-page/user-page.component';
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatMenuModule,
     MatProgressSpinnerModule,
     MatIconModule,
     FormsModule,

@@ -24,6 +24,10 @@
     text-decoration: underline;
     text-align: center;
   }
+  .imagen-local{
+    width: 40px;
+    position: absolute;
+  }
 
 
   @media all and (max-width: 700px) {

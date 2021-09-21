@@ -1,8 +1,5 @@
 <div *ngIf="navService.visible">
     <mat-toolbar color="primary" class="navbar">
-        <button mat-icon-button (click)="sidenav.toggle()" class="example-container">
-            <mat-icon>menu</mat-icon>
-          </button>
         <div style="width: 15%;">
             <img class="nav-width" src="../../assets/Logo y coloresBisel.png">
         </div>
@@ -11,7 +8,17 @@
             <span class="span-style">Orden</span>
             <span class="span-style">Certificados</span>
         </div>
-        <div style="cursor: pointer;" (click)="logOut()">Log Out</div>
+        <div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <div mat-menu-item style="cursor: pointer;" routerLink="/User">User</div>
+                <div mat-menu-item style="cursor: pointer;" (click)="logOut()">Log Out</div>
+            </mat-menu>
+        </div>
+        
+        
     </mat-toolbar>
 
     <mat-sidenav-container  class="example-container">
@@ -20,6 +27,7 @@
                 <a routerLink="/Receta" mat-button>Recetas</a>
                 <a href="#" mat-button>Orden</a>
                 <a href="#" mat-button>Certificados</a>
+                <a href="/Usuario" mat-button>Usuario</a>
                 <a (click)="sidenav.toggle()"  style="color:brown" mat-button>Cerrar</a>
               </div>
         </mat-sidenav>

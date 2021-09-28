@@ -9,7 +9,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items:center;
     justify-content:center;
 }
-
+#pdfTable{
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.container{
+  max-width: 500px
+}
 /* MAIN UI STYLES */
 .main-card {
     width: 90%;

@@ -1,9 +1,5 @@
-import { ElementRef } from '@angular/core';
-import htmlToPdfmake from 'html-to-pdfmake';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { FireStoreServiceService } from '../services/fire-store-service.service';
-import { AuthService } from 'src/app/shared/services/auth-service.service';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export default class Utils {

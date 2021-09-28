@@ -15,6 +15,7 @@ export class RecetasComponent implements OnInit {
   nameFile: string;
   docFile: FormData;
   htmlData: any;
+  userInfo: any;
   constructor(public nav: NavbarService,
               public authService: AuthService,
               public firestoreService: FireStoreServiceService) { 
@@ -32,6 +33,10 @@ export class RecetasComponent implements OnInit {
   ngOnInit(): void {
     this.nav.show();
     this.data={};
+    let userLocalStorage = JSON.parse(localStorage.getItem('user'));
+    this.firestoreService.getUser(userLocalStorage.uid).get().subscribe(user =>{
+      this.userInfo = user.data();
+    });
   }
 
   onClick(){
@@ -67,8 +72,8 @@ export class RecetasComponent implements OnInit {
         this.docFile = formData;
         this.nameFile=target.files.item(0).name;;
 
-        console.log(this.nameFile, 'file')
-        console.log(target.files.item(0), 'filet')
+        console.log(this.nameFile, 'file');
+        console.log(target.files.item(0), 'filet');
       };
       reader.onerror = (e: any) => {
       };
@@ -78,7 +83,7 @@ export class RecetasComponent implements OnInit {
       };
       reader.readAsBinaryString(target.files[0]);
     } catch(error){
-      console.log(error)
+      console.log(error);
     }
     
   }

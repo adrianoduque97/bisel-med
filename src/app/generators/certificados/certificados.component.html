@@ -1,0 +1,40 @@
+<div>
+
+    <div class="centered main-card">
+        <div class="normal-side center-flex" style="flex-direction:column;">
+            <div class="title">
+                Certificado Médico
+            </div>
+            <div >
+                <form class="example-form" [formGroup]="medicineForm">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Nombre y Apellido Paciente</mat-label>
+                            <input formControlName="name" matInput placeholder="Adrián Duque">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Correo Electrónico Paciente </mat-label>
+                            <input formControlName="mail" matInput placeholder="paciente@test.com">
+                        </mat-form-field>
+    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Cédula Paciente</mat-label>
+                            <input formControlName="docId" matInput placeholder="1726834909">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Certificado</mat-label>
+                            <textarea formControlName="certificado" matInput placeholder="Certificado Médico"></textarea>
+                        </mat-form-field>
+                                  
+                </form>
+
+                <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
+                    Generar Certificado
+                </button>  
+            </div>
+            
+        </div>
+        <div class="blue-side center-flex">
+            <app-certificados-pdf-gen [htmlData]="htmlData"></app-certificados-pdf-gen>
+        </div>
+    </div>
+</div>

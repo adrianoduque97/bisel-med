@@ -1,0 +1,82 @@
+<div>
+
+    <div class="centered main-card">
+        <div class="normal-side center-flex" style="flex-direction:column;">
+            <div class="title">
+                Exámenes Imagen
+            </div>
+            <div >
+                <form class="example-form" [formGroup]="medicineForm" class="main-flex">
+                    <div>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Nombre y Apellido Paciente</mat-label>
+                            <input formControlName="name" matInput placeholder="Adrián Duque">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Correo Electrónico Paciente </mat-label>
+                            <input formControlName="mail" matInput placeholder="paciente@test.com">
+                        </mat-form-field>
+    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Cédula Paciente</mat-label>
+                            <input formControlName="docId" matInput placeholder="1726834909">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Hematología</mat-label>
+                            <mat-select formControlName="hematologia" matInput>
+                                <mat-option *ngFor="let value of hematologiaInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Química Sanguínea</mat-label>
+                            <mat-select formControlName="quimica" matInput>
+                                <mat-option *ngFor="let value of quimicaInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+                    <div>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Coprológico</mat-label>
+                            <mat-select formControlName="copro" matInput>
+                                <mat-option *ngFor="let value of coproInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Urología</mat-label>
+                            <mat-select formControlName="uro" matInput>
+                                <mat-option *ngFor="let value of uroInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Bacteriología</mat-label>
+                            <mat-select formControlName="bacter" matInput>
+                                <mat-option *ngFor="let value of bacterInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Seriología</mat-label>
+                            <mat-select formControlName="serio" matInput>
+                                <mat-option *ngFor="let value of serioInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Otros</mat-label>
+                            <textarea formControlName="otros" matInput placeholder="Recomendaciones"></textarea>
+                        </mat-form-field>
+                    </div>                  
+                </form>
+
+                <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
+                    Generar Solicitud de Examen
+                </button>                 
+
+            </div>
+            
+        </div>
+        <div class="blue-side center-flex">
+            <app-examenes-pdf-gen [htmlData]="htmlData" ></app-examenes-pdf-gen>
+        </div>
+    </div>
+</div>

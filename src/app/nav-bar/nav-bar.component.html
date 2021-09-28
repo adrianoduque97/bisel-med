@@ -5,16 +5,16 @@
         </div>
         <div>
             <span routerLink="/Receta" class="span-style">Recetas</span>
-            <span class="span-style">Orden</span>
-            <span class="span-style">Certificados</span>
+            <span routerLink="/ExamenesImagen"  class="span-style">Exámenes</span>
+            <span routerLink="/Certificados" class="span-style">Certificados</span>
         </div>
         <div>
             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                 <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-                <div mat-menu-item style="cursor: pointer;" routerLink="/User">User</div>
-                <div mat-menu-item style="cursor: pointer;" (click)="logOut()">Log Out</div>
+                <div mat-menu-item style="cursor: pointer;" routerLink="/User">Usuario</div>
+                <div mat-menu-item style="cursor: pointer;" (click)="logOut()">Desconectarse</div>
             </mat-menu>
         </div>
         
@@ -25,8 +25,8 @@
         <mat-sidenav #sidenav >
             <div class="flex-col">
                 <a routerLink="/Receta" mat-button>Recetas</a>
-                <a href="#" mat-button>Orden</a>
-                <a href="#" mat-button>Certificados</a>
+                <a routerLink="/ExamenesImagen" mat-button>Exámenes</a>
+                <a routerLink="/Certificados" mat-button>Certificados</a>
                 <a href="/Usuario" mat-button>Usuario</a>
                 <a (click)="sidenav.toggle()"  style="color:brown" mat-button>Cerrar</a>
               </div>

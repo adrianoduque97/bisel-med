@@ -2,7 +2,7 @@
     <div id="pdfTable" #pdfTable *ngIf="htmlData">
         <!-- style="display: none;" -->
         <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
-        <h2 style="color:brown;">Receta Médica Bisel</h2>
+        <h2 style="color:brown;">Certificado Médico Bisel</h2>
         <div>
             Fecha: {{getDate()}}
             Doctor: {{user.displayName}}
@@ -14,57 +14,31 @@
             <div>{{htmlData.docId}}</div>
         </div>
         <div>
-            <h2>Receta Médica</h2>
+            <h2>Certificado Médico</h2>
             <div class="row-dir">
                 <div>
-                    <div class="text-format">Diagnóstico: </div>
+                    <div class="text-format">Certificado </div>
                 </div>
                 <div>
-                    {{htmlData.diagnostic}}
+                    {{htmlData.certificado}}
                 </div>
             </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Medicinas: </div>
-                </div>
-                <div>
-                    {{htmlData.medicine}}
-                </div>
+        </div>
+        <div class="row-dir">
+            <div>
+                <div class="text-format">firma: </div>
             </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Indicaciones: </div>
-                </div>
-                <div>
-                    {{htmlData.indication}}
-                </div>
+            <div>
+                <img [src]="user.firma" style="width: 20px">
             </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Recomendation: </div>
-                </div>
-                <div>
-                    {{htmlData.recomendation}}
-                </div>
+        </div>
+        <div class="row-dir">
+            <div>
+                <div class="text-format">Sello: </div>
             </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">firma: </div>
-                </div>
-                <div>
-                    <img [src]="user.firma" style="width: 20px">
-                </div>
+            <div>
+                <img [src]=" user.sello" style="width: 20px">
             </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Sello: </div>
-                </div>
-                <div>
-                    <img [src]=" user.sello" style="width: 20px">
-                </div>
-            </div>
-
-
         </div>
 
     </div>

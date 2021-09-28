@@ -27,9 +27,7 @@
                         <input formControlName="mail" matInput disabled [value]="userInfo?.email" readonly>
                     </mat-form-field>
                 </form>
-                <!-- <button class="example-full-width " mat-raised-button color="primary"
-                    (click)="onClick()">Update</button> -->
-                    <div>
+                    <div >
                         <button style="margin-bottom: 10px; cursor: default;" mat-raised-button color="primary">
                             <label style="cursor: pointer;">
                                 <small>{{userInfo?.firma ? 'Actualizar' :'Adjuntar'}} Imagen de Firma, Examinar...</small>
@@ -38,7 +36,6 @@
                             </label>
                         </button>
                         <img [src]="userInfo?.firma" class="imagen-local" />
-                        <!-- <span>{{nameSign? nameSign: 'Adjuntar Firma'}}</span> -->
                     </div>
 
                     <div>
@@ -50,7 +47,6 @@
                             </label>
                         </button>
                         <img [src]="userInfo?.sello" class="imagen-local"/>
-                        <!-- <span>{{nameSello? nameSello: 'Adjuntar Sello'}}</span> -->
                     </div>
 
             </div>

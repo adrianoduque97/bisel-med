@@ -2,7 +2,7 @@
     <div id="pdfTable" #pdfTable *ngIf="htmlData">
         <!-- style="display: none;" -->
         <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
-        <h2 style="color:brown;">Exámen Bisel</h2>
+        <h2 style="color:brown;">ImágenesBisel</h2>
         <div>
             Fecha: {{getDate()}}
             Doctor: {{user.displayName}}
@@ -14,54 +14,31 @@
             <div>{{htmlData.docId}}</div>
         </div>
         <div>
-            <h2>Solicitud de Examen</h2>
+            <h2>Solicitud de Imágen</h2>
             <div class="row-dir">
                 <div>
-                    <div class="text-format">Exámenes: </div>
+                    <div class="text-format">Imágen: </div>
+                    {{htmlData.imagenTipo}}
                 </div>
             </div>
             <div class="">
-                <div *ngIf="htmlData.hematologia">
+                <div>
                     <div>
-                        <div class="text-format">Hematología: </div>
+                        <div class="text-format">Descripción </div>
                     </div>
-                    {{htmlData.hematologia}}
+                    {{htmlData.descripcion}}
                 </div>
-                <div *ngIf="htmlData.quimica">
+                <div >
                     <div>
-                        <div class="text-format">Química Sanguínea: </div>
+                        <div class="text-format">Motivo de la Solicitud </div>
                     </div>
-                    {{htmlData.quimica}}
+                    {{htmlData.motivo}}
                 </div>
-                <div *ngIf="htmlData.copro">
+                <div>
                     <div>
-                        <div class="text-format">Coprológico: </div>
+                        <div class="text-format">Resumen Clínico: </div>
                     </div>
-                    {{htmlData.copro}}
-                </div>
-                <div *ngIf="htmlData.uro">
-                    <div>
-                        <div class="text-format">Uroanálisis: </div>
-                    </div>
-                    {{htmlData.uro}}
-                </div>
-                <div *ngIf="htmlData.bacter">
-                    <div>
-                        <div class="text-format">Bacteriología </div>
-                    </div>
-                    {{htmlData.bacter}}
-                </div>
-                <div *ngIf="htmlData.serio">
-                    <div>
-                        <div class="text-format">Seriología </div>
-                    </div>
-                    {{htmlData.serio}}
-                </div>
-                <div *ngIf="htmlData.otros">
-                    <div>
-                        <div class="text-format">Otros: </div>
-                    </div>
-                    {{htmlData.otros}}
+                    {{htmlData.resumen}}
                 </div>
             </div>
             <div class="row-dir">

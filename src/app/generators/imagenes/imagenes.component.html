@@ -1,0 +1,59 @@
+<div>
+
+    <div class="centered main-card">
+        <div class="normal-side center-flex" style="flex-direction:column;">
+            <div class="title">
+                Imágenes
+            </div>
+            <div >
+                <form class="example-form" [formGroup]="medicineForm" class="main-flex">
+                    <div>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Nombre y Apellido Paciente</mat-label>
+                            <input formControlName="name" matInput placeholder="Adrián Duque">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Correo Electrónico Paciente </mat-label>
+                            <input formControlName="mail" matInput placeholder="paciente@test.com">
+                        </mat-form-field>
+    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Cédula Paciente</mat-label>
+                            <input formControlName="docId" matInput placeholder="1726834909">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Estudio Solicitado</mat-label>
+                            <mat-select formControlName="imagenTipo" matInput>
+                                <mat-option *ngFor="let value of imagenTipo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Descripción de la Solicitud</mat-label>
+                            <textarea formControlName="descripcion" matInput placeholder="Descripción"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Motivo de la Solicitud</mat-label>
+                            <textarea formControlName="motivo" matInput placeholder="Descripción"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Resumen Clínico</mat-label>
+                            <textarea formControlName="resumen" matInput placeholder="Descripción"></textarea>
+                        </mat-form-field>
+                        
+                    </div>                  
+                </form>
+
+                <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
+                    Generar Solicitud de Imágen
+                </button>                 
+
+            </div>
+            
+        </div>
+        <div class="blue-side center-flex">
+            <app-imagenes-pdf-gen [htmlData]="htmlData" ></app-imagenes-pdf-gen>
+        </div>
+    </div>
+</div>

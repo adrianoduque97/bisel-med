@@ -7,12 +7,11 @@ import { PdfGeneratorService } from 'src/app/shared/services/pdf-generator.servi
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-examenes-pdf-gen',
-  templateUrl: './examenes-pdf-gen.component.html',
-  styleUrls: ['./examenes-pdf-gen.component.css']
+  selector: 'app-imagenes-pdf-gen',
+  templateUrl: './imagenes-pdf-gen.component.html',
+  styleUrls: ['./imagenes-pdf-gen.component.css']
 })
-export class ExamenesPdfGenComponent implements OnInit {
-  
+export class ImagenesPdfGenComponent implements OnInit {
   @ViewChild('pdfTable') pdfTable: ElementRef;
   @Input() htmlData;
   baseUrl = environment.baseUrl;

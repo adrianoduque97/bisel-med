@@ -35,7 +35,9 @@ import { ExamenesComponent } from './generators/examenes/examenes/examenes.compo
 import {MatSelectModule} from '@angular/material/select';
 import { ExamenesPdfGenComponent } from './generators/examenes/examenes-pdf-gen/examenes-pdf-gen/examenes-pdf-gen.component';
 import { CertificadosComponent } from './generators/certificados/certificados.component';
-import { CertificadosPdfGenComponent } from './generators/certificados/certificados-pdf-gen/certificados-pdf-gen.component'; 
+import { CertificadosPdfGenComponent } from './generators/certificados/certificados-pdf-gen/certificados-pdf-gen.component';
+import { ImagenesComponent } from './generators/imagenes/imagenes.component';
+import { ImagenesPdfGenComponent } from './generators/imagenes/imagenes-pdf-gen/imagenes-pdf-gen.component'; 
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { CertificadosPdfGenComponent } from './generators/certificados/certifica
     ExamenesComponent,
     ExamenesPdfGenComponent,
     CertificadosComponent,
-    CertificadosPdfGenComponent
+    CertificadosPdfGenComponent,
+    ImagenesComponent,
+    ImagenesPdfGenComponent
   ],
   imports: [
     BrowserModule,
@@ -77,8 +81,9 @@ import { CertificadosPdfGenComponent } from './generators/certificados/certifica
       { path: 'Register', component: RegisterPageComponent },
       { path: 'Restore', component: RestorePasswordComponent },
       { path: 'Receta', component: RecetasComponent },
-      { path: 'ExamenesImagen', component: ExamenesComponent },
-      { path: 'Certificados', component: CertificadosComponent }
+      { path: 'Examenes', component: ExamenesComponent },
+      { path: 'Certificados', component: CertificadosComponent },
+      { path: 'Imagenes', component: ImagenesComponent }
     ]),
     BrowserAnimationsModule,
     OverlayModule,

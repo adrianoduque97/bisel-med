@@ -1,5 +1,17 @@
 <div *ngIf="navService.visible">
     <mat-toolbar color="primary" class="navbar">
+        <div class="nav-responsive">
+            <button mat-icon-button [matMenuTriggerFor]="menuNav">
+                <mat-icon>menu</mat-icon>
+              </button>
+              <mat-menu #menuNav="matMenu">
+                <div mat-menu-item style="cursor: pointer;"  routerLink="/Receta">Recetas</div>
+                <div mat-menu-item style="cursor: pointer;"  routerLink="/Examenes">Exámenes</div>
+                <div mat-menu-item style="cursor: pointer;"  routerLink="/Imagenes">Imágenes</div>
+                <div mat-menu-item style="cursor: pointer;"  routerLink="/Certificados">Certificados</div>
+              </mat-menu>
+        </div>
+        
         <div style="width: 15%;">
             <img class="nav-width" src="../../assets/Logo y coloresBisel.png">
         </div>
@@ -21,19 +33,4 @@
         
         
     </mat-toolbar>
-
-    <mat-sidenav-container  class="example-container">
-        <mat-sidenav #sidenav >
-            <div class="flex-col">
-                <a routerLink="/Receta" mat-button>Recetas</a>
-                <a routerLink="/Examenes" mat-button>Exámenes</a>
-                <a routerLink="/Imagenes" mat-button>Imágenes</a>
-                <a routerLink="/Certificados" mat-button>Certificados</a>
-                <a href="/Usuario" mat-button>Usuario</a>
-                <a (click)="sidenav.toggle()"  style="color:brown" mat-button>Cerrar</a>
-              </div>
-        </mat-sidenav>
-        <mat-sidenav-content>
-        </mat-sidenav-content>
-      </mat-sidenav-container>
 </div>

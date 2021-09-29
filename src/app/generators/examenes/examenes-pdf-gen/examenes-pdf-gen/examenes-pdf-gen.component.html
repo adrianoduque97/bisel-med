@@ -1,5 +1,5 @@
 <div class="container">
-    <div id="pdfTable" #pdfTable *ngIf="htmlData">
+    <div id="pdfTable" #pdfTable *ngIf="htmlData" class="height-doc">
         <!-- style="display: none;" -->
         <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
         <h2 style="color:brown;">Exámen Bisel</h2>
@@ -85,7 +85,7 @@
         </div>
 
     </div>
-    <div style="display: flex; flex-direction: row; margin-top: 50px;" *ngIf="htmlData">
+    <div class="button-container" *ngIf="htmlData">
         <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
         <span>
 

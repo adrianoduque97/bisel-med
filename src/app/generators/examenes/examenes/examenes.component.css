@@ -42,9 +42,10 @@
       flex-direction: column;
       align-items:center;
     }
-    .blue-side{
-        display: none;
-    }
+    /* .blue-side{
+        width: 100%;
+        margin-top: 20px;
+    } */
     .main-flex{
         flex-direction: column;
         align-items:center;

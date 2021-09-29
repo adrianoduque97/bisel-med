@@ -42,9 +42,6 @@
       flex-direction: column;
       align-items:center;
     }
-    .blue-side{
-        display: none;
-    }
     .main-flex{
         flex-direction: column;
         align-items:center;

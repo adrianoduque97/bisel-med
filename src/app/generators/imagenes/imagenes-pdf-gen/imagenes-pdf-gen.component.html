@@ -1,8 +1,7 @@
 <div class="container">
     <div id="pdfTable" #pdfTable *ngIf="htmlData">
-        <!-- style="display: none;" -->
         <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
-        <h2 style="color:brown;">ImágenesBisel</h2>
+        <h2 style="color:brown;">Imágenes Bisel</h2>
         <div>
             Fecha: {{getDate()}}
             Doctor: {{user.displayName}}
@@ -41,13 +40,11 @@
                     {{htmlData.resumen}}
                 </div>
             </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">firma: </div>
-                </div>
-                <div>
-                    <img [src]="user.firma" style="width: 20px">
-                </div>
+            <div>
+                    <span class="text-format">firma: 
+                        <img [src]="user.firma" style="width: 20px">
+                    </span>
+                    
             </div>
             <div class="row-dir">
                 <div>
@@ -62,7 +59,68 @@
         </div>
 
     </div>
-    <div style="display: flex; flex-direction: row; margin-top: 50px;" *ngIf="htmlData">
+
+    <!-- <div id="pdfTable" #pdfTable>
+
+        <h2>Angular HTML To PDF Generator Example - ItSolutionStuff.com</h2>
+    
+                  
+    
+        <table class="table table-bordered">
+    
+          <thead>
+    
+            <tr>
+    
+              <th>Firstname</th>
+    
+              <th>Lastname</th>
+    
+              <th>Website</th>
+    
+            </tr>
+    
+          </thead>
+    
+          <tbody>
+    
+            <tr>
+    
+              <td>Hardik</td>
+    
+              <td>Savani</td>
+    
+              <td>itsolutionstuff.com</td>
+    
+            </tr>
+    
+            <tr>
+    
+              <td>Vimal</td>
+    
+              <td>Kashiyani</td>
+    
+              <td>hdtuto.com</td>
+    
+            </tr>
+    
+            <tr>
+    
+              <td>Harshad</td>
+    
+              <td>Pathak</td>
+    
+              <td>nicesnippets.com</td>
+    
+            </tr>
+    
+          </tbody>
+    
+        </table>
+    
+      </div> -->
+      
+    <div class="button-container" *ngIf="htmlData">
         <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
         <span>
 

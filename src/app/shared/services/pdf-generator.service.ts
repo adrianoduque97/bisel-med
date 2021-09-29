@@ -20,12 +20,13 @@ export class PdfGeneratorService {
     const pdfTableLocal = pdfTable.nativeElement;
 
     var htmlContent = htmlToPdfmake(pdfTableLocal.innerHTML, {
-      imagesByReference: true
+      imagesByReference: true,
+      tableAutoSize: true
     });
 
     const documentDefinition = {
       content: htmlContent.content,
-      images: htmlContent.images
+      images: htmlContent.images,
     }
 
     return new Promise((resolve, reject)=>{

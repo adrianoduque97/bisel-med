@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { AuthService } from '../shared/services/auth-service.service';
 import { FireStoreServiceService } from '../shared/services/fire-store-service.service';
 import { NavbarService } from '../shared/services/navbar.service';
@@ -17,9 +19,12 @@ export class UserPageComponent implements OnInit {
   signFile: any;
   selloFile: any;
   localUser: any;
-
+  hugeLoading = true;
   nameSign: any;
   nameSello: any;
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 
   constructor(public authService: AuthService,
               public firestoreService: FireStoreServiceService,
@@ -27,6 +32,7 @@ export class UserPageComponent implements OnInit {
               this.localUser = JSON.parse(localStorage.getItem('user'));
     this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
       this.userInfo = user.data();
+      this.hugeLoading = false;
     });
     
                 this.userForm = new FormGroup({

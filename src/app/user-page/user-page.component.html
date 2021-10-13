@@ -1,6 +1,6 @@
 <div>
-
     <div class="centered main-card">
+        <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
         <div class="normal-side center-flex" style="flex-direction:column;">
             <div class="title">
                 Usuario {{userInfo?.displayName}}
@@ -35,7 +35,7 @@
                                     multiple="false">
                             </label>
                         </button>
-                        <img [src]="userInfo?.firma" class="imagen-local" />
+                        <!-- <img [src]="userInfo?.firma" class="imagen-local" /> -->
                     </div>
 
                     <div>
@@ -46,7 +46,7 @@
                                     multiple="false">
                             </label>
                         </button>
-                        <img [src]="userInfo?.sello" class="imagen-local"/>
+                        <!-- <img [src]="userInfo?.sello" class="imagen-local"/> -->
                     </div>
 
             </div>

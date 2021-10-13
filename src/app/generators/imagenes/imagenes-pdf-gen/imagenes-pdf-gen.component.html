@@ -1,9 +1,10 @@
 <div class="container">
+    <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
     <div id="pdfTable" #pdfTable *ngIf="htmlData">
         <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
         <h2 style="color:brown;">Imágenes Bisel</h2>
         <div>
-            Fecha: {{getDate()}}
+            Fecha: {{date | date:'mediumDate'}}
             Doctor: {{user.displayName}}
         </div>
         <div>

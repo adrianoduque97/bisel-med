@@ -1,10 +1,10 @@
 <div class="container">
-    <div id="pdfTable" #pdfTable *ngIf="htmlData">
-        <!-- style="display: none;" -->
+    <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
+    <!-- <div id="pdfTable" #pdfTable *ngIf="htmlData">
         <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
         <h2 style="color:brown;">Receta Médica Bisel</h2>
         <div>
-            Fecha: {{getDate()}}
+            Fecha: {{date | date:'mediumDate'}}
             Doctor: {{user.displayName}}
         </div>
         <div>
@@ -67,6 +67,147 @@
 
         </div>
 
+    </div> -->
+
+    <div id="pdfTable" #pdfTable >
+        <table class="table-size">
+            <tr>
+                <td colspan=9 class="tr0 td0">
+                    <P class="p0 ft0">HOSPITAL/UNIDAD DE SALUD:</P>
+                </td>
+                <td class="tr0 td9">
+                    <P class="p1 ft1">&nbsp;</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=7 class="tr2 td10">
+                    <P class="p0 ft0">SERVICIO/ESPECIALIDAD:</P>
+                </td>
+                <td colspan=3 class="tr2 td3">
+                    <P class="p2 ft2">FECHA: {{date | date:'mediumDate'}}</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3 class="tr4 td16">
+                    <P class="p6 ft2">NOMBRE Y APELLIDOS: {{htmlData?.name}}</P>
+                </td>
+                <td colspan=4 class="tr5 td20">
+                    <P class="p7 ft2">HISTORIA CLÍNICA N°</P>
+                </td>
+                <td colspan=3 class="tr5 td21">
+                    <P class="p8 ft2">CIE 10 :</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=4  class="tr5 td10">
+                    <P class="p5 ft2">DOCUMENTO DE INDENTIDAD:{{htmlData?.docId}}</P>
+                </td>
+                <td  colspan=1 class="tr5 td2">
+                    <P class="p5 ft4">EDAD</P>
+                </td>
+                <td  colspan=1 class="tr5 td3">
+                    <P class="p1 ft4">AÑOS:</P>
+                </td>
+                <td  colspan=2 class="tr5 td22">
+                    <P class="p1 ft4">MESES:</P>
+                </td>
+                <td  colspan=2 class="tr5 td12">
+                    <P class="p9 ft4">SEXO: M  F</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr1 td16">
+                    <P class="p5 ft9"><SPAN class="ft2">DATOS DEL MEDICAMENTO </SPAN><SPAN class="ft8">(</SPAN>DCI,
+                        Concentración y forma Farmacéutica<SPAN class="ft8">)</SPAN></P>
+                </td>
+                <td colspan=5 class="tr1 td26">
+                    <P class="p11 ft5">CANTIDAD</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=7  class="tr1 td16">
+                    <p></p>
+                </td>
+                <td colspan=3  class="tr1 td26">
+                    <p></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=10 class="tr1 td16">
+                    <P class="p11 ft5">DATOS DEL PREESCRIPTOR</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5  class="tr1 td16">
+                    <p>Nombre y Apellido</p>
+                </td>
+                <td colspan=5  class="tr1 td26">
+                    <p>Firma y sello del prescriptor (libro, folio y numero)</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr10 td28">
+                    <P class="p16 ft0">INDICACIONES</P>
+                </td>
+                <td colspan=5 class="tr10 td30">
+                    <P class="p17 ft0">RECETA N°</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr10 td28">
+                    <P class="p16 ft0">MEDICAMENTO (DCI, concentración y forma farmacéutica)</P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">VIA ADMIN.</P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">DOSIS</P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">FRECUENCIA</P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">DURACION</P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">HORA</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr10 td28">
+                    <P class="p16 ft0"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr10 td28">
+                    <P class="p16 ft0">PREESCRIPTOR</P>
+                    <div class="p16 ft0">Firma y Sello</div>
+                </td>
+                <td colspan=5 class="tr10 td30">
+                    <P class="p17 ft0" style="text-align: start; vertical-align: initial;">ADVERTENCIAS:</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=10 class="tr10 td28">
+                    <P class="p16 ft0">REALIZAR ACTIVIDADES FÍSICAS TODOS LOS DÍAS AL MENOS:</P>
+                </td>
+            </tr>
+        </table>
     </div>
     <div class="button-container" *ngIf="htmlData">
         <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
@@ -84,8 +225,7 @@
     <div *ngIf="htmlData && pdfLiknk">
         <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"
             [include]="['facebook','twitter','telegram','whatsapp','email','copy']" [show]="6"
-            [showText]="false" [url]="pdfLiknk" [autoSetMeta]="false"></share-buttons>
+            [showText]="false" [url]="pdfLiknk" [autoSetMeta]="false">
+        </share-buttons>
     </div>
 </div>
-
-<div id="iframeContainer" #iframeContainer></div>

@@ -28,7 +28,21 @@
     width: 40px;
     position: absolute;
   }
-
+  .spinner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .big-spinner{
+    margin-left: 51%;
+    margin-top: 1%;
+  }
 
   @media all and (max-width: 700px) {
     .main-card {

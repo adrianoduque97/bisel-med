@@ -17,9 +17,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+  width: 50px;
 }
 .container{
-  max-width: 500px;
+  max-width: 600px;
+}
+.table-size{
+  width: 580px;
 }
 /* MAIN UI STYLES */
 .main-card {
@@ -50,7 +54,6 @@ table, th, td {
     width: 50%;
     height: 100%;
     overflow: auto;
-    max-height: 560px;
     justify-content: center;
   }
 
@@ -67,6 +70,8 @@ table, th, td {
     overflow: auto;
     scrollbar-width: thin;
 }
+
+
   @media all and (max-width: 700px) {
     .main-flex{
         flex-direction: column;
@@ -82,7 +87,7 @@ table, th, td {
     overflow: unset;
   }
     .container{
-      width: 300px;
+      width: 350px;
     }
     .button-container{
       margin-top: 0;
@@ -99,6 +104,8 @@ table, th, td {
     .btn-up{
       width: 100%
     }
-
+    .table-size{
+      width: 300px
+    }
 
   }

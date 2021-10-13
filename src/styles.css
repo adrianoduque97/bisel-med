@@ -15,7 +15,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   scrollbar-width: thin;
 }
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid #004990;
   border-collapse: collapse;
   width: 50px;
 }
@@ -23,7 +23,7 @@ table, th, td {
   max-width: 600px;
 }
 .table-size{
-  width: 580px;
+  width: 550px;
 }
 /* MAIN UI STYLES */
 .main-card {
@@ -61,6 +61,7 @@ table, th, td {
     display: flex; 
     flex-direction: row; 
     margin-top: 50px;
+    justify-content: center;
   }
   .example-form{
     min-width: 250px;
@@ -70,7 +71,9 @@ table, th, td {
     overflow: auto;
     scrollbar-width: thin;
 }
-
+.imag-sello{
+  width: 130px;
+}
 
   @media all and (max-width: 700px) {
     .main-flex{
@@ -82,6 +85,7 @@ table, th, td {
     .blue-side{
       width: 100%;
       margin-top: 20px;
+      height: auto;
   }
   .normal-side{
     overflow: unset;
@@ -90,7 +94,7 @@ table, th, td {
       width: 350px;
     }
     .button-container{
-      margin-top: 0;
+      margin-top: 5px;
       display: flex;
       flex-direction: column;
     }
@@ -105,7 +109,11 @@ table, th, td {
       width: 100%
     }
     .table-size{
-      width: 300px
+      width: 300px;
+      margin-bottom: 10px;
     }
+    .imag-sello{
+      width: 80px;
+  }
 
   }

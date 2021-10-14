@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
@@ -5,6 +6,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { AuthService } from '../shared/services/auth-service.service';
 import { FireStoreServiceService } from '../shared/services/fire-store-service.service';
 import { NavbarService } from '../shared/services/navbar.service';
+import { RemovebgService } from '../shared/services/removebg.service';
 
 @Component({
   selector: 'app-user-page',
@@ -28,7 +30,9 @@ export class UserPageComponent implements OnInit {
 
   constructor(public authService: AuthService,
               public firestoreService: FireStoreServiceService,
-              public navService: NavbarService) { 
+              public remover: RemovebgService,
+              public navService: NavbarService,
+              private http: HttpClient) { 
               this.localUser = JSON.parse(localStorage.getItem('user'));
     this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
       this.userInfo = user.data();
@@ -58,6 +62,20 @@ export class UserPageComponent implements OnInit {
     console.log(this.data);
   }
 
+  getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+
   onFileChange(evt: any, files: File[], type: string) {
     try {
       const target: DataTransfer = <DataTransfer>(evt.target);
@@ -78,27 +96,47 @@ export class UserPageComponent implements OnInit {
           this.nameSign=target.files.item(0).name;
           this.signFile = <File>files[0];
         }
-    
-        this.firestoreService.updloadFile(type==='sello'?this.selloFile:this.signFile, `${this.authService.userData.email}/${type==='sello'?"sello":"firma"}`, target.files.item(0).type).then(link => {          
-          if(type ==='sello'){
-            this.firestoreService.getUser(this.userInfo.uid).update({
-              sello: link
-            }).then(()=>{
-              this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
-                this.userInfo = user.data();
-              });
+
+
+var myHeaders = new Headers();
+myHeaders.append("X-Api-Key", "PEVWR2sQc4rYfC8ESbTJucte");
+
+var formdata = new FormData();
+formdata.append("image_file", type==='sello'?this.selloFile:this.signFile, "/C:/Users/adria/Downloads/firmaElvis2.jpeg");
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formdata
+};
+
+fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
+  .then(response => {
+    response.blob().then(fot=>{
+      this.firestoreService.updloadFile(fot, `${this.authService.userData.email}/${type==='sello'?"sello":"firma"}`, target.files.item(0).type).then(link => {          
+        if(type ==='sello'){
+          this.firestoreService.getUser(this.userInfo.uid).update({
+            sello: link
+          }).then(()=>{
+            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+              this.userInfo = user.data();
             });
-          }else{
-            this.firestoreService.getUser(this.userInfo.uid).update({
-              firma: link
-            }).then(()=>{
-              this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
-                this.userInfo = user.data();
-              });
+          });
+        }else{
+          this.firestoreService.getUser(this.userInfo.uid).update({
+            firma: link
+          }).then(()=>{
+            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+              this.userInfo = user.data();
             });
-          }
-          
-        });
+          });
+        }
+        
+      });
+    })
+
+        
+      });
       };
       reader.onerror = (e: any) => {
       };

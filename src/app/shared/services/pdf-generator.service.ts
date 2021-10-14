@@ -64,10 +64,10 @@ export class PdfGeneratorService {
     let dataPdf = document.getElementById('pdfTable');
     
     const pdf = new jspdf('p', 'px', 'a4', true);
-    let canvas = await html2canvas(dataPdf, { logging: true, allowTaint: true, useCORS: true, scale: 4 });
+    let canvas = await html2canvas(dataPdf, { logging: true, allowTaint: true, useCORS: true, scale: 3 });
     let img = canvas.toDataURL('image/png');
     // pdf.addImage(img, 'png', 40, 50, 415 > dataPdf.offsetWidth?415:dataPdf.offsetWidth, dataPdf.offsetHeight+100);
-    pdf.addImage(img, 'png', 15, 15, 415, 400);
+    pdf.addImage(img, 'png', 15, 15, 415, 400,'','FAST');
 
     return new Promise((resolve, reject) => {
       if (type === 'save') {

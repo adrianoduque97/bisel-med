@@ -36,21 +36,9 @@ h2{
   /* NEW */
 
 #pdfTable{
-    font-size: 10px;
+    font-size: 9px;
     color: #024a91;
 }
-/* .table-back{
-    background-image: url("../../../../assets/FondoRecetaNo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 50%;
-}
-table::before{
-    background-image: url("../../../../assets/FondoRecetaNo.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 50%;
-} */
 td span{
     color:black;
 }

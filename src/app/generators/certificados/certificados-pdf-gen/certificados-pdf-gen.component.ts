@@ -18,7 +18,8 @@ export class CertificadosPdfGenComponent implements OnInit {
   pdfLiknk: string;
   set:any;
   user: any;
-
+  date: Date = new Date();
+  hugeLoading = false;
   loading = false;
 
   color: ThemePalette = 'primary';
@@ -37,20 +38,18 @@ export class CertificadosPdfGenComponent implements OnInit {
     });
   }
   async exportPDF(type: string){
-    let set = await this.pdfGen.exportPDF(type, this.pdfTable);
+    this.hugeLoading = true;
+    this.pdfGen.exportJSPDF(type, this.pdfTable).then(res =>{
+      this.hugeLoading= false;
+    });
   }
 
   async getSharePDF (type){
-      this.loading = true;
-      setTimeout(() => this.loading = false, 2000);
-    
-    let link = await this.pdfGen.exportPDF(type, this.pdfTable);
-      this.pdfLiknk =  link;
-  }
-
-  getDate(){
-    let date = new Date();
-    return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
+    this.loading = true;
+    this.pdfGen.exportJSPDF(type, this.pdfTable).then(link =>{
+    this.pdfLiknk =  link;
+    this.loading = false
+  });
   }
   load() {
     this.loading = true;

@@ -38,6 +38,8 @@ import { CertificadosComponent } from './generators/certificados/certificados.co
 import { CertificadosPdfGenComponent } from './generators/certificados/certificados-pdf-gen/certificados-pdf-gen.component';
 import { ImagenesComponent } from './generators/imagenes/imagenes.component';
 import { ImagenesPdfGenComponent } from './generators/imagenes/imagenes-pdf-gen/imagenes-pdf-gen.component'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -66,10 +68,12 @@ import { ImagenesPdfGenComponent } from './generators/imagenes/imagenes-pdf-gen/
     MatToolbarModule,
     MatSidenavModule,
     MatMenuModule,
+    MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatIconModule,
     MatSelectModule,
     FormsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

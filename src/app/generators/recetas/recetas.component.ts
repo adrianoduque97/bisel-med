@@ -16,17 +16,30 @@ export class RecetasComponent implements OnInit {
   docFile: FormData;
   htmlData: any;
   userInfo: any;
+  cie10: any[];
+  med:any[] = [];
+  sexo = ['Masculino', 'Femenino'];
+  horas = ['Mañana','Medio Día','Tarde','Noche', 'Ninguna'];
+
   constructor(public nav: NavbarService,
               public authService: AuthService,
               public firestoreService: FireStoreServiceService) { 
                 this.medicineForm = new FormGroup({
+                  servicio: new FormControl('', Validators.required),
                   name: new FormControl('', Validators.required),
-                  mail:new FormControl('', [Validators.required, Validators.email]),
+                  edad:new FormControl('', Validators.required),
+                  meses:new FormControl('', Validators.required),
+                  sex:new FormControl('', Validators.required),
                   docId:new FormControl('', Validators.required),
                   diagnostic: new FormControl('', Validators.required),
-                  medicine:new FormControl('', Validators.required),
-                  indication:new FormControl('', Validators.required),
-                  recomendation: new FormControl('', Validators.required)
+                  cie10: new FormControl('', Validators.required),
+                  medicine:new FormControl(''),
+                  admin:new FormControl(''),
+                  dose:new FormControl(''),
+                  freq:new FormControl(''),
+                  duration:new FormControl(''),
+                  hour:new FormControl(''),
+                  advertencia: new FormControl('', Validators.required)
                 });
               }
 
@@ -37,18 +50,41 @@ export class RecetasComponent implements OnInit {
     this.firestoreService.getUser(userLocalStorage.uid).get().subscribe(user =>{
       this.userInfo = user.data();
     });
+    // var cie10 = require('cie10');
+    // this.cie10 = cie10('array'); 
   }
 
   onClick(){
+    this.data.servicio= this.medicineForm.value.servicio;
     this.data.name= this.medicineForm.value.name;
-    this.data.mail= this.medicineForm.value.mail;
+    this.data.edad= [this.medicineForm.value.edad, this.medicineForm.value.meses];
+    this.data.sex = this.medicineForm.value.sex;
     this.data.docId= this.medicineForm.value.docId;
     this.data.diagnostic= this.medicineForm.value.diagnostic;
-    this.data.medicine= this.medicineForm.value.medicine;
-    this.data.indication= this.medicineForm.value.indication;
-    this.data.recomendation= this.medicineForm.value.recomendation;
+    this.data.cie10= this.medicineForm.value.cie10;
+    this.data.medicine= this.med;
+    this.data.advertencia= this.medicineForm.value.advertencia;
 
     this.htmlData = this.data;
+  }
+
+  addMedicine(){
+    this.med.push({
+      medicine: this.medicineForm.value.medicine,
+      admin: this.medicineForm.value.admin,
+      dose: this.medicineForm.value.dose,
+      freq: this.medicineForm.value.freq,
+      duration: this.medicineForm.value.duration,
+      hour: this.medicineForm.value.hour,
+    });
+    this.medicineForm.get('medicine').reset();
+    this.medicineForm.get('admin').reset();
+    this.medicineForm.get('dose').reset();
+    this.medicineForm.get('freq').reset();
+    this.medicineForm.get('duration').reset();
+    this.medicineForm.get('hour').reset();
+
+    console.log(this.medicineForm.value);
   }
 
   onFileChange(evt: any, files: File[]) {

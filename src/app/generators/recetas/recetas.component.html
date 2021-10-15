@@ -6,60 +6,107 @@
                 Receta Médica
             </div>
             <div >
-                <form class="example-form" [formGroup]="medicineForm" class="main-flex">
-                    <div>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Nombre y Apellido Paciente</mat-label>
-                            <input formControlName="name" matInput placeholder="Adrián Duque">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Correo Electrónico Paciente </mat-label>
-                            <input formControlName="mail" matInput placeholder="paciente@test.com">
-                        </mat-form-field>
-    
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Cédula Paciente</mat-label>
-                            <input formControlName="docId" matInput placeholder="1726834909">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Diagnóstico</mat-label>
-                            <textarea formControlName="diagnostic" matInput placeholder="Diagnóstico"></textarea>
-                        </mat-form-field>
+                <form class="example-form" [formGroup]="medicineForm" >
+                    <div class="main-flex">
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Servicio/Especialidad</mat-label>
+                                <input formControlName="servicio" matInput placeholder="Adrián Duque">
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Nombre y Apellido Paciente</mat-label>
+                                <input formControlName="name" matInput placeholder="Adrián Duque">
+                            </mat-form-field>
+                            <div style="display: flex;">
+                                <mat-form-field class="example-full-width" appearance="fill" style="width: 130px;">
+                                    <mat-label>Años</mat-label>
+                                    <input formControlName="edad" matInput placeholder="10">
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="fill" style="width: 130px;">
+                                    <mat-label>Meses</mat-label>
+                                    <input formControlName="meses" matInput placeholder="12">
+                                </mat-form-field>
+                            </div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Sexo Paciente</mat-label>
+                                <mat-select formControlName="sex" matInput>
+                                    <mat-option *ngFor="let value of sexo" [value]="value">{{value}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Cédula Paciente</mat-label>
+                                <input formControlName="docId" matInput placeholder="1726834909">
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Diagnóstico</mat-label>
+                                <textarea formControlName="diagnostic" matInput placeholder="Diagnóstico"></textarea>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>CIE 10</mat-label>
+                                <input formControlName="cie10" matInput placeholder="A0890">
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Advertencias</mat-label>
+                                <textarea formControlName="advertencia" matInput placeholder="Recomendaciones"></textarea>
+                            </mat-form-field>
+                                <div style="display: flex;">
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100px;">
+                                        <mat-label>Medicina</mat-label>
+                                        <input formControlName="medicine" matInput placeholder="Medicina">
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100px;">
+                                        <mat-label>Via Admin.</mat-label>
+                                        <input formControlName="admin" matInput placeholder="Oral">
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 90px;">
+                                        <mat-label>Dosis</mat-label>
+                                        <input formControlName="dose" matInput placeholder="500 gr">
+                                    </mat-form-field>
+                                </div>
+                                <div style="display: flex;" >
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100px;">
+                                        <mat-label>Frecuencia</mat-label>
+                                        <input formControlName="freq" matInput placeholder="8 horas">
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100px;">
+                                        <mat-label>Duración</mat-label>
+                                        <input formControlName="duration" matInput placeholder="2 días">
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 90px;">
+                                        <mat-label>Hora</mat-label>
+                                        <mat-select formControlName="hour" matInput>
+                                            <mat-option *ngFor="let value of horas" [value]="value">{{value}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div> 
+                                <button class="example-full-width" 
+                                        *ngIf="medicineForm.get('medicine').touched && medicineForm.get('hour').touched &&
+                                               medicineForm.get('admin').touched && medicineForm.get('duration').touched &&
+                                               medicineForm.get('dose').touched && medicineForm.get('freq').touched"  
+                                        mat-raised-button color="primary"(click)="addMedicine()">
+                                    Agregar medicamento
+                                </button>                            
+                        </div>  
                     </div>
-                    <div>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Medicamentos</mat-label>
-                            <textarea formControlName="medicine" matInput placeholder="Medicamentos"></textarea>
-                        </mat-form-field>
-    
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Indicaciones</mat-label>
-                            <textarea formControlName="indication" matInput placeholder="Indicaciones"></textarea>
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Recomendaciones</mat-label>
-                            <textarea formControlName="recomendation" matInput placeholder="Recomendaciones"></textarea>
-                        </mat-form-field>
-                    </div>                  
+                                    
                 </form>
+                <!-- <input type="text"
+       placeholder="Pick one"
+       aria-label="Number"
+       matInput
+       [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of cie10" [value]="option.c">
+              {{option.c}} {{option.d}}
+            </mat-option>
+          </mat-autocomplete> -->
 
                 <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
                     Generar Receta
-                </button>  
-                <!-- <div>
-                    <button style="margin-bottom: 10px; cursor: default;" mat-raised-button color="primary">
-                        <label style="cursor: pointer;">
-                            <small>Examinar...</small>
-                            <input #i hidden type="file" accept=".pdf" (change)="onFileChange($event, i.files)"
-                                multiple="false">
-                        </label>
-                    </button>
-                    <span>{{nameFile? nameFile: 'Adjuntar documento medico Access'}}</span>
-                </div> -->
-                
-
-            </div>
-            
+                </button>              
+            </div>  
         </div>
         <div class="blue-side center-flex">
             <app-recetas-pdf-gen [htmlData]="htmlData"></app-recetas-pdf-gen>

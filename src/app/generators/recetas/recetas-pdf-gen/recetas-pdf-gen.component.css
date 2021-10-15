@@ -26,3 +26,19 @@ h2{
     align-items: center;
     justify-content: center;
   }
+  .big-spinner{
+    margin-left: 51%;
+    margin-top: 1%;
+  }
+
+
+
+  /* NEW */
+
+#pdfTable{
+    font-size: 9px;
+    color: #024a91;
+}
+td span{
+    color:black;
+}

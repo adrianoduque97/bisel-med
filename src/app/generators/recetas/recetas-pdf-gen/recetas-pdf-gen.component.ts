@@ -6,6 +6,8 @@ import { environment } from '../../../../environments/environment';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import Utils from '../../../shared/Utils/recetas.utils';
+import jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -16,13 +18,14 @@ import Utils from '../../../shared/Utils/recetas.utils';
 export class RecetasPdfGenComponent implements OnInit {
 
   @ViewChild('pdfTable') pdfTable: ElementRef;
-  @Input() htmlData;
+  @Input() htmlData: any;
   baseUrl = environment.baseUrl;
   pdfLiknk: string;
   set:any;
   user: any;
-
+  date: Date = new Date();
   loading = false;
+  hugeLoading = false;
 
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
@@ -41,34 +44,19 @@ export class RecetasPdfGenComponent implements OnInit {
   }
 
   async exportPDF(type: string){
-    // let se = await this.pdfGen.exportPDF(type, this.pdfTable);
-
-    let set = await this.pdfGen.exportPDF(type, this.pdfTable);
-    
-    // const targetElement = document.querySelector('#iframeContainer');
-    // const iframe = document.createElement('iframe');
-    // iframe.src = set;
-    // iframe.width = '650px';
-    // iframe.height = '300px'
-    // this.set = set;
-    // targetElement.appendChild(iframe);
+    this.hugeLoading = true;
+    this.pdfGen.exportJSPDF(type, this.pdfTable).then(res =>{
+      this.hugeLoading= false;
+    });
   }
 
-  async getSharePDF (type){
+  async getSharePDF (type: string){
       this.loading = true;
-      setTimeout(() => this.loading = false, 2000);
-    
-    let link = await this.pdfGen.exportPDF(type, this.pdfTable);
+      this.pdfGen.exportJSPDF(type, this.pdfTable).then(link =>{
       this.pdfLiknk =  link;
+      this.loading = false
+    });
   }
 
-  getDate(){
-    let date = new Date();
-    return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
-  }
-  load() {
-    this.loading = true;
-    setTimeout(() => this.loading = false, 2000);
-  }
 
 }

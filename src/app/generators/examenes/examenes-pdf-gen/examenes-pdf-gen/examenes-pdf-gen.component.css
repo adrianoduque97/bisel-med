@@ -30,3 +30,12 @@ h2{
     margin-left: 51%;
     margin-top: 1%;
   }
+
+  
+#pdfTable{
+    font-size: 9px;
+    color: #024a91;
+}
+td span{
+    color:black;
+}

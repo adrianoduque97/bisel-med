@@ -20,11 +20,11 @@
                             <div style="display: flex;">
                                 <mat-form-field class="example-full-width" appearance="fill" style="width: 130px;">
                                     <mat-label>Años</mat-label>
-                                    <input formControlName="edad" matInput placeholder="10">
+                                    <input type="number" min=0 max=120 formControlName="edad" matInput placeholder="10">
                                 </mat-form-field>
                                 <mat-form-field class="example-full-width" appearance="fill" style="width: 130px;">
                                     <mat-label>Meses</mat-label>
-                                    <input formControlName="meses" matInput placeholder="12">
+                                    <input type="number" min=0 max=12 formControlName="meses" matInput placeholder="12">
                                 </mat-form-field>
                             </div>
                             <mat-form-field class="example-full-width" appearance="fill">
@@ -76,18 +76,29 @@
                                     </mat-form-field>
                                     <mat-form-field class="example-full-width" appearance="fill" style="width: 90px;">
                                         <mat-label>Hora</mat-label>
-                                        <mat-select formControlName="hour" matInput>
+                                        <mat-select formControlName="hour" matInput multiple>
                                             <mat-option *ngFor="let value of horas" [value]="value">{{value}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div> 
-                                <button class="example-full-width" 
+                                <div style="display: flex;" >
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100px;">
+                                        <mat-label>Presentación</mat-label>
+                                        <input formControlName="presentation" matInput placeholder="Pastillas">
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width" appearance="fill" style="width: 80px;">
+                                        <mat-label>Cantidad</mat-label>
+                                        <input type="number" min=0 formControlName="quantity" matInput placeholder="21">
+                                    </mat-form-field>
+                                    <button class="example-full-width" style="margin-bottom: 10px; margin-left: 10px;"
                                         *ngIf="medicineForm.get('medicine').touched && medicineForm.get('hour').touched &&
                                                medicineForm.get('admin').touched && medicineForm.get('duration').touched &&
-                                               medicineForm.get('dose').touched && medicineForm.get('freq').touched"  
+                                               medicineForm.get('dose').touched && medicineForm.get('freq').touched &&
+                                               medicineForm.get('presentation').touched && medicineForm.get('quantity').touched"  
                                         mat-raised-button color="primary"(click)="addMedicine()">
-                                    Agregar medicamento
-                                </button>                            
+                                    Agregar
+                                </button>     
+                                </div>                             
                         </div>  
                     </div>
                                     

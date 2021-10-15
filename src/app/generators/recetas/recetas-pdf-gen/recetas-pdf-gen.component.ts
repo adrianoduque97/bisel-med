@@ -9,12 +9,15 @@ import Utils from '../../../shared/Utils/recetas.utils';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
+export declare let require: any;
+const convertir = require('numero-a-letras');
 
 @Component({
   selector: 'app-recetas-pdf-gen',
   templateUrl: './recetas-pdf-gen.component.html',
   styleUrls: ['./recetas-pdf-gen.component.css']
 })
+
 export class RecetasPdfGenComponent implements OnInit {
 
   @ViewChild('pdfTable') pdfTable: ElementRef;
@@ -30,6 +33,7 @@ export class RecetasPdfGenComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
   value = 50;
+  
 
   constructor(public fire: FireStoreServiceService,
     public auth: AuthService,
@@ -41,6 +45,7 @@ export class RecetasPdfGenComponent implements OnInit {
     this.fire.getUser(userLocal.uid).get().subscribe(async user =>{
       this.user = user.data();
     });
+    this.numLet(123)
   }
 
   async exportPDF(type: string){
@@ -48,6 +53,9 @@ export class RecetasPdfGenComponent implements OnInit {
     this.pdfGen.exportJSPDF(type, this.pdfTable).then(res =>{
       this.hugeLoading= false;
     });
+  }
+  isObjectEmpty(obj) {
+    return Object.keys(obj).length === 0;
   }
 
   async getSharePDF (type: string){
@@ -58,5 +66,10 @@ export class RecetasPdfGenComponent implements OnInit {
     });
   }
 
+  numLet(value: number){
+    let valor  = convertir.NumerosALetras(value);
+    valor = valor.substring(0, valor.indexOf("Pesos"));
+    return valor;
+  }
 
 }

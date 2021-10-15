@@ -10,20 +10,44 @@
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Nombre y Apellido Paciente</mat-label>
                             <input formControlName="name" matInput placeholder="Adrián Duque">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Correo Electrónico Paciente </mat-label>
-                            <input formControlName="mail" matInput placeholder="paciente@test.com">
-                        </mat-form-field>
-    
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Cédula Paciente</mat-label>
-                            <input formControlName="docId" matInput placeholder="1726834909">
-                        </mat-form-field>
+                        </mat-form-field>   
+                        <div  class="regular-flex">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Cédula Paciente</mat-label>
+                                <input formControlName="docId" matInput placeholder="1726834909">
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
+                                <mat-label>Ciudad</mat-label>
+                                <input formControlName="city" matInput placeholder="Quito">
+                            </mat-form-field>
+                        </div> 
+                        
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Certificado</mat-label>
                             <textarea formControlName="certificado" matInput placeholder="Certificado Médico"></textarea>
                         </mat-form-field>
+                        <div  class="regular-flex">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Diagnóstico</mat-label>
+                                <textarea formControlName="diagnostic" matInput placeholder="Diagnóstico" class="diag"></textarea>
+                            </mat-form-field>
+                            <div>
+                                <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
+                                    <mat-label>CIE 10</mat-label>
+                                    <input formControlName="cie10" matInput placeholder="A0890">
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
+                                    <mat-label>Reposo desde:</mat-label>
+                                    <input type="date" formControlName="reposoD" matInput placeholder="Resposo">
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
+                                    <mat-label>Reposo hasta:</mat-label>
+                                    <input type="date" formControlName="reposoH" matInput placeholder="Resposo">
+                                </mat-form-field>
+                            </div>
+                           
+                        </div>
+                        
                                   
                 </form>
 

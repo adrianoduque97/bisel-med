@@ -18,18 +18,22 @@ export class ImagenesComponent implements OnInit {
   htmlData: any;
   userInfo: any;
   imagenTipo = ['Radiografía','Tomografía','Resonancia','Ecografía','Procedimiento','Mamografía','Otro'];
+  priorityOptions = ['URG','NRML','CTRL'];
+  recomendationOptions = ['Puede Movilizarse', 'Puede retirarse apositos y yesos', 'El médico estará presente en el examen', 'Toma de radiografía en la cama']
 
   constructor(public nav: NavbarService,
               public authService: AuthService,
               public firestoreService: FireStoreServiceService) { 
                 this.medicineForm = new FormGroup({
                   name: new FormControl('', Validators.required),
-                  mail:new FormControl('', [Validators.required, Validators.email]),
                   docId:new FormControl('', Validators.required),
+                  priority:new FormControl('', Validators.required),
                   imagenTipo: new FormControl('',Validators.required ),
                   descripcion: new FormControl('', ),
+                  recomendation: new FormControl('',),
                   motivo: new FormControl('', ),
-                  resumen: new FormControl('', )
+                  resumen: new FormControl('', ),
+                  diagnostic: new FormControl('',)
                 });
               }
 
@@ -44,14 +48,20 @@ export class ImagenesComponent implements OnInit {
 
   onClick(){
     this.data.name= this.medicineForm.value.name;
-    this.data.mail= this.medicineForm.value.mail;
+    this.data.priority= this.medicineForm.value.priority;
     this.data.docId= this.medicineForm.value.docId;
     this.data.imagenTipo= this.medicineForm.value.imagenTipo;
     this.data.descripcion= this.medicineForm.value.descripcion;
+    this.data.recomendation= this.medicineForm.value.recomendation;
     this.data.motivo= this.medicineForm.value.motivo;
     this.data.resumen= this.medicineForm.value.resumen;
+    this.data.diagnostic= this.medicineForm.value.diagnostic;
 
     this.htmlData = this.data;
   }
+
+  addNewVersion(value: string){
+    this.imagenTipo.push(value);
+    }
 
 }

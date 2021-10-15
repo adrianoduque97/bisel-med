@@ -1,89 +1,145 @@
 <div class="container">
     <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
-    <div id="pdfTable" #pdfTable *ngIf="htmlData" class="height-doc">
-        <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
-        <h2 style="color:brown;">Exámen Bisel</h2>
-        <div>
-            Fecha: {{date | date:'mediumDate'}}
-            Doctor: {{user.displayName}}
+    <div id="pdfTable" #pdfTable >
+        <table class="table-size table-back" >
+            <tr>
+                <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <P class="p0 ft0" style="margin-top: 7px;">SOLICITUD EXÁMENES </P>
+                    <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr4 td16">
+                    <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
+                </td>
+                <td colspan=5 class="tr0 td0">
+                    <P class="p0 ft0" style="margin-top: 7px;">CÉDULA: <span>{{htmlData?.docId}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr2 td10">
+                    <P class="p0 ft0">FECHA SOLICITUD: <span>{{date | date:'mediumDate'}}</span></P>
+                </td>
+                <td colspan=5 class="tr2 td3">
+                    <P class="p2 ft2">HORA SOLICITUD: <span>{{date | date:'shortTime'}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=3 class="tr2 td10">
+                    <P class="p0 ft0">PRIORIDAD: <span>{{htmlData?.priority}}</span></P>
+                </td>
+                <td colspan=7 class="tr2 td3">
+                    <P class="p2 ft2">FECHA TOMA: <span></span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                    <P class="p11 ft5">EXÁMENES</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr4 td16">
+                    <P class="p6 ft2">1. HEMATOLOGÍA</P>
+                </td>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2">2. QUÍMICA SANGUÍNEA</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr4 td16">
+                    <P class="p6 ft2"> <span>{{htmlData?.hematologia}}</span></P>
+                </td>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2"><span>{{htmlData?.quimica}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2">3. COPROLÓGICO</P>
+                </td>
+                <td colspan=5 class="tr4 td16">
+                    <P class="p6 ft2">4. UROANÁLISIS</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2"><span>{{htmlData?.copro}}</span></P>
+                </td>
+                <td colspan=5 class="tr4 td16">
+                    <P class="p6 ft2"> <span>{{htmlData?.uro}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2">5. BACTERIOLOGÍA</P>
+                </td>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2">6. SERIOLOGÍA</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2"><span>{{htmlData?.bacter}}</span></P>
+                </td>
+                <td colspan=5 class="tr5 td20">
+                    <P class="p7 ft2"><span>{{htmlData?.serio}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=10 class="tr1 td16">
+                    <P class="p11 ft5">7. OTROS: <span>{{htmlData?.otros}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=10 class="tr1 td16">
+                    <P class="p11 ft5">OBSERVACIONES: <span>{{htmlData?.observation}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                    <P class="p11 ft5">DATOS DEL PREESCRIPTOR</P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5  class="tr1 td16">
+                    <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
+                </td>
+                <td colspan=5  class="tr1 td26">
+                    <p>Firma y sello del prescriptor</p>
+                    <div style="display:flex; margin-bottom: 10px;">
+                        <img [src]="user?.firma" class="imag-sello">
+                        <img [src]=" user?.sello" class="imag-sello">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=5 class="tr10 td28">
+                    <P class="p16 ft0"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"></P>
+                </td>
+            </tr>
+        </table>
+        <div style="display:flex; justify-content:space-between">
+            <span style="font-size:9px">Esta solicitud tiene validez para la toma de exámenes</span>
+            <span style="font-size:9px">www.biselmed.com</span>
         </div>
-        <div>
-            <h2>Datos Paciente</h2>
-            <div>{{htmlData.name}}</div>
-            <div>{{htmlData.mail}}</div>
-            <div>{{htmlData.docId}}</div>
-        </div>
-        <div>
-            <h2>Solicitud de Examen</h2>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Exámenes: </div>
-                </div>
-            </div>
-            <div class="">
-                <div *ngIf="htmlData.hematologia">
-                    <div>
-                        <div class="text-format">Hematología: </div>
-                    </div>
-                    {{htmlData.hematologia}}
-                </div>
-                <div *ngIf="htmlData.quimica">
-                    <div>
-                        <div class="text-format">Química Sanguínea: </div>
-                    </div>
-                    {{htmlData.quimica}}
-                </div>
-                <div *ngIf="htmlData.copro">
-                    <div>
-                        <div class="text-format">Coprológico: </div>
-                    </div>
-                    {{htmlData.copro}}
-                </div>
-                <div *ngIf="htmlData.uro">
-                    <div>
-                        <div class="text-format">Uroanálisis: </div>
-                    </div>
-                    {{htmlData.uro}}
-                </div>
-                <div *ngIf="htmlData.bacter">
-                    <div>
-                        <div class="text-format">Bacteriología </div>
-                    </div>
-                    {{htmlData.bacter}}
-                </div>
-                <div *ngIf="htmlData.serio">
-                    <div>
-                        <div class="text-format">Seriología </div>
-                    </div>
-                    {{htmlData.serio}}
-                </div>
-                <div *ngIf="htmlData.otros">
-                    <div>
-                        <div class="text-format">Otros: </div>
-                    </div>
-                    {{htmlData.otros}}
-                </div>
-            </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">firma: </div>
-                </div>
-                <div>
-                    <img [src]="user.firma" style="width: 20px">
-                </div>
-            </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Sello: </div>
-                </div>
-                <div>
-                    <img [src]=" user.sello" style="width: 20px">
-                </div>
-            </div>
-
-
-        </div>
-
+         
     </div>
     <div class="button-container" *ngIf="htmlData">
         <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>

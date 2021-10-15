@@ -10,59 +10,62 @@
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Nombre y Apellido Paciente</mat-label>
                             <input formControlName="name" matInput placeholder="Adrián Duque">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Correo Electrónico Paciente </mat-label>
-                            <input formControlName="mail" matInput placeholder="paciente@test.com">
-                        </mat-form-field>
-    
+                        </mat-form-field>    
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Cédula Paciente</mat-label>
                             <input formControlName="docId" matInput placeholder="1726834909">
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Prioridad </mat-label>
+                            <mat-select formControlName="priority" matInput>
+                                <mat-option *ngFor="let value of priorityOptions" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Hematología</mat-label>
-                            <mat-select formControlName="hematologia" matInput>
+                            <mat-select formControlName="hematologia" matInput multiple>
                                 <mat-option *ngFor="let value of hematologiaInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Química Sanguínea</mat-label>
-                            <mat-select formControlName="quimica" matInput>
+                            <mat-select formControlName="quimica" matInput multiple>
                                 <mat-option *ngFor="let value of quimicaInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-
-                    </div>
-                    <div>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Coprológico</mat-label>
-                            <mat-select formControlName="copro" matInput>
+                            <mat-select formControlName="copro" matInput multiple>
                                 <mat-option *ngFor="let value of coproInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-    
+                    </div>
+                    <div>    
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Urología</mat-label>
-                            <mat-select formControlName="uro" matInput>
+                            <mat-select formControlName="uro" matInput multiple>
                                 <mat-option *ngFor="let value of uroInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Bacteriología</mat-label>
-                            <mat-select formControlName="bacter" matInput>
+                            <mat-select formControlName="bacter" matInput multiple>
                                 <mat-option *ngFor="let value of bacterInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Seriología</mat-label>
-                            <mat-select formControlName="serio" matInput>
+                            <mat-select formControlName="serio" matInput multiple>
                                 <mat-option *ngFor="let value of serioInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Otros</mat-label>
-                            <textarea formControlName="otros" matInput placeholder="Recomendaciones"></textarea>
+                            <textarea formControlName="otros" matInput placeholder="Otros"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Observaciones</mat-label>
+                            <textarea formControlName="observation" matInput placeholder="Observaciones"></textarea>
                         </mat-form-field>
                     </div>                  
                 </form>

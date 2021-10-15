@@ -14,7 +14,7 @@ export class RecetasComponent implements OnInit {
   data:any;
   nameFile: string;
   docFile: FormData;
-  htmlData: any;
+  htmlData: any = {};
   userInfo: any;
   cie10: any[];
   med:any[] = [];
@@ -83,8 +83,8 @@ export class RecetasComponent implements OnInit {
     this.medicineForm.get('freq').reset();
     this.medicineForm.get('duration').reset();
     this.medicineForm.get('hour').reset();
-
-    console.log(this.medicineForm.value);
+    
+    this.htmlData['medicine'] = this.med;
   }
 
   onFileChange(evt: any, files: File[]) {

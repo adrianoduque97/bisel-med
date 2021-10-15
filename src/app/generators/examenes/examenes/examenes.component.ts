@@ -23,12 +23,13 @@ export class ExamenesComponent implements OnInit {
   uroInfo = ['Elemental y macroscopio','Gota Fresca', 'GRAM','Índices Hemáticos','T.Protrombina'];
   bacterInfo= ['GRAM','ZIEHL','Fresco','Hongos','Cultivo y Antibiograma'];
   serioInfo = ['VDRL','Reacción de WIDAL', 'Prueba de embarazo', 'PCR', 'RAT','ASTO'];
+  priorityOptions = ['URG','NRML','CTRL'];
   constructor(public nav: NavbarService,
               public authService: AuthService,
               public firestoreService: FireStoreServiceService) { 
                 this.medicineForm = new FormGroup({
                   name: new FormControl('', Validators.required),
-                  mail:new FormControl('', [Validators.required, Validators.email]),
+                  priority:new FormControl('', Validators.required),
                   docId:new FormControl('', Validators.required),
                   hematologia: new FormControl('', ),
                   quimica: new FormControl('', ),
@@ -36,7 +37,8 @@ export class ExamenesComponent implements OnInit {
                   uro:new FormControl('', ),
                   bacter: new FormControl('', ),
                   serio: new FormControl('', ),
-                  otros: new FormControl('', )
+                  otros: new FormControl('', ),
+                  observation: new FormControl('',)
                 });
               }
 
@@ -51,7 +53,7 @@ export class ExamenesComponent implements OnInit {
 
   onClick(){
     this.data.name= this.medicineForm.value.name;
-    this.data.mail= this.medicineForm.value.mail;
+    this.data.priority= this.medicineForm.value.priority;
     this.data.docId= this.medicineForm.value.docId;
     this.data.hematologia= this.medicineForm.value.hematologia;
     this.data.quimica= this.medicineForm.value.quimica;
@@ -60,6 +62,7 @@ export class ExamenesComponent implements OnInit {
     this.data.bacter= this.medicineForm.value.bacter;
     this.data.serio= this.medicineForm.value.serio;
     this.data.otros= this.medicineForm.value.otros;
+    this.data.observation= this.medicineForm.value.observation;
 
     this.htmlData = this.data;
 

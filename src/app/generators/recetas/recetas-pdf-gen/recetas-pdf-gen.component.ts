@@ -49,6 +49,9 @@ export class RecetasPdfGenComponent implements OnInit {
       this.hugeLoading= false;
     });
   }
+  isObjectEmpty(obj) {
+    return Object.keys(obj).length === 0;
+  }
 
   async getSharePDF (type: string){
       this.loading = true;

@@ -49,10 +49,14 @@
             </tr>
             <tr>
                 <td colspan=5 class="tr4 td16">
-                    <P class="p6 ft2"> <span>{{htmlData?.hematologia}}</span></P>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                        <P class="p6 ft2" *ngFor="let examen of htmlData?.hematologia" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                    </div>
                 </td>
                 <td colspan=5 class="tr5 td20">
-                    <P class="p7 ft2"><span>{{htmlData?.quimica}}</span></P>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                        <P class="p6 ft2" *ngFor="let examen of htmlData?.quimica" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -65,10 +69,14 @@
             </tr>
             <tr>
                 <td colspan=5 class="tr5 td20">
-                    <P class="p7 ft2"><span>{{htmlData?.copro}}</span></P>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                        <P class="p6 ft2" *ngFor="let examen of htmlData?.copro" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                    </div>  
                 </td>
                 <td colspan=5 class="tr4 td16">
-                    <P class="p6 ft2"> <span>{{htmlData?.uro}}</span></P>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                        <P class="p6 ft2" *ngFor="let examen of htmlData?.uro" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -81,10 +89,14 @@
             </tr>
             <tr>
                 <td colspan=5 class="tr5 td20">
-                    <P class="p7 ft2"><span>{{htmlData?.bacter}}</span></P>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                        <P class="p6 ft2" *ngFor="let examen of htmlData?.bacter" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                    </div>
                 </td>
                 <td colspan=5 class="tr5 td20">
-                    <P class="p7 ft2"><span>{{htmlData?.serio}}</span></P>
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                        <P class="p6 ft2" *ngFor="let examen of htmlData?.bacter" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                    </div>
                 </td>
             </tr>
             <tr>

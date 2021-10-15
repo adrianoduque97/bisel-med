@@ -2,10 +2,13 @@
     <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
     <div id="pdfTable" #pdfTable >
         <table class="table-size table-back" >
-            <tr>
-                <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
+            <tr style="background-color: #3498f13b;">
+                <td colspan=5 class="tr10 td30">
+                    <P class="p0 ft0">HOSPITAL/UNIDAD DE SALUD: <span>Bisel Med</span></P>
+                </td>
+                <td colspan=5 class="tr0 td0" >
                     <div style="display: flex; justify-content: space-between;">
-                        <P class="p0 ft0">HOSPITAL/UNIDAD DE SALUD: <span>Bisel Med</span></P>
+                        <P class="p17 ft0">RECETA N°: <span>0000001</span></P>
                     <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
                     </div>
                 </td>
@@ -56,14 +59,18 @@
             </tr>
             <tr>
                 <td colspan=7  class="tr1 td16">
-                    <span *ngFor="let med of htmlData?.medicine">
-                        {{med.medicine}},
-                    </span>
+                    <div *ngFor="let med of htmlData?.medicine">
+                        <span>
+                            {{med.medicine}},   {{med.dose}},  {{med.presentation}}
+                        </span>
+                    </div>
                 </td>
                 <td colspan=3  class="tr1 td26">
-                    <span *ngFor="let med of htmlData?.medicine">
-                        {{med.dose}} cada {{med.freq}} por {{med.duration}},
-                    </span>
+                    <div *ngFor="let med of htmlData?.medicine">
+                        <span>
+                            {{med.quantity}}
+                        </span>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -71,7 +78,7 @@
                     <P class="p11 ft5">DATOS DEL PREESCRIPTOR</P>
                 </td>
             </tr>
-            <tr>
+            <tr class="dotted">
                 <td colspan=5  class="tr1 td16">
                     <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
                 </td>
@@ -83,16 +90,24 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style="background-color: #3498f13b;">
                 <td colspan=5 class="tr10 td28">
                     <P class="p16 ft0">INDICACIONES</P>
                 </td>
                 <td colspan=5 class="tr10 td30">
-                    <P class="p17 ft0">RECETA N°</P>
+                    <P class="p17 ft0">RECETA N°: <span>0000001</span></P>
                 </td>
             </tr>
             <tr>
-                <td colspan=5 class="tr10 td28">
+                <td colspan=5 class="tr4 td16">
+                    <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
+                </td>
+                <td colspan=5 class="tr2 td3">
+                    <P class="p2 ft2">FECHA: <span>{{date | date:'mediumDate'}}</span></P>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=4 class="tr10 td28">
                     <P class="p16 ft0">MEDICAMENTO (DCI, concentración y forma farmacéutica)</P>
                 </td>
                 <td colspan=1 class="tr10 td30">
@@ -108,11 +123,14 @@
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;">DURACION</P>
                 </td>
                 <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">PRESENT.</P>
+                </td>
+                <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;">HORA</P>
                 </td>
             </tr>
             <tr *ngFor="let med of htmlData?.medicine">
-                <td colspan=5 class="tr10 td28">
+                <td colspan=4 class="tr10 td28">
                     <P class="p16 ft0"><span>{{med.medicine}}</span></P>
                 </td>
                 <td colspan=1 class="tr10 td30">
@@ -126,6 +144,9 @@
                 </td>
                 <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.duration}}</span></P>
+                </td>
+                <td colspan=1 class="tr10 td30">
+                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.presentation}}</span></P>
                 </td>
                 <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.hour}}</span></P>
@@ -156,7 +177,7 @@
         </div>
          
     </div>
-    <div class="button-container" *ngIf="htmlData">
+    <div class="button-container" *ngIf="htmlData && !isObjectEmpty(htmlData)">
         <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
         <span>
 

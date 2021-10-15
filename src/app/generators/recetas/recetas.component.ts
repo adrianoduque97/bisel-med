@@ -39,7 +39,9 @@ export class RecetasComponent implements OnInit {
                   freq:new FormControl(''),
                   duration:new FormControl(''),
                   hour:new FormControl(''),
-                  advertencia: new FormControl('', Validators.required)
+                  advertencia: new FormControl('', Validators.required),
+                  presentation: new FormControl('',),
+                  quantity: new FormControl('',)
                 });
               }
 
@@ -64,7 +66,7 @@ export class RecetasComponent implements OnInit {
     this.data.cie10= this.medicineForm.value.cie10;
     this.data.medicine= this.med;
     this.data.advertencia= this.medicineForm.value.advertencia;
-
+    
     this.htmlData = this.data;
   }
 
@@ -76,6 +78,8 @@ export class RecetasComponent implements OnInit {
       freq: this.medicineForm.value.freq,
       duration: this.medicineForm.value.duration,
       hour: this.medicineForm.value.hour,
+      quantity: this.medicineForm.value.quantity,
+      presentation: this.medicineForm.value.presentation
     });
     this.medicineForm.get('medicine').reset();
     this.medicineForm.get('admin').reset();

@@ -30,8 +30,9 @@ h2{
     margin-left: 51%;
     margin-top: 1%;
   }
-
-
+  .dotted{
+    border-bottom: dotted 2px #000000;
+}
 
   /* NEW */
 

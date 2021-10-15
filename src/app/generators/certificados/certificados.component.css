@@ -35,11 +35,21 @@
     max-width: 420px;
     width: 100%;
     }
+
+    .regular-flex{
+      display: flex;
+      /* align-items:center; */
+  }
+  .regular-form{
+    width: 205px;;
+  }
   
     textarea{
-      height: 80px;
+      height: 90px;
     }
-
+    .diag{
+      height: 158px
+    }
 
   @media all and (max-width: 700px) {
     .main-card {
@@ -51,5 +61,12 @@
         flex-direction: column;
         align-items:center;
     }
+    .regular-flex{
+      flex-direction: column;
+      align-items:center;
+  }
+  .regular-form{
+    width: 100%;
+  }
 
   }

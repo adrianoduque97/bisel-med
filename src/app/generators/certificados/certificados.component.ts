@@ -21,9 +21,13 @@ export class CertificadosComponent implements OnInit {
               public firestoreService: FireStoreServiceService) { 
                 this.medicineForm = new FormGroup({
                   name: new FormControl('', Validators.required),
-                  mail:new FormControl('', [Validators.required, Validators.email]),
                   docId:new FormControl('', Validators.required),
+                  city: new FormControl('', Validators.required),
                   certificado: new FormControl('', Validators.required),
+                  diagnostic: new FormControl('', Validators.required),
+                  cie10: new FormControl('', Validators.required),
+                  reposoD: new FormControl('', Validators.required),
+                  reposoH: new FormControl('', Validators.required)
                 });
               }
 
@@ -38,9 +42,13 @@ export class CertificadosComponent implements OnInit {
 
   onClick(){
     this.data.name= this.medicineForm.value.name;
-    this.data.mail= this.medicineForm.value.mail;
     this.data.docId= this.medicineForm.value.docId;
+    this.data.city= this.medicineForm.value.city;
     this.data.certificado= this.medicineForm.value.certificado;
+    this.data.diagnostic= this.medicineForm.value.diagnostic;
+    this.data.cie10= this.medicineForm.value.cie10;
+    this.data.reposoD= this.medicineForm.value.reposoD;
+    this.data.reposoH= this.medicineForm.value.reposoH;
 
     this.htmlData = this.data;
   }

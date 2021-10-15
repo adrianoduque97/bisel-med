@@ -68,7 +68,7 @@
                 <td colspan=3  class="tr1 td26">
                     <div *ngFor="let med of htmlData?.medicine">
                         <span>
-                            {{med.quantity}}
+                            {{med.quantity}} ( {{numLet(med.quantity)}})
                         </span>
                     </div>
                 </td>
@@ -154,7 +154,7 @@
             </tr>
             <tr>
                 <td colspan=7 class="tr10 td28">
-                    <P class="p16 ft0">PREESCRIPTOR</P>
+                    <P class="p16 ft0">PREESCRIPTOR: <span>{{user?.displayName}}</span></P>
                     <div style="display:flex">
                         <img [src]="user?.firma" class="imag-sello">
                         <img [src]=" user?.sello" class="imag-sello">

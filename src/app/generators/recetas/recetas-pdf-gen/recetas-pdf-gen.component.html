@@ -122,16 +122,16 @@
                 <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;">DURACION</P>
                 </td>
-                <td colspan=1 class="tr10 td30">
+                <!-- <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;">PRESENT.</P>
-                </td>
+                </td> -->
                 <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;">HORA</P>
                 </td>
             </tr>
             <tr *ngFor="let med of htmlData?.medicine">
                 <td colspan=4 class="tr10 td28">
-                    <P class="p16 ft0"><span>{{med.medicine}}</span></P>
+                    <P class="p16 ft0"><span>{{med.medicine}},   {{med.dose}},  {{med.presentation}}</span></P>
                 </td>
                 <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.admin}}</span></P>
@@ -145,9 +145,9 @@
                 <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.duration}}</span></P>
                 </td>
-                <td colspan=1 class="tr10 td30">
+                <!-- <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.presentation}}</span></P>
-                </td>
+                </td> -->
                 <td colspan=1 class="tr10 td30">
                     <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.hour}}</span></P>
                 </td>

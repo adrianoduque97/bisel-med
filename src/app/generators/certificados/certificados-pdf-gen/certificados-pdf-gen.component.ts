@@ -39,7 +39,7 @@ export class CertificadosPdfGenComponent implements OnInit {
   }
   async exportPDF(type: string){
     this.hugeLoading = true;
-    this.pdfGen.exportJSPDF(type, this.pdfTable).then(res =>{
+    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name).then(res =>{
       this.hugeLoading= false;
     });
   }

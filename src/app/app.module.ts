@@ -40,6 +40,8 @@ import { ImagenesComponent } from './generators/imagenes/imagenes.component';
 import { ImagenesPdfGenComponent } from './generators/imagenes/imagenes-pdf-gen/imagenes-pdf-gen.component'; 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
+import { NotifierModule } from "angular-notifier";
+
 
 @NgModule({
   declarations: [
@@ -67,6 +69,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatToolbarModule,
     MatSidenavModule,
+    NotifierModule,
     MatMenuModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,

@@ -98,7 +98,17 @@
                                         mat-raised-button color="primary"(click)="addMedicine()">
                                     Agregar
                                 </button>     
-                                </div>                             
+                                </div>
+                                    <div *ngFor="let medicine of med" style="display: flex; justify-content: space-between; width: 250px;margin-left: 10px;">
+                                        <div>
+                                            {{medicine.medicine}}, {{medicine.dose}}
+                                        </div>
+                                        <div>
+                                            <span (click)="removeMedicine(medicine)" style="cursor: pointer;">
+                                                <mat-icon>delete</mat-icon>
+                                            </span>
+                                        </div>
+                                    </div>                         
                         </div>  
                     </div>
                                     

@@ -87,7 +87,16 @@ export class RecetasComponent implements OnInit {
     this.medicineForm.get('freq').reset();
     this.medicineForm.get('duration').reset();
     this.medicineForm.get('hour').reset();
+    this.medicineForm.get('quantity').reset();
+    this.medicineForm.get('presentation').reset();
     
+    this.htmlData['medicine'] = this.med;
+  }
+
+  removeMedicine(medicine: any){
+    this.med = this.med.filter( item =>{
+      item.medicine !== medicine.medicine && item.dose !== medicine.dose
+    });
     this.htmlData['medicine'] = this.med;
   }
 

@@ -1,194 +1,196 @@
 <div class="container">
     <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
-    <div id="pdfTable" #pdfTable >
-        <table class="table-size table-back" >
-            <tr style="background-color: #3498f13b;">
-                <td colspan=5 class="tr10 td30">
-                    <P class="p0 ft0">HOSPITAL/UNIDAD DE SALUD: <span>Bisel Med</span></P>
-                </td>
-                <td colspan=5 class="tr0 td0" >
-                    <div style="display: flex; justify-content: space-between;">
+    <div style="max-height: 500px; overflow:auto; scrollbar-width: thin;">
+        <div id="pdfTable" #pdfTable >
+            <table class="table-size table-back" >
+                <tr style="background-color: #3498f13b;">
+                    <td colspan=5 class="tr10 td30">
+                        <P class="p0 ft0">HOSPITAL/UNIDAD DE SALUD: <span>Bisel Med</span></P>
+                    </td>
+                    <td colspan=5 class="tr0 td0" >
+                        <div style="display: flex; justify-content: space-between;">
+                            <P class="p17 ft0">RECETA N°: <span>0000001</span></P>
+                        <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=7 class="tr2 td10">
+                        <P class="p0 ft0">SERVICIO/ESPECIALIDAD: <span>{{htmlData?.servicio}}</span></P>
+                    </td>
+                    <td colspan=3 class="tr2 td3">
+                        <P class="p2 ft2">FECHA: <span>{{date | date:'mediumDate'}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=3 class="tr4 td16">
+                        <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
+                    </td>
+                    <td colspan=4 class="tr5 td20">
+                        <P class="p7 ft2">DIAGNÓSTICO: <span>{{htmlData?.diagnostic}}</span> </P>
+                    </td>
+                    <td colspan=3 class="tr5 td21">
+                        <P class="p8 ft2">CIE 10: <span>{{htmlData?.cie10}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=4  class="tr5 td10">
+                        <P class="p5 ft2">DOCUMENTO DE INDENTIDAD: <span>{{htmlData?.docId}}</span></P>
+                    </td>
+                    <td  colspan=1 class="tr5 td2">
+                        <P class="p5 ft4">EDAD</P>
+                    </td>
+                    <td  colspan=1 class="tr5 td3">
+                        <P class="p1 ft4">AÑOS: <span *ngIf="htmlData?.edad">{{htmlData?.edad[0]}}</span></P>
+                    </td>
+                    <td  colspan=1 class="tr5 td22">
+                        <P class="p1 ft4">MESES: <span *ngIf="htmlData?.edad">{{htmlData?.edad[1]}}</span> </P>
+                    </td>
+                    <td  colspan=3 class="tr5 td12">
+                        <P class="p9 ft4">SEXO: <Span>{{htmlData?.sex}}</Span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=7 class="tr1 td16">
+                        <P class="p5 ft9">DATOS DEL MEDICAMENTO(DCI, Concentración y forma Farmacéutica)</P>
+                    </td>
+                    <td colspan=3 class="tr1 td26">
+                        <P class="p11 ft5">CANTIDAD</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=7  class="tr1 td16">
+                        <div *ngFor="let med of htmlData?.medicine">
+                            <span>
+                                {{med.medicine}},   {{med.dose}},  {{med.presentation}}
+                            </span>
+                        </div>
+                    </td>
+                    <td colspan=3  class="tr1 td26">
+                        <div *ngFor="let med of htmlData?.medicine">
+                            <span>
+                                {{med.quantity}} ( {{numLet(med.quantity)}})
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                        <P class="p11 ft5">DATOS DEL PREESCRIPTOR</P>
+                    </td>
+                </tr>
+                <tr class="dotted">
+                    <td colspan=5  class="tr1 td16">
+                        <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
+                    </td>
+                    <td colspan=5  class="tr1 td26">
+                        <p>Firma y sello del prescriptor</p>
+                        <div style="display:flex; margin-bottom: 10px;">
+                            <img [src]="user?.firma" class="imag-sello">
+                            <img [src]=" user?.sello" class="imag-sello">
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: #3498f13b;">
+                    <td colspan=5 class="tr10 td28">
+                        <P class="p16 ft0">INDICACIONES</P>
+                    </td>
+                    <td colspan=5 class="tr10 td30">
                         <P class="p17 ft0">RECETA N°: <span>0000001</span></P>
-                    <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=7 class="tr2 td10">
-                    <P class="p0 ft0">SERVICIO/ESPECIALIDAD: <span>{{htmlData?.servicio}}</span></P>
-                </td>
-                <td colspan=3 class="tr2 td3">
-                    <P class="p2 ft2">FECHA: <span>{{date | date:'mediumDate'}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=3 class="tr4 td16">
-                    <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
-                </td>
-                <td colspan=4 class="tr5 td20">
-                    <P class="p7 ft2">DIAGNÓSTICO: <span>{{htmlData?.diagnostic}}</span> </P>
-                </td>
-                <td colspan=3 class="tr5 td21">
-                    <P class="p8 ft2">CIE 10: <span>{{htmlData?.cie10}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=4  class="tr5 td10">
-                    <P class="p5 ft2">DOCUMENTO DE INDENTIDAD: <span>{{htmlData?.docId}}</span></P>
-                </td>
-                <td  colspan=1 class="tr5 td2">
-                    <P class="p5 ft4">EDAD</P>
-                </td>
-                <td  colspan=1 class="tr5 td3">
-                    <P class="p1 ft4">AÑOS: <span *ngIf="htmlData?.edad">{{htmlData?.edad[0]}}</span></P>
-                </td>
-                <td  colspan=2 class="tr5 td22">
-                    <P class="p1 ft4">MESES: <span *ngIf="htmlData?.edad">{{htmlData?.edad[1]}}</span> </P>
-                </td>
-                <td  colspan=2 class="tr5 td12">
-                    <P class="p9 ft4">SEXO: <Span>{{htmlData?.sex}}</Span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=7 class="tr1 td16">
-                    <P class="p5 ft9">DATOS DEL MEDICAMENTO(DCI, Concentración y forma Farmacéutica)</P>
-                </td>
-                <td colspan=3 class="tr1 td26">
-                    <P class="p11 ft5">CANTIDAD</P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=7  class="tr1 td16">
-                    <div *ngFor="let med of htmlData?.medicine">
-                        <span>
-                            {{med.medicine}},   {{med.dose}},  {{med.presentation}}
-                        </span>
-                    </div>
-                </td>
-                <td colspan=3  class="tr1 td26">
-                    <div *ngFor="let med of htmlData?.medicine">
-                        <span>
-                            {{med.quantity}} ( {{numLet(med.quantity)}})
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
-                    <P class="p11 ft5">DATOS DEL PREESCRIPTOR</P>
-                </td>
-            </tr>
-            <tr class="dotted">
-                <td colspan=5  class="tr1 td16">
-                    <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
-                </td>
-                <td colspan=5  class="tr1 td26">
-                    <p>Firma y sello del prescriptor</p>
-                    <div style="display:flex; margin-bottom: 10px;">
-                        <img [src]="user?.firma" class="imag-sello">
-                        <img [src]=" user?.sello" class="imag-sello">
-                    </div>
-                </td>
-            </tr>
-            <tr style="background-color: #3498f13b;">
-                <td colspan=5 class="tr10 td28">
-                    <P class="p16 ft0">INDICACIONES</P>
-                </td>
-                <td colspan=5 class="tr10 td30">
-                    <P class="p17 ft0">RECETA N°: <span>0000001</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr4 td16">
-                    <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
-                </td>
-                <td colspan=5 class="tr2 td3">
-                    <P class="p2 ft2">FECHA: <span>{{date | date:'mediumDate'}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=4 class="tr10 td28">
-                    <P class="p16 ft0">MEDICAMENTO (DCI, concentración y forma farmacéutica)</P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">VIA ADMIN.</P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">DOSIS</P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">FRECUENCIA</P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">DURACION</P>
-                </td>
-                <!-- <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">PRESENT.</P>
-                </td> -->
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;">HORA</P>
-                </td>
-            </tr>
-            <tr *ngFor="let med of htmlData?.medicine">
-                <td colspan=4 class="tr10 td28">
-                    <P class="p16 ft0"><span>{{med.medicine}},   {{med.dose}},  {{med.presentation}}</span></P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.admin}}</span></P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.dose}}</span></P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.freq}}</span></P>
-                </td>
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.duration}}</span></P>
-                </td>
-                <!-- <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.presentation}}</span></P>
-                </td> -->
-                <td colspan=1 class="tr10 td30">
-                    <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.hour}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=7 class="tr10 td28">
-                    <P class="p16 ft0">PREESCRIPTOR: <span>{{user?.displayName}}</span></P>
-                    <div style="display:flex">
-                        <img [src]="user?.firma" class="imag-sello">
-                        <img [src]=" user?.sello" class="imag-sello">
-                    </div>
-                    <div class="p16 ft0">Firma y Sello</div>
-                </td>
-                <td colspan=3 class="tr10 td30">
-                    <P class="p17 ft0" style="text-align: start; vertical-align: initial; margin-bottom: 70px;">ADVERTENCIAS: <span>{{htmlData?.advertencia}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr10 td28">
-                    <P class="p16 ft0">REALIZAR ACTIVIDADES FÍSICAS TODOS LOS DÍAS AL MENOS:</P>
-                </td>
-            </tr>
-        </table>
-        <div style="display:flex; justify-content:space-between">
-            <span style="font-size:9px">Esta receta tiene validez para la entrega de medicamente de 5 días para casos crónicos y 2 días para casos agudos</span>
-            <span style="font-size:9px">www.biselmed.com</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr4 td16">
+                        <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
+                    </td>
+                    <td colspan=5 class="tr2 td3">
+                        <P class="p2 ft2">FECHA: <span>{{date | date:'mediumDate'}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=4 class="tr10 td28">
+                        <P class="p16 ft0">MEDICAMENTO (DCI, concentración y forma farmacéutica)</P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;">VIA ADMIN.</P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;">DOSIS</P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;">FRECUENCIA</P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;">DURACION</P>
+                    </td>
+                    <!-- <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;">PRESENT.</P>
+                    </td> -->
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;">HORA</P>
+                    </td>
+                </tr>
+                <tr *ngFor="let med of htmlData?.medicine">
+                    <td colspan=4 class="tr10 td28">
+                        <P class="p16 ft0"><span>{{med.medicine}},   {{med.dose}},  {{med.presentation}}</span></P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.admin}}</span></P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.dose}}</span></P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.freq}}</span></P>
+                    </td>
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.duration}}</span></P>
+                    </td>
+                    <!-- <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.presentation}}</span></P>
+                    </td> -->
+                    <td colspan=1 class="tr10 td30">
+                        <P class="p17 ft0" style="font-size: 9px; text-align: center;"><span>{{med.hour}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=7 class="tr10 td28">
+                        <P class="p16 ft0">PREESCRIPTOR: <span>{{user?.displayName}}</span></P>
+                        <div style="display:flex">
+                            <img [src]="user?.firma" class="imag-sello">
+                            <img [src]=" user?.sello" class="imag-sello">
+                        </div>
+                        <div class="p16 ft0">Firma y Sello</div>
+                    </td>
+                    <td colspan=3 class="tr10 td30">
+                        <P class="p17 ft0" style="text-align: start; vertical-align: initial; margin-bottom: 70px;">ADVERTENCIAS: <span>{{htmlData?.advertencia}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr10 td28">
+                        <P class="p16 ft0">REALIZAR ACTIVIDADES FÍSICAS TODOS LOS DÍAS AL MENOS:</P>
+                    </td>
+                </tr>
+            </table>
+            <div class="message-pdf">
+                <span style="font-size:9px;">Esta receta tiene validez para la entrega de medicamente de 5 días para casos crónicos y 2 días para casos agudos</span>
+                <span style="font-size:9px;">www.biselmed.com</span>
+            </div>
+             
         </div>
-         
     </div>
     <div class="button-container" *ngIf="htmlData && !isObjectEmpty(htmlData)">
-        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
         <span>
 
-            <button class="btn-up" mat-raised-button color="primary" [disabled]="loading"(click)="getSharePDF('share')">
+            <button class="btn-up" mat-raised-button color="primary" [disabled]="loading||hugeLoading"(click)="getSharePDF('share')">
                 <mat-progress-spinner *ngIf="loading" diameter="24" class="spinner-container" [color]="color" [mode]="mode"> </mat-progress-spinner>
                 Compartir PDF
             </button>
         </span>
 
-        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
-        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
     </div>
     <div *ngIf="htmlData && pdfLiknk">
         <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"

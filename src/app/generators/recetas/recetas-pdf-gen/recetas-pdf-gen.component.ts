@@ -50,7 +50,7 @@ export class RecetasPdfGenComponent implements OnInit {
 
   async exportPDF(type: string){
     this.hugeLoading = true;
-    this.pdfGen.exportJSPDF(type, this.pdfTable).then(res =>{
+    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name).then(res =>{
       this.hugeLoading= false;
     });
   }
@@ -60,9 +60,11 @@ export class RecetasPdfGenComponent implements OnInit {
 
   async getSharePDF (type: string){
       this.loading = true;
+      this.hugeLoading = true;
       this.pdfGen.exportJSPDF(type, this.pdfTable).then(link =>{
       this.pdfLiknk =  link;
-      this.loading = false
+      this.loading = false;
+      this.hugeLoading = false;
     });
   }
 

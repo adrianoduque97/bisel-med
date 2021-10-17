@@ -179,24 +179,24 @@
                 </td>
             </tr>
         </table>
-        <div style="display:flex; justify-content:space-between">
+        <div class="message-pdf">
             <span style="font-size:9px">Este certificado tiene validez médica</span>
             <span style="font-size:9px">www.biselmed.com</span>
         </div>
 
     </div>
     <div class="button-container" *ngIf="htmlData">
-        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
         <span>
 
-            <button class="btn-up" mat-raised-button color="primary" [disabled]="loading"(click)="getSharePDF('share')">
+            <button class="btn-up" mat-raised-button color="primary" [disabled]="loading||hugeLoading"(click)="getSharePDF('share')">
                 <mat-progress-spinner *ngIf="loading" diameter="24" class="spinner-container" [color]="color" [mode]="mode"> </mat-progress-spinner>
                 Compartir PDF
             </button>
         </span>
 
-        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
-        <button class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
     </div>
     <div *ngIf="htmlData && pdfLiknk">
         <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"

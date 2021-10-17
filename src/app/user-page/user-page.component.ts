@@ -6,6 +6,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { AuthService } from '../shared/services/auth-service.service';
 import { FireStoreServiceService } from '../shared/services/fire-store-service.service';
 import { NavbarService } from '../shared/services/navbar.service';
+import { NotificationService } from '../shared/services/notification.service';
 import { RemovebgService } from '../shared/services/removebg.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class UserPageComponent implements OnInit {
               public firestoreService: FireStoreServiceService,
               public remover: RemovebgService,
               public navService: NavbarService,
-              private http: HttpClient) { 
+              public notificationService: NotificationService) { 
               this.localUser = JSON.parse(localStorage.getItem('user'));
     this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
       this.userInfo = user.data();
@@ -77,6 +78,7 @@ export class UserPageComponent implements OnInit {
 
 
   onFileChange(evt: any, files: File[], type: string) {
+    this.hugeLoading= true;
     try {
       const target: DataTransfer = <DataTransfer>(evt.target);
       if (target.files.length !== 1){
@@ -120,6 +122,8 @@ fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
           }).then(()=>{
             this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
               this.userInfo = user.data();
+              this.hugeLoading= false;
+              this.notificationService.showNotification('success', 'Sello actualizado');
             });
           });
         }else{
@@ -128,6 +132,8 @@ fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
           }).then(()=>{
             this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
               this.userInfo = user.data();
+              this.hugeLoading= false;
+              this.notificationService.showNotification('success', 'Firma actualizada');
             });
           });
         }

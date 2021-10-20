@@ -87,6 +87,15 @@ table, th, td {
   display:flex; 
   justify-content:space-between
 }
+.title {
+  font-weight: 700;
+  font-family: "Inter-Bold", "Inter", sans-serif;
+  color: #333;
+  font-size: 46px;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  padding-bottom: 40px;
+}
 
 .html2canvas-container { width: 9000px !important; height: 9000px !important; }
 
@@ -96,6 +105,7 @@ table, th, td {
         align-items:center;
         max-height: 350px;
         overflow: auto;
+        scrollbar-width: thin;
     }
     .test{
       overflow: auto;
@@ -120,6 +130,8 @@ table, th, td {
     .main-card{
       overflow:auto;
       scrollbar-width: thin;
+      flex-direction: column;
+      align-items:center;
     }
     #pdfTable{
       margin-top: 20px
@@ -133,6 +145,15 @@ table, th, td {
     }
     .info-form{
       overflow: auto;
+      scrollbar-width: thin;
     }
+    .title {
+      font-size: 35px;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+    
 
   }

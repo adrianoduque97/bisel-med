@@ -1,26 +1,9 @@
   .example-full-width {
     width: 100%;
   }
-  .title {
-    font-weight: 700;
-    font-family: "Inter-Bold", "Inter", sans-serif;
-    color: #333;
-    font-size: 46px;
-    letter-spacing: -2px;
-    line-height: 1.1;
-    padding-bottom: 40px;
-  }
+
   ::ng-deep .mat-form-field-wrapper{
       margin-left: 10px;
-  }
-  .registrarse {
-    font-family: "Inter", sans-serif;
-    color: rgba(0, 127, 255, 0.54);
-    font-size: 17px;
-    letter-spacing: 0px;
-    line-height: 2;
-    text-decoration: underline;
-    text-align: center;
   }
   .main-flex{
     display: flex;
@@ -37,11 +20,6 @@
 
 
   @media all and (max-width: 700px) {
-    .main-card {
-      /* On small screens, we are no longer using row direction but column */
-      flex-direction: column;
-      align-items:center;
-    }
     .main-flex{
         flex-direction: column;
         align-items:center;

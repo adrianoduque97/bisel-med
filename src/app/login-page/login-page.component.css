@@ -26,6 +26,10 @@
     text-decoration: underline;
     text-align: center;
   }
+  .ima-bisel{
+    display:flex; 
+    position:absolute;
+  }
 
 
   /* MEDIA QUERIES */
@@ -38,6 +42,10 @@
     }
     .blue-side{
         display: none;
+    }
+    .ima-bisel{
+      display:flex; 
+      position:initial;
     }
 
   }

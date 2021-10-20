@@ -39,14 +39,14 @@ export class CertificadosPdfGenComponent implements OnInit {
   }
   async exportPDF(type: string){
     this.hugeLoading = true;
-    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name).then(res =>{
+    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name, 'Certificado').then(res =>{
       this.hugeLoading= false;
     });
   }
 
   async getSharePDF (type){
     this.loading = true;
-    this.pdfGen.exportJSPDF(type, this.pdfTable).then(link =>{
+    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name, 'Certificado').then(link =>{
     this.pdfLiknk =  link;
     this.loading = false
   });
@@ -54,6 +54,9 @@ export class CertificadosPdfGenComponent implements OnInit {
   load() {
     this.loading = true;
     setTimeout(() => this.loading = false, 2000);
+  }
+  isObjectEmpty(obj) {
+    return Object.keys(obj).length === 0;
   }
 
 }

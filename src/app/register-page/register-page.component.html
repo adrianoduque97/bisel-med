@@ -1,7 +1,7 @@
 <div>
-
     <div class="centered main-card">
-        <div style="display:flex; position:absolute;">
+        <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
+        <div class="ima-bisel">
             <div style="width: 30%;">
                 <img style="width:100%;" src="../../assets/Logo y coloresBisel.png">
             </div>
@@ -10,7 +10,7 @@
             <div class="title">
                 Registro
             </div>
-            <div>
+            <div class="info-form">
                 <form class="example-form" [formGroup]="registerForm">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Nombre y Apellido</mat-label>
@@ -45,7 +45,7 @@
                                 multiple="false">
                         </label>
                     </button>
-                    <span>{{nameFile? nameFile: 'Adjuntar documento medico Access'}}</span>
+                    <span>{{nameFile? nameFile: 'Subir ACCESS'}}</span>
                 </div>
                 <button class="example-full-width " mat-raised-button color="primary"
                     (click)="onClick()">Registrarse</button>

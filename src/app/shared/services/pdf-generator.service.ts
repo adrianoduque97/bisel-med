@@ -59,16 +59,16 @@ export class PdfGeneratorService {
 
   }
 
-  async exportJSPDF(type: string, pdfTable: ElementRef, name?:string): Promise<string> {
+  async exportJSPDF(type: string, pdfTable: ElementRef, name?:string, medType?: string): Promise<string> {
 
     let dataPdf = document.getElementById('pdfTable');
     
-    const pdf = new jspdf('p', 'px', 'a4', true);
-    let canvas = await html2canvas(dataPdf, { logging: true, allowTaint: true, useCORS: true, scale: 2 });
+    const pdf = new jspdf('p', 'pt', 'a4', true);
+    let canvas = await html2canvas(dataPdf, { logging: true, allowTaint: true, useCORS: true, scale: 3 });
     let img = canvas.toDataURL('image/png');
-    // pdf.addImage(img, 'png', 40, 50, 415 > dataPdf.offsetWidth?415:dataPdf.offsetWidth, dataPdf.offsetHeight+100);
-    pdf.addImage(img, 'png', 15, 15, 415, 400,'','FAST');
-
+    console.log(dataPdf, 'PDF')
+    pdf.addImage(img, 'png', 10, 10,dataPdf.scrollWidth, dataPdf.scrollHeight > 805?805:dataPdf.scrollHeight, 'FAST');
+    
     return new Promise((resolve, reject) => {
       if (type === 'save') {
         pdf.save(`${name?name:type}.pdf`);

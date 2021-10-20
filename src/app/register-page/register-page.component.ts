@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { AuthService } from '../shared/services/auth-service.service';
 import { FireStoreServiceService } from '../shared/services/fire-store-service.service';
 import { NavbarService } from '../shared/services/navbar.service';
+import { NotificationService } from '../shared/services/notification.service';
 
 @Component({
   selector: 'app-register-page',
@@ -15,10 +18,16 @@ export class RegisterPageComponent implements OnInit {
   data:any;
   nameFile: string;
   docFile: FormData;
+  hugeLoading = false;
+
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 
   constructor(public authService: AuthService,
               public firestoreService: FireStoreServiceService,
-              public navService: NavbarService) {
+              public navService: NavbarService,
+              public notificationService: NotificationService) {
     this.registerForm = new FormGroup({
       name: new FormControl('', Validators.required),
       register:new FormControl('', Validators.required),
@@ -35,11 +44,19 @@ export class RegisterPageComponent implements OnInit {
     this.data={};
   }
   onClick(){
+    this.hugeLoading= true;
     this.data.name= this.registerForm.value.name;
     this.data.register= this.registerForm.value.register;
     this.data.phone= this.registerForm.value.phone;
     this.data.mail= this.registerForm.value.mail;
-    this.authService.SignUp(this.data.mail, this.registerForm.value.password, this.data );
+    this.authService.SignUp(this.data.mail, this.registerForm.value.password, this.data ).then( data =>{
+      this.notificationService.showNotification('success', 'Usuario Registrado con éxito');
+      this.notificationService.showNotification('success', 'Puedes iniciar sesión');
+      this.hugeLoading = false;
+    }).catch(error =>{
+      this.notificationService.showNotification('error', 'Usuario NO Registrado');
+      this.hugeLoading = false;
+    });
   }
 
   onFileChange(evt: any, files: File[]) {

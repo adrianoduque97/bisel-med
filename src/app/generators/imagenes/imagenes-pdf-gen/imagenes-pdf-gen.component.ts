@@ -42,14 +42,14 @@ export class ImagenesPdfGenComponent implements OnInit {
   }
   async exportPDF(type: string){
     this.hugeLoading = true;
-    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name).then(res =>{
+    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name, 'Imagen').then(res =>{
       this.hugeLoading= false;
     });
   }
 
   async getSharePDF (type){
     this.loading = true;
-    this.pdfGen.exportJSPDF(type, this.pdfTable).then(link =>{
+    this.pdfGen.exportJSPDF(type, this.pdfTable, this.htmlData?.name, 'Imagen').then(link =>{
     this.pdfLiknk =  link;
     this.loading = false
   });

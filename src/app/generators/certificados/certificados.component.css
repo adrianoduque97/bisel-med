@@ -63,6 +63,7 @@
     }
     .regular-flex{
       align-items:center;
+      display: block;
   }
   .regular-form{
     width: 100%;

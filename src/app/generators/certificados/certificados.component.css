@@ -62,7 +62,6 @@
         align-items:center;
     }
     .regular-flex{
-      flex-direction: column;
       align-items:center;
   }
   .regular-form{

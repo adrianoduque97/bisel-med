@@ -30,7 +30,7 @@ h2{
     margin-left: 51%;
     margin-top: 1%;
   }
-
+  .html2canvas-container { width: 9000px !important; height: 9000px !important; }
   
 #pdfTable{
     font-size: 9px;

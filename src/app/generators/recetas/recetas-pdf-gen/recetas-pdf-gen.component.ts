@@ -5,9 +5,6 @@ import { PdfGeneratorService } from 'src/app/shared/services/pdf-generator.servi
 import { environment } from '../../../../environments/environment';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import Utils from '../../../shared/Utils/recetas.utils';
-import jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
 
 export declare let require: any;
 const convertir = require('numero-a-letras');
@@ -71,6 +68,9 @@ export class RecetasPdfGenComponent implements OnInit {
   numLet(value: number){
     let valor  = convertir.NumerosALetras(value);
     valor = valor.substring(0, valor.indexOf("Pesos"));
+    if(value == 1){
+      valor = "uno"
+    }
     return valor;
   }
 

@@ -1,96 +1,98 @@
 <div class="container">
     <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
-    <div id="pdfTable" #pdfTable>
-        <table class="table-size table-back">
-            <tr>
-                <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
-                    <div style="display: flex; justify-content: space-between;">
-                        <P class="p0 ft0" style="margin-top: 7px;">CERTIFICADO MÉDICO </P>
-                        <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr4 td16">
-                    <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
-                </td>
-                <td colspan=5 class="tr0 td0">
-                    <P class="p0 ft0" style="margin-top: 7px;">CÉDULA: <span>{{htmlData?.docId}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=2 class="tr2 td10">
-                    <P class="p0 ft0">FECHA: <span>{{date | date:'mediumDate'}}</span></P>
-                </td>
-                <td colspan=3 class="tr2 td3">
-                    <P class="p2 ft2">HORA: <span>{{date | date:'shortTime'}}</span></P>
-                </td>
-                <td colspan=5 class="tr2 td3">
-                    <P class="p2 ft2">CIUDAD: <span>{{htmlData?.city}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
-                    <P class="p11 ft5">CERTIFICADO:</P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr2 td10" style="height: 100px;">
-                    <P class="p0 ft0"><span>{{htmlData?.certificado}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr5 td20">
-                    <P class="p7 ft2">DIAGNÓSTICO: <span>{{htmlData?.diagnostic}}</span> </P>
-                </td>
-                <td colspan=5 class="tr5 td21">
-                    <P class="p8 ft2">CIE 10: <span>{{htmlData?.cie10}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr4 td16">
-                    <P class="p6 ft2">REPOSO: <span>Desde {{htmlData?.reposoD}}, hasta {{htmlData?.reposoH}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
-                    <P class="p11 ft5">DATOS DEL DOCTOR</P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr1 td16">
-                    <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
-                </td>
-                <td colspan=5 class="tr1 td26">
-                    <p>Firma y sello del prescriptor</p>
-                    <div style="display:flex; margin-bottom: 10px;">
-                        <img [src]="user?.firma" class="imag-sello">
-                        <img [src]=" user?.sello" class="imag-sello">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr10 td28" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30"> 
-                </td>
-            </tr>
-        </table>
-        <div class="message-pdf">
-            <span style="font-size:9px">Este certificado tiene validez médica</span>
-            <span style="font-size:9px">www.biselmed.com</span>
+    <div class="overall-container">
+        <div id="pdfTable" #pdfTable>
+            <table class="table-size table-back">
+                <tr>
+                    <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <P class="p0 ft0" style="margin-top: 7px;">CERTIFICADO MÉDICO </P>
+                            <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr4 td16">
+                        <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
+                    </td>
+                    <td colspan=5 class="tr0 td0">
+                        <P class="p0 ft0" style="margin-top: 7px;">CÉDULA: <span>{{htmlData?.docId}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=2 class="tr2 td10">
+                        <P class="p0 ft0">FECHA: <span>{{date | date:'mediumDate'}}</span></P>
+                    </td>
+                    <td colspan=3 class="tr2 td3">
+                        <P class="p2 ft2">HORA: <span>{{date | date:'shortTime'}}</span></P>
+                    </td>
+                    <td colspan=5 class="tr2 td3">
+                        <P class="p2 ft2">CIUDAD: <span>{{htmlData?.city}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                        <P class="p11 ft5">CERTIFICADO:</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr2 td10" style="height: 100px;">
+                        <P class="p0 ft0"><span>{{htmlData?.certificado}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">DIAGNÓSTICO: <span>{{htmlData?.diagnostic}}</span> </P>
+                    </td>
+                    <td colspan=5 class="tr5 td21">
+                        <P class="p8 ft2">CIE 10: <span>{{htmlData?.cie10}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr4 td16">
+                        <P class="p6 ft2">REPOSO: <span>Desde {{htmlData?.reposoD}}, hasta {{htmlData?.reposoH}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                        <P class="p11 ft5">DATOS DEL DOCTOR</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr1 td16">
+                        <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
+                    </td>
+                    <td colspan=5 class="tr1 td26">
+                        <p>Firma y sello del prescriptor</p>
+                        <div style="display:flex; margin-bottom: 10px;">
+                            <img [src]="user?.firma" class="imag-sello">
+                            <img [src]=" user?.sello" class="imag-sello">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr10 td28" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30"> 
+                    </td>
+                </tr>
+            </table>
+            <div class="message-pdf">
+                <span style="font-size:9px">Este certificado tiene validez médica</span>
+                <span style="font-size:9px">www.biselmed.com</span>
+            </div>
+    
         </div>
-
     </div>
-    <div class="button-container" *ngIf="htmlData">
+    <div class="button-container" *ngIf="htmlData && !isObjectEmpty(htmlData)">
         <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
         <span>
 

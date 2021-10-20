@@ -13,9 +13,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #pdfTable{
   padding-left: 20px;
   padding-right: 20px;
-  overflow: auto;
+}
+.overall-container{
+  max-height: 580px; 
+  overflow:auto; 
   scrollbar-width: thin;
-  max-height: 570px;
 }
 table, th, td {
   border: 1px solid #004990;
@@ -76,7 +78,7 @@ table, th, td {
     scrollbar-width: thin;
 }
 .imag-sello{
-  width: 90px;
+  width: 100px;
 }
 .mat-body p, .mat-body-1 p, .mat-typography p{
   margin-bottom: -1px;
@@ -86,7 +88,7 @@ table, th, td {
   justify-content:space-between
 }
 
-.html2canvas-container { width: 3000px !important; height: 3000px !important; }
+.html2canvas-container { width: 9000px !important; height: 9000px !important; }
 
   @media all and (max-width: 700px) {
     .main-flex{
@@ -104,6 +106,7 @@ table, th, td {
       height: auto;
   }
   .normal-side{
+    width: 80%;
     overflow: unset;
   }
     .container{
@@ -115,7 +118,7 @@ table, th, td {
       flex-direction: column;
     }
     .main-card{
-      overflow: auto;
+      overflow:auto;
       scrollbar-width: thin;
     }
     #pdfTable{
@@ -128,8 +131,8 @@ table, th, td {
       width: 500px;
       margin-bottom: 10px;
     }
-    .imag-sello{
-      width: 80px;
-  }
+    .info-form{
+      overflow: auto;
+    }
 
   }

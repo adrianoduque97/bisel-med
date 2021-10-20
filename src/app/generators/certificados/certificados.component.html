@@ -6,7 +6,7 @@
                 Certificado Médico
             </div>
             <div >
-                <form class="example-form" [formGroup]="medicineForm">
+                <form class="example-form" [formGroup]="medicineForm"  class="main-flex">
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Nombre y Apellido Paciente</mat-label>
                             <input formControlName="name" matInput placeholder="Adrián Duque">
@@ -38,11 +38,11 @@
                                 </mat-form-field>
                                 <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
                                     <mat-label>Reposo desde:</mat-label>
-                                    <input type="date" formControlName="reposoD" matInput placeholder="Resposo">
+                                    <input (change)="dateChange()" type="date" formControlName="reposoD" matInput placeholder="Resposo">
                                 </mat-form-field>
                                 <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
                                     <mat-label>Reposo hasta:</mat-label>
-                                    <input type="date" formControlName="reposoH" matInput placeholder="Resposo">
+                                    <input (change)="dateChange()" type="date" formControlName="reposoH" matInput placeholder="Resposo">
                                 </mat-form-field>
                             </div>
                            

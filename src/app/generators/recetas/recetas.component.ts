@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth-service.service';
 import { FireStoreServiceService } from 'src/app/shared/services/fire-store-service.service';
@@ -94,9 +94,9 @@ export class RecetasComponent implements OnInit {
   }
 
   removeMedicine(medicine: any){
-    this.med = this.med.filter( item =>{
+    this.med = this.med.filter( item =>
       item.medicine !== medicine.medicine && item.dose !== medicine.dose
-    });
+    );
     this.htmlData['medicine'] = this.med;
   }
 

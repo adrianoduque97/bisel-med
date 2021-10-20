@@ -6,6 +6,10 @@
   .example-full-width {
     width: 100%;
   }
+  .ima-bisel{
+    display:flex; 
+    position:absolute;
+  }
   .title {
     font-weight: 700;
     font-family: "Inter-Bold", "Inter", sans-serif;
@@ -26,6 +30,7 @@
   }
 
 
+
   @media all and (max-width: 700px) {
     .main-card {
       /* On small screens, we are no longer using row direction but column */
@@ -34,6 +39,10 @@
     }
     .blue-side{
         display: none;
+    }
+    .ima-bisel{
+      display:flex; 
+      position:initial;
     }
 
   }

@@ -14,7 +14,7 @@ export class CertificadosComponent implements OnInit {
   data:any;
   nameFile: string;
   docFile: FormData;
-  htmlData: any;
+  htmlData: any = [];
   userInfo: any;
   constructor(public nav: NavbarService,
               public authService: AuthService,
@@ -51,5 +51,10 @@ export class CertificadosComponent implements OnInit {
     this.data.reposoH= this.medicineForm.value.reposoH;
 
     this.htmlData = this.data;
+  }
+
+  dateChange(){
+    this.htmlData['reposoD'] = this.medicineForm.value.reposoD;
+    this.htmlData['reposoH'] = this.medicineForm.value.reposoH;
   }
 }

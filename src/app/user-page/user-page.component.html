@@ -35,7 +35,7 @@
                                     multiple="false">
                             </label>
                         </button>
-                        <!-- <img [src]="userInfo?.firma" class="imagen-local" /> -->
+                        <mat-icon *ngIf="userInfo?.firma" style="color: green">task_alt</mat-icon>
                     </div>
 
                     <div>
@@ -46,7 +46,7 @@
                                     multiple="false">
                             </label>
                         </button>
-                        <!-- <img [src]="userInfo?.sello" class="imagen-local"/> -->
+                        <mat-icon *ngIf="userInfo?.sello" style="color: green">task_alt</mat-icon>
                     </div>
 
             </div>

@@ -1,189 +1,130 @@
 <div class="container">
     <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
-    <!-- <div id="pdfTable" #pdfTable *ngIf="htmlData">
-        <img src="{{baseUrl}}/assets/Logo y coloresBisel.png" style="width: 80px">
-        <h2 style="color:brown;">Imágenes Bisel</h2>
-        <div>
-            Fecha: {{date | date:'mediumDate'}}
-            Doctor: {{user.displayName}}
-        </div>
-        <div>
-            <h2>Datos Paciente</h2>
-            <div>{{htmlData.name}}</div>
-            <div>{{htmlData.mail}}</div>
-            <div>{{htmlData.docId}}</div>
-        </div>
-        <div>
-            <h2>Solicitud de Imágen</h2>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Imágen: </div>
-                    {{htmlData.imagenTipo}}
-                </div>
+    <div class="overall-container">
+        <div id="pdfTable" #pdfTable>
+            <table class="table-size table-back">
+                <tr>
+                    <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <P class="p0 ft0" style="margin-top: 7px;">SOLICITUD IMAGEN</P>
+                            <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr4 td16">
+                        <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
+                    </td>
+                    <td colspan=5 class="tr0 td0">
+                        <P class="p0 ft0" style="margin-top: 7px;">CÉDULA: <span>{{htmlData?.docId}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr2 td10">
+                        <P class="p0 ft0">FECHA SOLICITUD: <span>{{date | date:'mediumDate'}}</span></P>
+                    </td>
+                    <td colspan=5 class="tr2 td3">
+                        <P class="p2 ft2">HORA SOLICITUD: <span>{{date | date:'shortTime'}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=3 class="tr2 td10">
+                        <P class="p0 ft0">PRIORIDAD: <span>{{htmlData?.priority}}</span></P>
+                    </td>
+                    <td colspan=7 class="tr2 td3">
+                        <P class="p2 ft2">FECHA TOMA: <span></span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                        <P class="p11 ft5">1. ESTUDIO SOLICITADO</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr1 td16" >
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let imagen of htmlData?.imagenTipo" style="flex: 1 0 50%; "> <span>{{imagen}}</span></P>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr2 td10" >
+                        <P class="p0 ft0">DESCRIPCIÓN SOLICITUD: <span>{{htmlData?.descripcion}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr2 td10" >
+                        <P class="p0 ft0">RECOMENDACIONES: <span>{{htmlData?.recomendation}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                        <div style="display: flex; justify-content:space-between">
+                            <P class="p11 ft5">2. MOTIVO DE LA SOLICITUD</P>
+                            <p>Registrar las razones para solicitar aclaración de diagnóstico</p>
+                        </div>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr2 td10" >
+                        <P class="p0 ft0"><span>{{htmlData?.motivo}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr1 td16" style="background-color: #3498f13b;">
+                        <P class="p11 ft5">3. RESUMEN CLÍNICO</P>
+                    </td>
+                    <td colspan=5 class="tr1 td16" style="background-color: #3498f13b;">
+                        <P class="p11 ft5">4. DIAGNÓSTICOS</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr1 td16" >
+                        <P class="p11 ft5"><span>{{htmlData?.resumen}}</span></P>
+                    </td>
+                    <td colspan=5 class="tr1 td16">
+                        <P class="p11 ft5"><span>{{htmlData?.diagnostic}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
+                        <P class="p11 ft5">DATOS DEL DOCTOR</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr1 td16">
+                        <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
+                    </td>
+                    <td colspan=5 class="tr1 td26">
+                        <p>Firma y sello del prescriptor</p>
+                        <div style="display:flex; margin-bottom: 10px;">
+                            <img [src]="user?.firma" class="imag-sello">
+                            <img [src]=" user?.sello" class="imag-sello">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr10 td28" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30" style="height: 0;">
+                    </td>
+                    <td colspan=1 class="tr10 td30"> 
+                    </td>
+                </tr>
+            </table>
+            <div class="message-pdf">
+                <span style="font-size:9px">Este certificado tiene validez médica</span>
+                <span style="font-size:9px">www.biselmed.com</span>
             </div>
-            <div class="">
-                <div>
-                    <div>
-                        <div class="text-format">Descripción </div>
-                    </div>
-                    {{htmlData.descripcion}}
-                </div>
-                <div >
-                    <div>
-                        <div class="text-format">Motivo de la Solicitud </div>
-                    </div>
-                    {{htmlData.motivo}}
-                </div>
-                <div>
-                    <div>
-                        <div class="text-format">Resumen Clínico: </div>
-                    </div>
-                    {{htmlData.resumen}}
-                </div>
-            </div>
-            <div>
-                    <span class="text-format">firma: 
-                        <img [src]="user.firma" style="width: 20px">
-                    </span>
-                    
-            </div>
-            <div class="row-dir">
-                <div>
-                    <div class="text-format">Sello: </div>
-                </div>
-                <div>
-                    <img [src]=" user.sello" style="width: 20px">
-                </div>
-            </div>
-
-
+    
         </div>
-
-    </div> -->
-
-    <div id="pdfTable" #pdfTable>
-        <table class="table-size table-back">
-            <tr>
-                <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
-                    <div style="display: flex; justify-content: space-between;">
-                        <P class="p0 ft0" style="margin-top: 7px;">SOLICITUD IMAGEN</P>
-                        <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr4 td16">
-                    <P class="p6 ft2">NOMBRE Y APELLIDOS: <span>{{htmlData?.name}}</span></P>
-                </td>
-                <td colspan=5 class="tr0 td0">
-                    <P class="p0 ft0" style="margin-top: 7px;">CÉDULA: <span>{{htmlData?.docId}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr2 td10">
-                    <P class="p0 ft0">FECHA SOLICITUD: <span>{{date | date:'mediumDate'}}</span></P>
-                </td>
-                <td colspan=5 class="tr2 td3">
-                    <P class="p2 ft2">HORA SOLICITUD: <span>{{date | date:'shortTime'}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=3 class="tr2 td10">
-                    <P class="p0 ft0">PRIORIDAD: <span>{{htmlData?.priority}}</span></P>
-                </td>
-                <td colspan=7 class="tr2 td3">
-                    <P class="p2 ft2">FECHA TOMA: <span></span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
-                    <P class="p11 ft5">1. ESTUDIO SOLICITADO</P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr1 td16" >
-                    <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
-                        <P class="p6 ft2" *ngFor="let imagen of htmlData?.imagenTipo" style="flex: 1 0 50%; "> <span>{{imagen}}</span></P>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr2 td10" >
-                    <P class="p0 ft0">DESCRIPCIÓN SOLICITUD: <span>{{htmlData?.descripcion}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr2 td10" >
-                    <P class="p0 ft0">RECOMENDACIONES: <span>{{htmlData?.recomendation}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
-                    <div style="display: flex; justify-content:space-between">
-                        <P class="p11 ft5">2. MOTIVO DE LA SOLICITUD</P>
-                        <p>Registrar las razones para solicitar aclaración de diagnóstico</p>
-                    </div>
-                    
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr2 td10" >
-                    <P class="p0 ft0"><span>{{htmlData?.motivo}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr1 td16" style="background-color: #3498f13b;">
-                    <P class="p11 ft5">3. RESUMEN CLÍNICO</P>
-                </td>
-                <td colspan=5 class="tr1 td16" style="background-color: #3498f13b;">
-                    <P class="p11 ft5">4. DIAGNÓSTICOS</P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr1 td16" >
-                    <P class="p11 ft5"><span>{{htmlData?.resumen}}</span></P>
-                </td>
-                <td colspan=5 class="tr1 td16">
-                    <P class="p11 ft5"><span>{{htmlData?.diagnostic}}</span></P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=10 class="tr1 td16" style="background-color: #3498f13b;">
-                    <P class="p11 ft5">DATOS DEL DOCTOR</P>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr1 td16">
-                    <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
-                </td>
-                <td colspan=5 class="tr1 td26">
-                    <p>Firma y sello del prescriptor</p>
-                    <div style="display:flex; margin-bottom: 10px;">
-                        <img [src]="user?.firma" class="imag-sello">
-                        <img [src]=" user?.sello" class="imag-sello">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=5 class="tr10 td28" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30" style="height: 0;">
-                </td>
-                <td colspan=1 class="tr10 td30"> 
-                </td>
-            </tr>
-        </table>
-        <div class="message-pdf">
-            <span style="font-size:9px">Este certificado tiene validez médica</span>
-            <span style="font-size:9px">www.biselmed.com</span>
-        </div>
-
     </div>
     <div class="button-container" *ngIf="htmlData">
         <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>

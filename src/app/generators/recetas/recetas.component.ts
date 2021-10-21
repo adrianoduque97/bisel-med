@@ -11,6 +11,7 @@ import { NavbarService } from 'src/app/shared/services/navbar.service';
 })
 export class RecetasComponent implements OnInit {
   medicineForm: FormGroup;
+  medForm: FormGroup;
   data:any;
   nameFile: string;
   docFile: FormData;
@@ -33,16 +34,21 @@ export class RecetasComponent implements OnInit {
                   docId:new FormControl('', Validators.required),
                   diagnostic: new FormControl('', Validators.required),
                   cie10: new FormControl('', Validators.required),
-                  medicine:new FormControl(''),
-                  admin:new FormControl(''),
-                  dose:new FormControl(''),
-                  freq:new FormControl(''),
-                  duration:new FormControl(''),
-                  hour:new FormControl(''),
-                  advertencia: new FormControl('', Validators.required),
-                  presentation: new FormControl('',),
-                  quantity: new FormControl('',)
+                  advertencia: new FormControl('', ),
+                  
                 });
+
+                this.medForm =  new FormGroup({
+                  medicine:new FormControl('',  Validators.required),
+                  admin:new FormControl('', Validators.required),
+                  dose:new FormControl('', Validators.required),
+                  freq:new FormControl('', Validators.required),
+                  duration:new FormControl('', Validators.required),
+                  hour:new FormControl('', Validators.required),
+                  presentation: new FormControl('', Validators.required),
+                  quantity: new FormControl('', Validators.required)
+                });
+
               }
 
   ngOnInit(): void {
@@ -72,23 +78,23 @@ export class RecetasComponent implements OnInit {
 
   addMedicine(){
     this.med.push({
-      medicine: this.medicineForm.value.medicine,
-      admin: this.medicineForm.value.admin,
-      dose: this.medicineForm.value.dose,
-      freq: this.medicineForm.value.freq,
-      duration: this.medicineForm.value.duration,
-      hour: this.medicineForm.value.hour,
-      quantity: this.medicineForm.value.quantity,
-      presentation: this.medicineForm.value.presentation
+      medicine: this.medForm.value.medicine,
+      admin: this.medForm.value.admin,
+      dose: this.medForm.value.dose,
+      freq: this.medForm.value.freq,
+      duration: this.medForm.value.duration,
+      hour: this.medForm.value.hour,
+      quantity: this.medForm.value.quantity,
+      presentation: this.medForm.value.presentation
     });
-    this.medicineForm.get('medicine').reset();
-    this.medicineForm.get('admin').reset();
-    this.medicineForm.get('dose').reset();
-    this.medicineForm.get('freq').reset();
-    this.medicineForm.get('duration').reset();
-    this.medicineForm.get('hour').reset();
-    this.medicineForm.get('quantity').reset();
-    this.medicineForm.get('presentation').reset();
+    this.medForm.get('medicine').reset();
+    this.medForm.get('admin').reset();
+    this.medForm.get('dose').reset();
+    this.medForm.get('freq').reset();
+    this.medForm.get('duration').reset();
+    this.medForm.get('hour').reset();
+    this.medForm.get('quantity').reset();
+    this.medForm.get('presentation').reset();
     
     this.htmlData['medicine'] = this.med;
   }

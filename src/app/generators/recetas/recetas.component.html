@@ -51,6 +51,7 @@
                                 <mat-label>Advertencias</mat-label>
                                 <textarea formControlName="advertencia" matInput placeholder="Recomendaciones"></textarea>
                             </mat-form-field>
+                            <form [formGroup]="medForm">
                                 <div style="display: flex;">
                                     <mat-form-field class="example-full-width" appearance="fill" style="width: 100px;">
                                         <mat-label>Medicina</mat-label>
@@ -91,14 +92,21 @@
                                         <input type="number" min=0 formControlName="quantity" matInput placeholder="21">
                                     </mat-form-field>
                                     <button class="example-full-width" style="margin-bottom: 10px; margin-left: 10px;"
+                                        *ngIf="medForm.valid"  
+                                        mat-raised-button color="primary"(click)="addMedicine()">
+                                    Agregar
+                                </button> 
+                                    <!-- <button class="example-full-width" style="margin-bottom: 10px; margin-left: 10px;"
                                         *ngIf="medicineForm.get('medicine').touched && medicineForm.get('hour').touched &&
                                                medicineForm.get('admin').touched && medicineForm.get('duration').touched &&
                                                medicineForm.get('dose').touched && medicineForm.get('freq').touched &&
                                                medicineForm.get('presentation').touched && medicineForm.get('quantity').touched"  
                                         mat-raised-button color="primary"(click)="addMedicine()">
                                     Agregar
-                                </button>     
+                                </button>      -->
                                 </div>
+                            </form>
+                                
                                     <div *ngFor="let medicine of med" style="display: flex; justify-content: space-between; width: 250px;margin-left: 10px;">
                                         <div>
                                             {{medicine.medicine}}, {{medicine.dose}}

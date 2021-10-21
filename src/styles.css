@@ -22,7 +22,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table, th, td {
   border: 1px solid #004990;
   border-collapse: collapse;
-  width: 50px;
+  /* width: 50px; */
 }
 .container{
   max-width: 600px;
@@ -78,7 +78,7 @@ table, th, td {
     scrollbar-width: thin;
 }
 .imag-sello{
-  width: 100px;
+  width: 140px;
 }
 .mat-body p, .mat-body-1 p, .mat-typography p{
   margin-bottom: -1px;

@@ -31,7 +31,17 @@ h2{
     margin-top: 1%;
   }
   .dotted{
-    border-bottom: dotted 2px #000000;
+    border-bottom: dotted 3px #000000;
+}
+.scissors{
+    position: relative;
+    top: -13px;
+    left: -12px;
+    margin-bottom: -20px;
+    padding-bottom: 0;
+    display: block;
+    font-size: 20px;
+    color: black;
 }
 
   /* NEW */

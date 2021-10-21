@@ -32,7 +32,6 @@ h2{
   }
   .dotted{
     border-bottom: dotted 3px #000000;
-    border-image: url('../../../../assets/pngwing.com.png');
 }
 .scissors{
     position: relative;

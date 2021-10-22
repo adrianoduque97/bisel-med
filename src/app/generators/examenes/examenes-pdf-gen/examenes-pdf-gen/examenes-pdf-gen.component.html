@@ -45,7 +45,7 @@
                         <P class="p6 ft2">1. HEMATOLOGÍA</P>
                     </td>
                     <td colspan=5 class="tr5 td20">
-                        <P class="p7 ft2">2. QUÍMICA SANGUÍNEA</P>
+                        <P class="p7 ft2">2. BIOQUÍMICA</P>
                     </td>
                 </tr>
                 <tr>
@@ -62,16 +62,16 @@
                 </tr>
                 <tr>
                     <td colspan=5 class="tr5 td20">
-                        <P class="p7 ft2">3. COPROLÓGICO</P>
+                        <P class="p7 ft2">3. HECES</P>
                     </td>
                     <td colspan=5 class="tr4 td16">
-                        <P class="p6 ft2">4. UROANÁLISIS</P>
+                        <P class="p6 ft2">4. ORINAS</P>
                     </td>
                 </tr>
                 <tr>
                     <td colspan=5 class="tr5 td20">
                         <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
-                            <P class="p6 ft2" *ngFor="let examen of htmlData?.copro" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.heces" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
                         </div>  
                     </td>
                     <td colspan=5 class="tr4 td16">
@@ -82,10 +82,50 @@
                 </tr>
                 <tr>
                     <td colspan=5 class="tr5 td20">
-                        <P class="p7 ft2">5. BACTERIOLOGÍA</P>
+                        <P class="p7 ft2">5. ENZIMAS</P>
                     </td>
                     <td colspan=5 class="tr5 td20">
-                        <P class="p7 ft2">6. SERIOLOGÍA</P>
+                        <P class="p7 ft2">6. ELECTROLITOS</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.enzimas" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                        </div>
+                    </td>
+                    <td colspan=5 class="tr5 td20">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.electro" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">7. ESPECIAL</P>
+                    </td>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">8. INMUNOLÓGICOS</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.especial" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                        </div>
+                    </td>
+                    <td colspan=5 class="tr5 td20">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.inmuno" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">9. MICROBIOLOGÍA</P>
+                    </td>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">10. SERIOLOGÍA</P>
                     </td>
                 </tr>
                 <tr>
@@ -101,9 +141,45 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan=10 class="tr1 td16">
-                        <P class="p11 ft5">7. OTROS: <span>{{htmlData?.otros}}</span></P>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">11. ENDÓCRINOS</P>
                     </td>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">12. MARCADORES TUMORALES</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.endo" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                        </div>
+                    </td>
+                    <td colspan=5 class="tr5 td20">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.tumor" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">12. LÍQUIDOS BIOLÓGICOS</P>
+                    </td>
+                    <td colspan=5 class="tr5 td20">
+                        <P class="p7 ft2">13. OTROS</P>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=5 class="tr5 td20">
+                        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
+                            <P class="p6 ft2" *ngFor="let examen of htmlData?.liquido" style="flex: 1 0 50%; "> <span>{{examen}}</span></P>
+                        </div>
+                    </td>
+                    <td colspan=10 class="tr1 td16">
+                        <P class="p11 ft5"><span>{{htmlData?.otros}}</span></P>
+                    </td>
+                </tr>
+                <tr>
+                   
                 </tr>
                 <tr>
                     <td colspan=10 class="tr1 td16">
@@ -156,7 +232,7 @@
         </div>
     </div>
     <div class="button-container" *ngIf="htmlData">
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">ABRIR</button>
         <span>
 
             <button class="btn-up" mat-raised-button color="primary" [disabled]="loading||hugeLoading"(click)="getSharePDF('share')">
@@ -165,8 +241,8 @@
             </button>
         </span>
 
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">GUARDAR</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">IMPRIMIR</button>
     </div>
     <div *ngIf="htmlData && pdfLiknk">
         <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"

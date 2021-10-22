@@ -149,7 +149,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan=7 class="tr10 td28">
+                    <td colspan=5 class="tr10 td28">
                         <P class="p16 ft0">PREESCRIPTOR: <span>{{user?.displayName}}</span></P>
                         <div style="display:flex">
                             <img [src]="user?.firma" class="imag-sello">
@@ -157,13 +157,8 @@
                         </div>
                         <div class="p16 ft0">Firma y Sello</div>
                     </td>
-                    <td colspan=3 class="tr10 td30">
-                        <P class="p17 ft0" style="text-align: start; vertical-align: initial; margin-bottom: 70px;">ADVERTENCIAS: <span>{{htmlData?.advertencia}}</span></P>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan=10 class="tr10 td28">
-                        <P class="p16 ft0">REALIZAR ACTIVIDADES FÍSICAS TODOS LOS DÍAS AL MENOS:</P>
+                    <td colspan=5 class="tr10 td30">
+                        <P class="p17 ft0" style="text-align: start; vertical-align: initial; margin-bottom: 70px;">RECOMENDACIONES: <span>{{htmlData?.recomendaciones}}</span></P>
                     </td>
                 </tr>
             </table>
@@ -175,7 +170,7 @@
         </div>
     </div>
     <div class="button-container" *ngIf="htmlData && !isObjectEmpty(htmlData)">
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">ABRIR</button>
         <span>
 
             <button class="btn-up" mat-raised-button color="primary" [disabled]="loading||hugeLoading"(click)="getSharePDF('share')">
@@ -184,8 +179,8 @@
             </button>
         </span>
 
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">GUARDAR</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">IMPRIMIR</button>
     </div>
     <div *ngIf="htmlData && pdfLiknk">
         <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"

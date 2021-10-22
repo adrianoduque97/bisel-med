@@ -9,14 +9,15 @@
     justify-content: space-between;
     flex-direction: row;
     min-width: 250px;
-    max-width: 420px;
+    max-width: 500px;
     width: 100%;
+    max-height: 500px;
+    overflow: auto;
     }
   
     textarea{
       height: 50px;
     }
-
 
   @media all and (max-width: 700px) {
     /* .blue-side{

@@ -28,27 +28,51 @@
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Química Sanguínea</mat-label>
+                            <mat-label>Bioquímica</mat-label>
                             <mat-select formControlName="quimica" matInput multiple>
                                 <mat-option *ngFor="let value of quimicaInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Coprológico</mat-label>
-                            <mat-select formControlName="copro" matInput multiple>
-                                <mat-option *ngFor="let value of coproInfo" [value]="value">{{value}}</mat-option>
+                            <mat-label>Heces</mat-label>
+                            <mat-select formControlName="heces" matInput multiple>
+                                <mat-option *ngFor="let value of hecesInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-                    </div>
-                    <div>    
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Urología</mat-label>
+                            <mat-label>Orinas</mat-label>
                             <mat-select formControlName="uro" matInput multiple>
                                 <mat-option *ngFor="let value of uroInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Bacteriología</mat-label>
+                            <mat-label>Enzimas</mat-label>
+                            <mat-select formControlName="enzimas" matInput multiple>
+                                <mat-option *ngFor="let value of enzimasInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Electrolitos</mat-label>
+                            <mat-select formControlName="electro" matInput multiple>
+                                <mat-option *ngFor="let value of electrolitosInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Especial</mat-label>
+                            <mat-select formControlName="especial" matInput multiple>
+                                <mat-option *ngFor="let value of especialesInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>    
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Inmunológicos</mat-label>
+                            <mat-select formControlName="inmuno" matInput multiple>
+                                <mat-option *ngFor="let value of inmunoInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Microbiología</mat-label>
                             <mat-select formControlName="bacter" matInput multiple>
                                 <mat-option *ngFor="let value of bacterInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
@@ -57,6 +81,24 @@
                             <mat-label>Seriología</mat-label>
                             <mat-select formControlName="serio" matInput multiple>
                                 <mat-option *ngFor="let value of serioInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label> Endócrinos</mat-label>
+                            <mat-select formControlName="endo" matInput multiple>
+                                <mat-option *ngFor="let value of endoInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Marcadores Tumorales</mat-label>
+                            <mat-select formControlName="tumor" matInput multiple>
+                                <mat-option *ngFor="let value of tumorInfo" [value]="value">{{value}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Líquidos Biológicos</mat-label>
+                            <mat-select formControlName="liquido" matInput multiple>
+                                <mat-option *ngFor="let value of liquiInfo" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">

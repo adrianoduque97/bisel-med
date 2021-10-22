@@ -26,7 +26,7 @@ export class RecetasComponent implements OnInit {
               public authService: AuthService,
               public firestoreService: FireStoreServiceService) { 
                 this.medicineForm = new FormGroup({
-                  servicio: new FormControl('', Validators.required),
+                  servicio: new FormControl(''),
                   name: new FormControl('', Validators.required),
                   edad:new FormControl('', Validators.required),
                   meses:new FormControl('', Validators.required),
@@ -34,7 +34,7 @@ export class RecetasComponent implements OnInit {
                   docId:new FormControl('', Validators.required),
                   diagnostic: new FormControl('', Validators.required),
                   cie10: new FormControl('', Validators.required),
-                  advertencia: new FormControl('', ),
+                  recomendaciones: new FormControl('', ),
                   
                 });
 
@@ -71,7 +71,7 @@ export class RecetasComponent implements OnInit {
     this.data.diagnostic= this.medicineForm.value.diagnostic;
     this.data.cie10= this.medicineForm.value.cie10;
     this.data.medicine= this.med;
-    this.data.advertencia= this.medicineForm.value.advertencia;
+    this.data.recomendaciones= this.medicineForm.value.recomendaciones;
     
     this.htmlData = this.data;
   }

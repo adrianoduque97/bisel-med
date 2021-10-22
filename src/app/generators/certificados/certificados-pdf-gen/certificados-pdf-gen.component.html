@@ -93,7 +93,7 @@
         </div>
     </div>
     <div class="button-container" *ngIf="htmlData && !isObjectEmpty(htmlData)">
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">Abrir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">ABRIR</button>
         <span>
 
             <button class="btn-up" mat-raised-button color="primary" [disabled]="loading||hugeLoading"
@@ -104,8 +104,8 @@
             </button>
         </span>
 
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">Guardar PDF</button>
-        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">Imprimir PDF</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('save')">GUARDAR</button>
+        <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('print')">IMPRIMIR</button>
     </div>
     <div *ngIf="htmlData && pdfLiknk">
         <share-buttons [theme]="'modern-dark'" style="margin-left: 18%"

@@ -7,11 +7,13 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+const navigator = window.navigator as any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class PdfGeneratorService {
+  
 
   constructor(public fire: FireStoreServiceService,
     public auth: AuthService) { }
@@ -66,8 +68,7 @@ export class PdfGeneratorService {
     const pdf = new jspdf('p', 'pt', 'a4', true);
     let canvas = await html2canvas(dataPdf, { logging: true, allowTaint: true, useCORS: true, scale: 3 });
     let img = canvas.toDataURL('image/png');
-    console.log(dataPdf, 'PDF')
-    pdf.addImage(img, 'png', 10, 10,dataPdf.scrollWidth, dataPdf.scrollHeight > 805?805:dataPdf.scrollHeight, 'FAST');
+    pdf.addImage(img, 'png', 15, 10,dataPdf.scrollWidth, dataPdf.scrollHeight > 805?805:dataPdf.scrollHeight, 'FAST');
     
     return new Promise((resolve, reject) => {
       if (type === 'save') {
@@ -82,11 +83,43 @@ export class PdfGeneratorService {
         resolve('print');
       } else if (type === 'share') {
         var blobPDF = pdf.output('blob');
-        this.fire.updloadFile(blobPDF, this.auth.userData.email, 'pdf').then(link => {
+        
+        if(this.checkMedia() || (!navigator.userAgent.includes('Mozilla') && !navigator.appVersion.includes('Mac'))){
+          var file = new File([blobPDF],`${name?name:type}.pdf`,{type: blobPDF.type})
+          resolve(this.sharePdf([file]));
+        }else{
+          this.fire.updloadFile(blobPDF, this.auth.userData.email, 'pdf').then(link => {
           resolve(link);
         });
+        }
       }
     });
+  }
+
+  sharePdf(filesArray: Blob[]): string{
+    if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+      navigator.share({
+        files: filesArray,
+        title: 'Recetas Médicas',
+        text: 'Información Médica',
+      })
+      .then(() => {return 'success'})
+      .catch((error) => {return error});
+    } else {
+      return 'error'
+    }
+    
+  }
+
+  checkMedia(){
+    // Create a condition that targets viewports at least 768px wide
+    const mediaQuery = window.matchMedia('(max-width: 700px)')
+    console.log(mediaQuery, 'HOLA')
+   if (mediaQuery.matches) {
+     return true;
+   }else{
+     return false;
+   }
   }
 
 }

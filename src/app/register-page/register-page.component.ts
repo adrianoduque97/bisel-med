@@ -17,7 +17,7 @@ export class RegisterPageComponent implements OnInit {
   registerForm: FormGroup;
   data:any;
   nameFile: string;
-  docFile: FormData;
+  docFile: File;
   hugeLoading = false;
 
   color: ThemePalette = 'primary';
@@ -27,7 +27,7 @@ export class RegisterPageComponent implements OnInit {
   constructor(public authService: AuthService,
               public firestoreService: FireStoreServiceService,
               public navService: NavbarService,
-              public notificationService: NotificationService) {
+              public notificationService: NotificationService,) {
     this.registerForm = new FormGroup({
       name: new FormControl('', Validators.required),
       register:new FormControl('', Validators.required),
@@ -36,7 +36,6 @@ export class RegisterPageComponent implements OnInit {
       password:new FormControl('', Validators.required),
     });
     this.nameFile = '';
-    this.docFile = new FormData();
    }
 
   ngOnInit(): void {
@@ -50,9 +49,13 @@ export class RegisterPageComponent implements OnInit {
     this.data.phone= this.registerForm.value.phone;
     this.data.mail= this.registerForm.value.mail;
     this.authService.SignUp(this.data.mail, this.registerForm.value.password, this.data ).then( data =>{
-      this.notificationService.showNotification('success', 'Usuario Registrado con éxito');
-      this.notificationService.showNotification('success', 'Puedes iniciar sesión');
-      this.hugeLoading = false;
+      this.firestoreService.updloadFile(this.docFile, `${this.data.mail}/Access`, this.docFile.type).then(link => {          
+        this.notificationService.showNotification('success', 'Usuario Registrado con éxito');
+        this.notificationService.showNotification('success', 'Puedes iniciar sesión');
+        this.hugeLoading = false;
+      }).catch(error =>{
+        this.hugeLoading = false;
+      });
     }).catch(error =>{
       this.notificationService.showNotification('error', 'Usuario NO Registrado');
       this.hugeLoading = false;
@@ -76,8 +79,7 @@ export class RegisterPageComponent implements OnInit {
       const reader: FileReader = new FileReader();
       reader.onload = (e: any) => {
         const formData = new FormData();
-        formData.append('file', <File>files[0]);
-        this.docFile = formData;
+        this.docFile =<File>files[0];
         this.nameFile=target.files.item(0).name;;
 
         console.log(this.nameFile, 'file')
@@ -88,6 +90,7 @@ export class RegisterPageComponent implements OnInit {
       reader.onloadstart = (e: any) => {
       };
       reader.onloadend = (e: any) => {
+        this.notificationService.showNotification('success', 'ACCESS Subido con éxito');
       };
       reader.readAsBinaryString(target.files[0]);
     } catch(error){

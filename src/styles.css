@@ -11,11 +11,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items:center;
 }
 #pdfTable{
-  padding-left: 20px;
+  /* padding-left: 20px; */
   padding-right: 20px;
 }
 .overall-container{
-  max-height: 580px; 
+  max-height: 500px; 
   overflow:auto; 
   scrollbar-width: thin;
 }
@@ -52,8 +52,8 @@ table, th, td {
     width: 50%;
     height: 100%;
     background-color: rgba(63, 81, 181, 0.5);
-    overflow: visible;
-    justify-content: center
+    overflow: auto;
+    justify-content: center;
   }
   .normal-side{
     width: 50%;
@@ -114,6 +114,7 @@ table, th, td {
       width: 100%;
       margin-top: 20px;
       height: auto;
+      overflow: unset;
   }
   .normal-side{
     width: 80%;

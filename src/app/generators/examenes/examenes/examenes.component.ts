@@ -17,13 +17,22 @@ export class ExamenesComponent implements OnInit {
   docFile: FormData;
   htmlData: any;
   userInfo: any;
-  hematologiaInfo = ['Biometría Hemática', 'Plaquetas', 'Grupo/Rh.', 'Reticulocitos', 'Hematozoario', 'Célula LE', 'índices Hemáticos', 'T. Protrombina', 'Tiempo T.Parcial', 'Drepanocitos','Coombs Directo', 'Coombs Indirecto'];
-  quimicaInfo = ['Glucosa Ayunas', 'Glucosa 2 Horas', 'Urea', 'Creatinina', 'Ácido úrico', 'Bilirrubinas','Proteínas', 'Transaminadas Pirúvica','Transaminasa Oxalacética', 'Colesterol Total','Colesterol HDL','Colesterol LDL', 'Triglicéridos'];
-  coproInfo = ['Coproparasitario','Sangre oculta', 'Inv. Poumorfo Nucleares','Rotavirus'];
-  uroInfo = ['Elemental y macroscopio','Gota Fresca', 'GRAM','Índices Hemáticos','T.Protrombina'];
-  bacterInfo= ['GRAM','ZIEHL','Fresco','Hongos','Cultivo y Antibiograma'];
-  serioInfo = ['VDRL','Reacción de WIDAL', 'Prueba de embarazo', 'PCR', 'RAT','ASTO'];
-  priorityOptions = ['URG','NRML','CTRL'];
+  hematologiaInfo = ['Biometría Hemática', 'Plaquetas', 'Grupo/Rh.', 'Reticulocitos', 'Hematozoario', 'Célula LE', 'índices Hemáticos', 'T. Protrombina','T. de Sangría','T. de Coagulación','T.P. de Tomboplastina TPT', 'T.Parcial', 'Drepanocitos','Coombs Directo', 'Coombs Indirecto','Eritrosedimentación (VSG)','Frotosis de sangre periférica','Fibronogeno'];
+  quimicaInfo = ['Glucemia','Glicerina postpandrial','P. Tolerancia Glucosa','Hb. Glicosilada','Glucosa Ayunas', 'Glucosa 2 Horas', 'Urea', 'Creatinina', 'Ácido úrico', 'Bilirrubinas','Proteínas y Fracciones', 'Transaminadas Pirúvica','Transaminasa Oxalacética', 'Colesterol Total','Colesterol HDL','Colesterol LDL', 'Triglicéridos','Líquidos Totales','Hierro serico','Fij. De Hierro Transferencia','Ferritina','Insulina','Homa Ir'];
+  hecesInfo = ['Parasitológico','Coproparasitario','Sangre oculta', 'Inv. Poumorfo Nucleares','Rotavirus','Moco Fecal','H. Pylori Antígeno'];
+  bacterInfo= ['Exudados-Trasudados','Esputos','Secreciones','Orinas-Uro','Heces-Copro','Heridas-Copro','Heridas y Úlceras','T.Gram','Ziehi Neelsen','Tinta China','KOH','Fresco','Hongos','Cultivo y Antibiograma','Gota Fresca'];
+  serioInfo = ['VDRL','Reacción de WIDAL','Reacción de Hudiesson', 'Prueba de embarazo', 'PCR Cualitativo', 'RA Test Cualitativo','ASTO Cuantitativo','ASTO Cualitativo','Stred-A','Complemento C3-C4'];
+  uroInfo = ['Físico, químico, sedimento', 'Proteínas ocasional 24h.','Depuración de creatinina','Proteínas de Bence Jones','Cálculo Urinario'];
+
+  enzimasInfo = ['TGO (AST)','TGP (ALT)','Gamma GT','Amilasa','Lipasa','LDH','CK-Total','CK-MB','Colinesterasa','Fost. Alcalina'];
+  electrolitosInfo = ['Sodio','Potasio','Cloro','Fósforo','Magnesio','Calcio'];
+  especialesInfo = ['Citomegalovirus IgG-IgM','Rubeola IgM-IgG','Herpes virus I-II IgM-IgG','Chlamydias IgM-IgG','Dengue','HIV','Hepatitis A IgM','Hepatitis A IgG','Hepatitis B(HBsAb)','Hepatitis B(HBsAg)','Anti-e-Hepatitis B (HB-e-Ab)','Anti Hepatitis C','Anti H.Pylori IgM-IgG-IgA'];
+  inmunoInfo = ['IgG','IgE','IgM','IgA'];
+  endoInfo = ['T3 Total','FT3 Libre','T4 Total','FT4 Libre','TSH','Anti Tiroglobulina','Tiroglobulina','FSH','LH','Progesterona','Estraidol','Estirol Libre','Cortisol','Prolactina','H. Crecimiento'];
+  tumorInfo = ['Alfa feto proteína AFP','Ag Carciembrionario CEA','CA 125 (Ovario-Utero)','CA 19-9','CA 72-4','PSA TOTAL','PSA LIBRE'];
+  liquiInfo = ['LCR', 'Liq. Sinovial', 'Liq. Ascítico','Liq. Peritoneal','Liq. Pleural','Liq. Espermático'];
+
+  priorityOptions = ['URGENTE','CONTROL'];
   constructor(public nav: NavbarService,
               public authService: AuthService,
               public firestoreService: FireStoreServiceService) { 
@@ -33,10 +42,19 @@ export class ExamenesComponent implements OnInit {
                   docId:new FormControl('', Validators.required),
                   hematologia: new FormControl('', ),
                   quimica: new FormControl('', ),
-                  copro:new FormControl('', ),
+                  heces:new FormControl('', ),
                   uro:new FormControl('', ),
                   bacter: new FormControl('', ),
                   serio: new FormControl('', ),
+
+                  enzimas: new FormControl('', ),
+                  electro: new FormControl('', ),
+                  especial: new FormControl('', ),
+                  inmuno: new FormControl('', ),
+                  endo: new FormControl('', ),
+                  tumor: new FormControl('', ),
+                  liquido: new FormControl('', ),
+
                   otros: new FormControl('', ),
                   observation: new FormControl('',)
                 });
@@ -57,10 +75,18 @@ export class ExamenesComponent implements OnInit {
     this.data.docId= this.medicineForm.value.docId;
     this.data.hematologia= this.medicineForm.value.hematologia;
     this.data.quimica= this.medicineForm.value.quimica;
-    this.data.copro= this.medicineForm.value.copro;
+    this.data.heces= this.medicineForm.value.heces;
     this.data.uro= this.medicineForm.value.uro;
     this.data.bacter= this.medicineForm.value.bacter;
     this.data.serio= this.medicineForm.value.serio;
+
+    this.data.enzimas= this.medicineForm.value.enzimas;
+    this.data.electro= this.medicineForm.value.electro;
+    this.data.especial= this.medicineForm.value.especial;
+    this.data.inmuno= this.medicineForm.value.inmuno;
+    this.data.endo= this.medicineForm.value.endo;
+    this.data.tumor= this.medicineForm.value.tumor;
+    this.data.liquido= this.medicineForm.value.liquido;
     this.data.otros= this.medicineForm.value.otros;
     this.data.observation= this.medicineForm.value.observation;
 

@@ -138,6 +138,29 @@ fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
           });
         }
         
+      });this.firestoreService.updloadFile(fot, `${this.authService.userData.email}/${type==='sello'?"sello":"firma"}`, target.files.item(0).type).then(link => {          
+        if(type ==='sello'){
+          this.firestoreService.getUser(this.userInfo.uid).update({
+            sello: link
+          }).then(()=>{
+            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+              this.userInfo = user.data();
+              this.hugeLoading= false;
+              this.notificationService.showNotification('success', 'Sello actualizado');
+            });
+          });
+        }else{
+          this.firestoreService.getUser(this.userInfo.uid).update({
+            firma: link
+          }).then(()=>{
+            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+              this.userInfo = user.data();
+              this.hugeLoading= false;
+              this.notificationService.showNotification('success', 'Firma actualizada');
+            });
+          });
+        }
+        
       });
     })
 

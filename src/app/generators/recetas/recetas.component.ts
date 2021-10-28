@@ -29,7 +29,7 @@ export class RecetasComponent implements OnInit {
                   servicio: new FormControl(''),
                   name: new FormControl('', Validators.required),
                   edad:new FormControl('', Validators.required),
-                  meses:new FormControl('', Validators.required),
+                  meses:new FormControl('',),
                   sex:new FormControl('', Validators.required),
                   docId:new FormControl('', Validators.required),
                   diagnostic: new FormControl('', Validators.required),

@@ -38,7 +38,7 @@
                                 </mat-form-field>
                                 <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
                                     <mat-label>Reposo desde:</mat-label>
-                                    <input (change)="dateChange()" type="date" formControlName="reposoD" matInput placeholder="Resposo">
+                                    <input (change)="dateChange()" type="date" max="2078-12-31" formControlName="reposoD" matInput placeholder="Resposo">
                                 </mat-form-field>
                                 <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
                                     <mat-label>Reposo hasta:</mat-label>
@@ -51,9 +51,15 @@
                                   
                 </form>
 
-                <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
-                    Generar Certificado
-                </button>  
+                <div class="grid-container">
+                    <button class="example-full-width" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
+                        Generar Certificado
+                    </button>  
+                    <button class="example-full-width"  mat-raised-button color="primary"(click)="newInfo()" >
+                        Nuevo Certificado
+                    </button>  
+                </div>
+
             </div>
             
         </div>

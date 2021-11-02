@@ -7,7 +7,8 @@
                     <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
                         <div style="display: flex; justify-content: space-between;">
                             <P class="p0 ft0" style="margin-top: 7px;">SOLICITUD IMAGEN</P>
-                            <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                            <img *ngIf="!user?.logo" src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                            <img *ngIf="user?.logo" [src]=" user?.logo" style="width: 50px">
                         </div>
                     </td>
                 </tr>
@@ -84,7 +85,8 @@
                         <P class="p11 ft5"><span>{{htmlData?.resumen}}</span></P>
                     </td>
                     <td colspan=5 class="tr1 td16">
-                        <P class="p11 ft5"><span>{{htmlData?.diagnostic}}</span></P>
+                        <P class="p11 ft5">DIAGNÓSTICO: <span>{{htmlData?.diagnostic}}</span></P>
+                        <P class="p11 ft5">CIE 10: <span>{{htmlData?.cie10}}</span></P>
                     </td>
                 </tr>
                 <tr>

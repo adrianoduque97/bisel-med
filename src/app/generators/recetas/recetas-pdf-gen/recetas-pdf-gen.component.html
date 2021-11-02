@@ -9,8 +9,9 @@
                     </td>
                     <td colspan=5 class="tr0 td0" >
                         <div style="display: flex; justify-content: space-between;">
-                            <P class="p17 ft0">RECETA N°: <span>0000001</span></P>
-                        <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                            <P class="p17 ft0">RECETA N°: <span>000000{{htmlData?.contador}}</span></P>
+                        <img *ngIf="!user?.logo" src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                        <img *ngIf="user?.logo" [src]=" user?.logo" style="width: 50px">
                         </div>
                     </td>
                 </tr>
@@ -80,10 +81,10 @@
                     </td>
                 </tr>
                 <tr class="dotted">
-                    <td colspan=5  class="tr1 td16">
+                    <td colspan=2  class="tr1 td16">
                         <p>Nombre y Apellido Dr. <span>{{user?.displayName}}</span></p>
                     </td>
-                    <td colspan=5  class="tr1 td26">
+                    <td colspan=8  class="tr1 td26">
                         <p>Firma y sello del prescriptor</p>
                         <div style="display:flex; margin-bottom: 10px;">
                             <img [src]="user?.firma" class="imag-sello">
@@ -97,7 +98,7 @@
                         <P class="p16 ft0">INDICACIONES</P>
                     </td>
                     <td colspan=5 class="tr10 td30">
-                        <P class="p17 ft0">RECETA N°: <span>0000001</span></P>
+                        <P class="p17 ft0">RECETA N°: <span>000000{{htmlData?.contador}}</span></P>
                     </td>
                 </tr>
                 <tr>

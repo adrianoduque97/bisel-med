@@ -3,7 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth-service.service';
 import { FireStoreServiceService } from 'src/app/shared/services/fire-store-service.service';
 import { NavbarService } from 'src/app/shared/services/navbar.service';
-
+import firebase  from 'firebase';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-recetas',
   templateUrl: './recetas.component.html',
@@ -21,6 +23,13 @@ export class RecetasComponent implements OnInit {
   med:any[] = [];
   sexo = ['Masculino', 'Femenino'];
   horas = ['Mañana','Medio Día','Tarde','Noche', 'Ninguna'];
+  localUser: any;
+  loading = false;
+  increment: any;
+
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 50;
 
   constructor(public nav: NavbarService,
               public authService: AuthService,
@@ -49,6 +58,7 @@ export class RecetasComponent implements OnInit {
                   quantity: new FormControl('', Validators.required)
                 });
 
+                this.increment = firebase.firestore.FieldValue.increment(1);
               }
 
   ngOnInit(): void {
@@ -63,6 +73,7 @@ export class RecetasComponent implements OnInit {
   }
 
   onClick(){
+    this.loading = true;
     this.data.servicio= this.medicineForm.value.servicio;
     this.data.name= this.medicineForm.value.name;
     this.data.edad= [this.medicineForm.value.edad, this.medicineForm.value.meses];
@@ -72,8 +83,23 @@ export class RecetasComponent implements OnInit {
     this.data.cie10= this.medicineForm.value.cie10;
     this.data.medicine= this.med;
     this.data.recomendaciones= this.medicineForm.value.recomendaciones;
-    
-    this.htmlData = this.data;
+
+    this.firestoreService.getUser(this.userInfo.uid).update({
+      contador: this.increment
+    }).then(()=>{
+      this.firestoreService.getUser(this.userInfo.uid).get().subscribe(user =>{
+        let userInfo : any = user.data();
+        this.data.contador = userInfo.contador;
+        this.htmlData = this.data;
+        this.loading = false;
+      });
+    });
+  }
+
+  newInfo(){
+    this.medicineForm.reset();
+    this.medForm.reset();
+    this.htmlData = {};
   }
 
   addMedicine(){

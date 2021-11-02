@@ -49,7 +49,7 @@
                             </mat-form-field>
                             <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Recomendaciones</mat-label>
-                                <textarea formControlName="advertencia" matInput placeholder="Recomendaciones"></textarea>
+                                <textarea formControlName="recomendaciones" matInput placeholder="Recomendaciones"></textarea>
                             </mat-form-field>
                             <form [formGroup]="medForm">
                                 <div style="display: flex;">
@@ -132,9 +132,17 @@
             </mat-option>
           </mat-autocomplete> -->
 
-                <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
-                    Generar Receta
-                </button>              
+          <div class="grid-container">
+            <button class="example-full-width" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid||loading">
+                <mat-progress-spinner *ngIf="loading" diameter="24" class="spinner-container" [color]="color" [mode]="mode"> </mat-progress-spinner>
+                Generar Receta
+            </button>      
+            <button class="example-full-width"  mat-raised-button color="primary"(click)="newInfo()" >
+                Nueva Receta
+            </button>  
+          </div>
+
+                       
             </div>  
         </div>
         <div class="blue-side center-flex">

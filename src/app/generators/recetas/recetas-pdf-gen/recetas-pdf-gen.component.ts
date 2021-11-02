@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FireStoreServiceService } from '../../../shared/services/fire-store-service.service';
 import { AuthService } from 'src/app/shared/services/auth-service.service';
 import { PdfGeneratorService } from 'src/app/shared/services/pdf-generator.service';
@@ -36,7 +36,6 @@ export class RecetasPdfGenComponent implements OnInit {
     public auth: AuthService,
     public pdfGen: PdfGeneratorService,
     ) { }
-
   ngOnInit(): void {
     let userLocal = JSON.parse(localStorage.getItem('user'));
     this.fire.getUser(userLocal.uid).get().subscribe(async user =>{
@@ -44,6 +43,8 @@ export class RecetasPdfGenComponent implements OnInit {
     });
     this.numLet(123)
   }
+
+  onCg
 
   async exportPDF(type: string){
     this.hugeLoading = true;
@@ -56,7 +57,7 @@ export class RecetasPdfGenComponent implements OnInit {
   }
 
   async getSharePDF (type: string){
-      this.loading = true;
+      this.loading = true;this.loading = true;
       this.hugeLoading = true;
       this.pdfGen.exportJSPDF(type, this.pdfTable).then(link =>{
       this.pdfLiknk =  link;

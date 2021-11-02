@@ -2,12 +2,13 @@
     <mat-progress-spinner *ngIf="hugeLoading" diameter="60" class="spinner-container big-spinner" [color]="color" [mode]="mode"></mat-progress-spinner>
     <div class="overall-container">
         <div id="pdfTable" #pdfTable >
-            <table class="table-size table-back" >
+            <table class="table-size table-back max-width" >
                 <tr>
                     <td colspan=10 class="tr0 td0" style="background-color: #3498f13b;">
                         <div style="display: flex; justify-content: space-between;">
                             <P class="p0 ft0" style="margin-top: 7px;">SOLICITUD EXÁMENES </P>
-                        <img src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                        <img *ngIf="!user?.logo" src="../../../../assets/Logo y coloresBisel.png" style="width: 100px">
+                        <img *ngIf="user?.logo" [src]=" user?.logo" style="width: 50px">
                         </div>
                     </td>
                 </tr>
@@ -32,7 +33,7 @@
                         <P class="p0 ft0">PRIORIDAD: <span>{{htmlData?.priority}}</span></P>
                     </td>
                     <td colspan=7 class="tr2 td3">
-                        <P class="p2 ft2">FECHA TOMA: <span></span></P>
+                        <P class="p2 ft2">FECHA TOMA: <span>{{htmlData?.dateToma | date:'mediumDate'}}</span></P>
                     </td>
                 </tr>
                 <tr>

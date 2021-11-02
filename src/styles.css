@@ -22,7 +22,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table, th, td {
   border: 1px solid #004990;
   border-collapse: collapse;
-  /* width: 50px; */
 }
 .container{
   max-width: 600px;
@@ -95,6 +94,11 @@ table, th, td {
   letter-spacing: -2px;
   line-height: 1.1;
   padding-bottom: 40px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 .html2canvas-container { width: 9000px !important; height: 9000px !important; }

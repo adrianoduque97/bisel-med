@@ -41,6 +41,7 @@ import { ImagenesPdfGenComponent } from './generators/imagenes/imagenes-pdf-gen/
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
 import { NotifierModule } from "angular-notifier";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 @NgModule({
@@ -96,7 +97,8 @@ import { NotifierModule } from "angular-notifier";
     OverlayModule,
     ShareButtonsModule,
     ShareButtonsPopupModule,
-    ShareIconsModule
+    ShareIconsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ], 
   providers: [AuthService],
   bootstrap: [AppComponent]

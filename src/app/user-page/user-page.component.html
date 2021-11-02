@@ -49,6 +49,16 @@
                         <mat-icon *ngIf="userInfo?.sello" style="color: green">task_alt</mat-icon>
                     </div>
                     <div>
+                        <button style="margin-bottom: 10px; cursor: default;" mat-raised-button color="primary">
+                            <label style="cursor: pointer;">
+                                <small>{{userInfo?.logo ? 'Actualizar' :'Adjuntar'}} Logo Médico, Examinar...</small>
+                                <input #k hidden type="file" accept="image/*" (change)="uploadLogo($event, k.files)"
+                                    multiple="false">
+                            </label>
+                        </button>
+                        <mat-icon *ngIf="userInfo?.logo" style="color: green">task_alt</mat-icon>
+                    </div>
+                    <div>
                         
                         <button style="margin-bottom: 10px; cursor: pointer;" routerLink="/Receta" mat-raised-button color="warn">
                             Crear Receta

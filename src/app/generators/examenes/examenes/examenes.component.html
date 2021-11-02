@@ -21,6 +21,10 @@
                                 <mat-option *ngFor="let value of priorityOptions" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill" >
+                            <mat-label>Reposo desde:</mat-label>
+                            <input type="date" formControlName="dateToma" matInput placeholder="Toma">
+                        </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Hematología</mat-label>
                             <mat-select formControlName="hematologia" matInput multiple>
@@ -112,9 +116,14 @@
                     </div>                  
                 </form>
 
-                <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
-                    Generar Solicitud de Examen
-                </button>                 
+                <div class="grid-container">
+                    <button class="example-full-width" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
+                        Generar Solicitud de Examen
+                    </button>
+                    <button class="example-full-width"  mat-raised-button color="primary"(click)="newInfo()" >
+                        Nueva Solicitud de Examen
+                    </button>  
+                </div>              
 
             </div>
             

@@ -30,6 +30,10 @@ h2{
     margin-left: 51%;
     margin-top: 1%;
   }
+  table, th, td {
+    width: 100%;
+    /* width: 50px; */
+  }
 
   #pdfTable{
     font-size: 9px;

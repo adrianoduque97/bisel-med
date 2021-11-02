@@ -54,14 +54,22 @@
                             <mat-label>Diagnóstico</mat-label>
                             <textarea formControlName="diagnostic" matInput placeholder="Diagnóstico"></textarea>
                         </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill" class="regular-form" >
+                            <mat-label>CIE 10</mat-label>
+                            <input formControlName="cie10" matInput placeholder="A0890">
+                        </mat-form-field>
                         
                     </div>                  
                 </form>
 
-                <button class="example-full-width" style="margin-left: 10px;" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
-                    Generar Solicitud de Imágen
-                </button>                 
-
+                <div class="grid-container">
+                    <button class="example-full-width" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
+                        Generar Solicitud de Imágen
+                    </button>   
+                    <button class="example-full-width"  mat-raised-button color="primary"(click)="newInfo()" >
+                        Nueva Solicitud de Imágen
+                    </button>  
+                </div>
             </div>
             
         </div>

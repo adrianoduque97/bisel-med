@@ -18,7 +18,7 @@ export class ImagenesComponent implements OnInit {
   htmlData: any;
   userInfo: any;
   imagenTipo = ['Radiografía','Tomografía','Resonancia','Ecografía','Procedimiento','Mamografía','Otro'];
-  priorityOptions = ['URG','NRML','CTRL'];
+  priorityOptions = ['URGENTE','CONTROL'];
   recomendationOptions = ['Puede Movilizarse', 'Puede retirarse apositos y yesos', 'El médico estará presente en el examen', 'Toma de radiografía en la cama']
 
   constructor(public nav: NavbarService,
@@ -33,7 +33,8 @@ export class ImagenesComponent implements OnInit {
                   recomendation: new FormControl('',),
                   motivo: new FormControl('', ),
                   resumen: new FormControl('', ),
-                  diagnostic: new FormControl('',)
+                  diagnostic: new FormControl('',),
+                  cie10: new FormControl('',),
                 });
               }
 
@@ -56,8 +57,14 @@ export class ImagenesComponent implements OnInit {
     this.data.motivo= this.medicineForm.value.motivo;
     this.data.resumen= this.medicineForm.value.resumen;
     this.data.diagnostic= this.medicineForm.value.diagnostic;
+    this.data.cie10= this.medicineForm.value.cie10;
 
     this.htmlData = this.data;
+  }
+
+  newInfo(){
+    this.medicineForm.reset();
+    this.htmlData={};
   }
 
   addNewVersion(value: string){

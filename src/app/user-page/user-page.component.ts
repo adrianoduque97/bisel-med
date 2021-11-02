@@ -28,6 +28,8 @@ export class UserPageComponent implements OnInit {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'indeterminate';
   value = 50;
+  nameLogo: string;
+  logoFile: File;
 
   constructor(public authService: AuthService,
               public firestoreService: FireStoreServiceService,
@@ -35,10 +37,10 @@ export class UserPageComponent implements OnInit {
               public navService: NavbarService,
               public notificationService: NotificationService) { 
               this.localUser = JSON.parse(localStorage.getItem('user'));
-    this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
-      this.userInfo = user.data();
-      this.hugeLoading = false;
-    });
+              this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+                this.userInfo = user.data();
+                this.hugeLoading = false;
+              });
     
                 this.userForm = new FormGroup({
                   name: new FormControl('',),
@@ -137,32 +139,8 @@ fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
             });
           });
         }
-        
-      });this.firestoreService.updloadFile(fot, `${this.authService.userData.email}/${type==='sello'?"sello":"firma"}`, target.files.item(0).type).then(link => {          
-        if(type ==='sello'){
-          this.firestoreService.getUser(this.userInfo.uid).update({
-            sello: link
-          }).then(()=>{
-            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
-              this.userInfo = user.data();
-              this.hugeLoading= false;
-              this.notificationService.showNotification('success', 'Sello actualizado');
-            });
-          });
-        }else{
-          this.firestoreService.getUser(this.userInfo.uid).update({
-            firma: link
-          }).then(()=>{
-            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
-              this.userInfo = user.data();
-              this.hugeLoading= false;
-              this.notificationService.showNotification('success', 'Firma actualizada');
-            });
-          });
-        }
-        
       });
-    })
+    });
 
         
       });
@@ -180,5 +158,46 @@ fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
     
   }
 
+  uploadLogo(evt: any, files: File[]) {
+    this.hugeLoading= true;
+    try {
+      const target: DataTransfer = <DataTransfer>(evt.target);
+      if (target.files.length !== 1){
+        throw new Error('Cannot use multiple files.');
+      }
+      
+      if (target.files.item(0).name.includes(' ')){
+        throw new Error('Invalid file name, no empty spaces are supported, use _ instead.');
+      }
+
+      const reader: FileReader = new FileReader();
+      reader.onload = (e: any) => {
+          this.nameLogo=target.files.item(0).name;
+
+      this.firestoreService.updloadFile(target.files.item(0), `${this.authService.userData.email}/logo`, target.files.item(0).type).then(link => {          
+          this.firestoreService.getUser(this.userInfo.uid).update({
+            logo: link
+          }).then(()=>{
+            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+              this.userInfo = user.data();
+              this.hugeLoading= false;
+              this.notificationService.showNotification('success', 'Logo actualizado');
+            });
+          });
+        
+      });
+      };
+      reader.onerror = (e: any) => {
+      };
+      reader.onloadstart = (e: any) => {
+      };
+      reader.onloadend = (e: any) => {
+      };
+      reader.readAsBinaryString(target.files[0]);
+    } catch(error){
+      console.log(error)
+    }
+    
+  }
 
 }

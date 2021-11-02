@@ -26,7 +26,7 @@ export class CertificadosComponent implements OnInit {
                   certificado: new FormControl('', Validators.required),
                   diagnostic: new FormControl('', Validators.required),
                   cie10: new FormControl('', Validators.required),
-                  reposoD: new FormControl('', Validators.required),
+                  reposoD: new FormControl('',Validators.required),
                   reposoH: new FormControl('', Validators.required)
                 });
               }
@@ -51,6 +51,11 @@ export class CertificadosComponent implements OnInit {
     this.data.reposoH= this.medicineForm.value.reposoH;
 
     this.htmlData = this.data;
+  }
+
+  newInfo(){
+    this.medicineForm.reset();
+    this.htmlData = {};
   }
 
   dateChange(){

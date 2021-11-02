@@ -18,6 +18,10 @@ export class FireStoreServiceService {
     return this.firestore.collection('users').doc(uid);
   }
 
+  public getFireInstance(){
+    return this.firestore;
+  }
+
   public async updloadFile(file: Blob, fileName: string, type: string): Promise<string>{
     var metadata = {
       contentType: type,

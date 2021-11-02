@@ -18,7 +18,7 @@ export class ExamenesComponent implements OnInit {
   htmlData: any;
   userInfo: any;
   hematologiaInfo = ['Biometría Hemática', 'Plaquetas', 'Grupo/Rh.', 'Reticulocitos', 'Hematozoario', 'Célula LE', 'índices Hemáticos', 'T. Protrombina','T. de Sangría','T. de Coagulación','T.P. de Tomboplastina TPT', 'T.Parcial', 'Drepanocitos','Coombs Directo', 'Coombs Indirecto','Eritrosedimentación (VSG)','Frotosis de sangre periférica','Fibronogeno'];
-  quimicaInfo = ['Glucemia','Glicerina postpandrial','P. Tolerancia Glucosa','Hb. Glicosilada','Glucosa Ayunas', 'Glucosa 2 Horas', 'Urea', 'Creatinina', 'Ácido úrico', 'Bilirrubinas','Proteínas y Fracciones', 'Transaminadas Pirúvica','Transaminasa Oxalacética', 'Colesterol Total','Colesterol HDL','Colesterol LDL', 'Triglicéridos','Líquidos Totales','Hierro serico','Fij. De Hierro Transferencia','Ferritina','Insulina','Homa Ir'];
+  quimicaInfo = ['Glucemia','Glucemia postpandrial','P. Tolerancia Glucosa','Hemoglobina Glicosilada','Glucosa Ayunas', 'Glucosa 2 Horas', 'Urea', 'Creatinina', 'Ácido úrico', 'Bilirrubina Total','Bilirrubina Directa','Bilirrubina Indirecta','Proteínas y Fracciones', 'Transaminasa Glutámico Pirúvica','Transaminasa Glutámico Oxalacética', 'Colesterol Total','Colesterol HDL','Colesterol LDL','Colesterol VLDL', 'Triglicéridos','Líquidos Totales','Hierro serico','Ferritina','Insulina','Homa Ir'];
   hecesInfo = ['Parasitológico','Coproparasitario','Sangre oculta', 'Inv. Poumorfo Nucleares','Rotavirus','Moco Fecal','H. Pylori Antígeno'];
   bacterInfo= ['Exudados-Trasudados','Esputos','Secreciones','Orinas-Uro','Heces-Copro','Heridas-Copro','Heridas y Úlceras','T.Gram','Ziehi Neelsen','Tinta China','KOH','Fresco','Hongos','Cultivo y Antibiograma','Gota Fresca'];
   serioInfo = ['VDRL','Reacción de WIDAL','Reacción de Hudiesson', 'Prueba de embarazo', 'PCR Cualitativo', 'RA Test Cualitativo','ASTO Cuantitativo','ASTO Cualitativo','Stred-A','Complemento C3-C4'];
@@ -39,6 +39,7 @@ export class ExamenesComponent implements OnInit {
                 this.medicineForm = new FormGroup({
                   name: new FormControl('', Validators.required),
                   priority:new FormControl('', Validators.required),
+                  dateToma: new FormControl(''),
                   docId:new FormControl('', Validators.required),
                   hematologia: new FormControl('', ),
                   quimica: new FormControl('', ),
@@ -72,6 +73,7 @@ export class ExamenesComponent implements OnInit {
   onClick(){
     this.data.name= this.medicineForm.value.name;
     this.data.priority= this.medicineForm.value.priority;
+    this.data.dateToma= this.medicineForm.value.dateToma;
     this.data.docId= this.medicineForm.value.docId;
     this.data.hematologia= this.medicineForm.value.hematologia;
     this.data.quimica= this.medicineForm.value.quimica;
@@ -92,5 +94,10 @@ export class ExamenesComponent implements OnInit {
 
     this.htmlData = this.data;
 
+  }
+
+  newInfo(){
+    this.medicineForm.reset();
+    this.htmlData={};
   }
 }

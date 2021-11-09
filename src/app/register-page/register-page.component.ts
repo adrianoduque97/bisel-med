@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { AuthService } from '../shared/services/auth-service.service';
 import { FireStoreServiceService } from '../shared/services/fire-store-service.service';
 import { NavbarService } from '../shared/services/navbar.service';
 import { NotificationService } from '../shared/services/notification.service';
+import { RegisterInfoComponent } from './register-info/register-info.component';
 
 @Component({
   selector: 'app-register-page',
@@ -27,7 +29,8 @@ export class RegisterPageComponent implements OnInit {
   constructor(public authService: AuthService,
               public firestoreService: FireStoreServiceService,
               public navService: NavbarService,
-              public notificationService: NotificationService,) {
+              public notificationService: NotificationService,
+              public dialog: MatDialog) {
     this.registerForm = new FormGroup({
       name: new FormControl('', Validators.required),
       register:new FormControl('', Validators.required),
@@ -59,6 +62,12 @@ export class RegisterPageComponent implements OnInit {
     }).catch(error =>{
       this.notificationService.showNotification('error', 'Usuario NO Registrado');
       this.hugeLoading = false;
+    });
+  }
+
+  openInfoDialog(){
+    const dialogRef = this.dialog.open(RegisterInfoComponent, {
+      panelClass: 'edit-task-dialog-container-auto',
     });
   }
 

@@ -41,7 +41,9 @@ import { ImagenesPdfGenComponent } from './generators/imagenes/imagenes-pdf-gen/
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
 import { NotifierModule } from "angular-notifier";
-
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RegisterInfoComponent } from './register-page/register-info/register-info.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { NotifierModule } from "angular-notifier";
     CertificadosComponent,
     CertificadosPdfGenComponent,
     ImagenesComponent,
-    ImagenesPdfGenComponent
+    ImagenesPdfGenComponent,
+    RegisterInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,8 @@ import { NotifierModule } from "angular-notifier";
     MatMenuModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatDialogModule,
     MatIconModule,
     MatSelectModule,
     FormsModule,

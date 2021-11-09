@@ -28,6 +28,7 @@ export class ImagenesComponent implements OnInit {
                   name: new FormControl('', Validators.required),
                   docId:new FormControl('', Validators.required),
                   priority:new FormControl('', Validators.required),
+                  dateToma: new FormControl(''),
                   imagenTipo: new FormControl('',Validators.required ),
                   descripcion: new FormControl('', ),
                   recomendation: new FormControl('',),
@@ -50,6 +51,7 @@ export class ImagenesComponent implements OnInit {
   onClick(){
     this.data.name= this.medicineForm.value.name;
     this.data.priority= this.medicineForm.value.priority;
+    this.data.dateToma= this.medicineForm.value.dateToma;
     this.data.docId= this.medicineForm.value.docId;
     this.data.imagenTipo= this.medicineForm.value.imagenTipo;
     this.data.descripcion= this.medicineForm.value.descripcion;

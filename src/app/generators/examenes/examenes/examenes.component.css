@@ -18,12 +18,12 @@
     textarea{
       height: 50px;
     }
+    .wrapper{
+      white-space: normal;
+    }
+  
 
   @media all and (max-width: 700px) {
-    /* .blue-side{
-        width: 100%;
-        margin-top: 20px;
-    } */
     .main-flex{
         flex-direction: column;
         align-items:center;

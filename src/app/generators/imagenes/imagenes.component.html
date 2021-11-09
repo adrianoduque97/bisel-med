@@ -22,6 +22,10 @@
                                 <mat-option *ngFor="let value of priorityOptions" [value]="value">{{value}}</mat-option>
                             </mat-select>
                         </mat-form-field>
+                        <mat-form-field class="example-full-width" appearance="fill" >
+                            <mat-label>Fecha Toma:</mat-label>
+                            <input type="date" formControlName="dateToma" matInput placeholder="Toma">
+                        </mat-form-field>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Estudio Solicitado</mat-label>
                             <mat-select formControlName="imagenTipo" matInput multiple #Sel>
@@ -63,10 +67,10 @@
                 </form>
 
                 <div class="grid-container">
-                    <button class="example-full-width" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
+                    <button class="example-full-width wrapper" mat-raised-button color="primary"(click)="onClick()" [disabled]="!medicineForm.valid">
                         Generar Solicitud de Imágen
                     </button>   
-                    <button class="example-full-width"  mat-raised-button color="primary"(click)="newInfo()" >
+                    <button class="example-full-width wrapper"  mat-raised-button color="primary"(click)="newInfo()" >
                         Nueva Solicitud de Imágen
                     </button>  
                 </div>

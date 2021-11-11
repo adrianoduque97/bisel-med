@@ -62,6 +62,17 @@
                         <mat-icon *ngIf="userInfo?.logo" style="color: green">task_alt</mat-icon>
                     </div>
                     <div>
+                        <button style="margin-bottom: 10px; cursor: default;" mat-raised-button color="primary"
+                                matTooltip="Imagen con fondo blanco, necesario" matTooltipPosition="right">
+                            <label style="cursor: pointer;">
+                                <small>{{userInfo?.logo ? 'Actualizar' :'Adjuntar'}} Registro ACESS, Examinar...</small>
+                                <input #k hidden type="file" accept="application/pdf" (change)="uploadAcess($event, k.files)"
+                                    multiple="false">
+                            </label>
+                        </button>
+                        <mat-icon *ngIf="userInfo?.acess" style="color: green">task_alt</mat-icon>
+                    </div>
+                    <div>
                         
                         <button style="margin-bottom: 10px; cursor: pointer;" routerLink="/Receta" mat-raised-button color="warn">
                             Crear Receta

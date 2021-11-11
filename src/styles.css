@@ -109,7 +109,9 @@ table, th, td {
   background-color: #FFFFFF;
   /* overflow-y: hidden; */
 }
-
+.no-share-display{
+  display: none;
+}
 
 .html2canvas-container { width: 9000px !important; height: 9000px !important; }
 
@@ -168,5 +170,8 @@ table, th, td {
       line-height: 1.1;
       padding-bottom: 20px;
       padding-top: 20px;
+    }
+    .no-share-display{
+      display: block;
     }
   }

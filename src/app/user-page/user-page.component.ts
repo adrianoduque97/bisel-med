@@ -84,11 +84,15 @@ export class UserPageComponent implements OnInit {
     try {
       const target: DataTransfer = <DataTransfer>(evt.target);
       if (target.files.length !== 1){
-        throw new Error('Cannot use multiple files.');
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'Solo se puede subir un archivo.');
+        throw new Error('Solo se puede subir un archivo.');
       }
       
       if (target.files.item(0).name.includes(' ')){
-        throw new Error('Invalid file name, no empty spaces are supported, use _ instead.');
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'No se permiten espacios en el nombre, use _ en su lugar');
+        throw new Error('No se permiten espacios en el nombre, use _ en su lugar');
       }
 
       const reader: FileReader = new FileReader();
@@ -163,11 +167,20 @@ fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
     try {
       const target: DataTransfer = <DataTransfer>(evt.target);
       if (target.files.length !== 1){
-        throw new Error('Cannot use multiple files.');
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'Sólo se puede subir un archivo.');
+        throw new Error('Sólo se puede subir un archivo.');
       }
       
       if (target.files.item(0).name.includes(' ')){
-        throw new Error('Invalid file name, no empty spaces are supported, use _ instead.');
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'No se permiten espacios en el nombre, use _ en su lugar');
+        throw new Error('No se permiten espacios en el nombre, use _ en su lugar');
+      }
+      if(!target.files.item(0).type.includes('png')){
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'Solo imágenes PNG aceptadas');
+        throw new Error('Solo imágenes PNG aceptadas');
       }
 
       const reader: FileReader = new FileReader();
@@ -182,6 +195,55 @@ fetch("https://api.remove.bg/v1.0/removebg?size='auto'", requestOptions)
               this.userInfo = user.data();
               this.hugeLoading= false;
               this.notificationService.showNotification('success', 'Logo actualizado');
+            });
+          });
+        
+      });
+      };
+      reader.onerror = (e: any) => {
+      };
+      reader.onloadstart = (e: any) => {
+      };
+      reader.onloadend = (e: any) => {
+      };
+      reader.readAsBinaryString(target.files[0]);
+    } catch(error){
+      console.log(error)
+    }
+    
+  }
+
+  uploadAcess(evt: any, files: File[]) {
+    this.hugeLoading= true;
+    try {
+      const target: DataTransfer = <DataTransfer>(evt.target);
+      if (target.files.length !== 1){
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'Sólo se puede subir un archivo.');
+        throw new Error('Sólo se puede subir un archivo.');
+      }
+      if (target.files.item(0).name.includes(' ')){
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'No se permiten espacios en el nombre, use _ en su lugar');
+        throw new Error('No se permiten espacios en el nombre, use _ en su lugar');
+      }
+      if (!target.files.item(0).type.includes('pdf')){
+        this.hugeLoading= false;
+        this.notificationService.showNotification('error', 'Solo archivos PNDF aceptados');
+        throw new Error('Solo archivos PNDF aceptados');
+      }
+
+      const reader: FileReader = new FileReader();
+      reader.onload = (e: any) => {
+
+      this.firestoreService.updloadFile(target.files.item(0), `${this.authService.userData.email}/logo`, target.files.item(0).type).then(link => {          
+          this.firestoreService.getUser(this.userInfo.uid).update({
+            acess: link
+          }).then(()=>{
+            this.firestoreService.getUser(this.localUser.uid).get().subscribe(user =>{
+              this.userInfo = user.data();
+              this.hugeLoading= false;
+              this.notificationService.showNotification('success', 'Acess actualizado');
             });
           });
         

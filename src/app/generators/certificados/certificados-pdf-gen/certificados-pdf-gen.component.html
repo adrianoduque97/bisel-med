@@ -95,8 +95,7 @@
     </div>
     <div class="button-container" *ngIf="htmlData && !isObjectEmpty(htmlData)">
         <button [disabled]="hugeLoading" class="btn-up" mat-raised-button color="primary" (click)="exportPDF('open')">ABRIR</button>
-        <span>
-
+        <span  class="no-share-display">
             <button class="btn-up" mat-raised-button color="primary" [disabled]="loading||hugeLoading"
                 (click)="getSharePDF('share')">
                 <mat-progress-spinner *ngIf="loading" diameter="24" class="spinner-container" [color]="color"
